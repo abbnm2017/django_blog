@@ -1,0 +1,86 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="gb2312">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>{% block title %}
+    科科个人博客 - 未来纪元
+    {% endblock %}</title>
+
+    <meta name="keywords" content="个人博客,个人博客模板,科科" />
+    <meta name="description" content="科科个人博客 - 一个站在web全栈开发设计之路的男技术员个人博客网站" />
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+    <link href="{% static 'css/index.css' %}" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="{% static 'js/modernizr.js' %}"></script>
+    <![endif]-->
+    <script src="{% static 'js/scrollReveal.js' %}"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="{% static 'js/boostrap1.js' %}"></script>
+    <script src="{% static 'js/boostrap2.js' %}"></script>
+    {% block mycss %}
+
+    {% endblock %}
+
+</head>
+<body>
+
+<!--% url 'User:xxx'% xxx是name的标记-->
+
+<header>
+  <div style = "text-align: right">
+
+      {% if request.session.username %}
+        欢迎! <a href="#"> {{request.session.username}}</a>           <a href="{% url 'User:logout'%}">注销</a>
+      {% else %}
+        <a href="{% url 'User:login' %}">登录</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'User:register' %}">注册</a>
+      {% endif %}
+  </div>
+  <div class="logo" data-scroll-reveal="enter right over 1s"><a href="{% url 'User:index'%}"><img src="{% static 'images/logo.png' %}"></a></div>
+  <nav class="topnav" data-scroll-reveal="enter bottom over 1s after 1s">
+	  <a href="{% url 'User:index' %}"><span>首页</span><span class="en">Home</span></a>
+	  <a href="{% url 'User:about'%}"><span>关于我</span><span class="en">About</span></a>
+	  <a href="{% url 'User:lifeopen'%}"><span>生活随笔</span><span class="en">Life</span></a>
+	  <a href="learn.html"><span>碎言碎语</span><span class="en">Doing</span></a>
+	  <a href="mbfx.html"><span>模板分享</span><span class="en">Share</span></a>
+	  <a href="{% url 'User:zanshang'%}"><span>赞赏</span><span class="en">Learn</span></a>
+	  <a href="{% url 'User:board'%}"><span>留言</span><span class="en">Saying</span></a>
+  </nav>
+</header>
+
+<article>
+  <div class="container">
+    	{% block content %}
+
+	  	{% endblock %}
+  </div>
+</article>
+
+{% if messages %}
+  <script>
+    {% for msg in messages %}
+        alert('{{msg.message}}')
+    {% endfor %}
+  </script>
+{% endif %}
+
+
+
+<p align="center">{{msg1}}       {{msg2}}</p>
+<footer> Design by KeKe <a href="/">粤ICP备11002373号-8</a> </footer>
+
+<script>
+if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+    (function(){
+        window.scrollReveal = new scrollReveal({reset: true});
+    })();
+};
+</script>
+
+{% block myjs %}
+
+{% endblock %}
+</body>
+</html>

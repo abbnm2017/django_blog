@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title>分享29个无版权免费的高清图片视频素材网站</title>
+    <link rel='dns-prefetch' href='//apps.bdimg.com' />
+	<link rel='dns-prefetch' href='//s.w.org' />
+	<link rel='stylesheet' id='main-css'  href='https://yusi123.com/wp-content/themes/YusiPro/style.css?ver=1.6' type='text/css' media='all' />
+	<link rel='stylesheet' id='fancybox-css'  href='https://yusi123.com/wp-content/themes/YusiPro/css/jquery.fancybox.min.css?ver=1.6' type='text/css' media='all' />
+	<link rel='stylesheet' id='wppay-css'  href='https://yusi123.com/wp-content/themes/YusiPro/shop/static/css/pay.css?ver=4.0.0' type='text/css' media='all' />
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	
+	<script>
+		$(document).ready(function(){
+			// $("p").click(function(){
+			// 	$(this).hide();
+			// });
+			$("#test").click(function(){
+				alert("134556")
+				$.ajax({
+					url:"{% url 'User:test_ajax' %}",
+					type:"post",
+					dataType:"json",
+
+					data:{
+						user:123,
+						csrfmiddlewaretoken:'{{ csrf_token }}',
+					},
+
+					success:function(result){
+						$('#test1').html(result.News)
+					},
+
+				});
+				
+			});
+		});
+
+
+		function likeChange(obj, content_type, object_id){
+			console.log(obj, content_type, object_id)
+			var is_like = obj.getElementsByClassName('active').length == 0
+			// alert("1234")
+			$.ajax({
+				url : "{% url 'User:like_change' %}",
+				type : 'GET',
+				data:{
+					content_type:content_type,
+					object_id: object_id,
+					is_like : is_like,
+				},
+
+				cache:false,
+				success: function(data){
+					console.log(data)
+				},
+
+				error:function(xhr){
+					console.log(xhr)
+				}
+			});
+		}
+
+
+	</script>
+
+
+</head>
+<body>
+
+<section class="container">
+    <div class="content-wrap">
+    	<div class="content">
+<article class="article-content">
+		<div class="asst asst-single-header"><div class="d_banner_inner"><a target="_blank" href="https://yusi123.com/go/aliyun">
+<img class="thumb"  src="https://yusi123.com/wp-content/uploads/2019/11/1000-386.jpg" style="display: inline;" data-baiduimageplus-ignore><h4 style="position: absolute;bottom: 0;left: 0;right: 0;padding: 0px 10px 0;height: 35px;overflow: hidden;background-color: #656565;background-color: rgba(0,0,0,.3);color: #fff;margin: 0;line-height: 35px;">阿里云的服务器，欲思一直在用，最近搞活动，限时优惠，大家抓紧上！</h4></a></div></div>
+    			<blockquote><p>图片胜于文字，而视频更胜于图片，相比文字和图片，视频这种多媒体形式在有效吸引用户视线、增强用户理解等方面的能力是毋庸置疑的，我们也从读图时代过渡到了现在的视频时代，各种短视频应用以及在线直播蜂拥而至，在我们日常的工作学习中也不免会用到一些视频素材。本文给大家介绍一些不错的无版权图片素材视频网站(部分需科学上网)，用好了，视频制作的成本将大大降低。</p></blockquote>
+<p><img class="alignnone wp-image-3942 size-full" src="https://yusi123.com/wp-content/uploads/2019/01/london-3833039_960_720.jpg" alt="分享29个无版权免费的高清图片视频素材网站" title="分享29个无版权免费的高清图片视频素材网站-欲思博客" width="960" height="640" /></p>
+<h3>一、 Pixabay</h3>
+<p>一个老牌的图片视频素材站了，Pixabay 为每一位作者都提供了个人主页，使用者可以关注、点赞以及给作者打钱买咖啡。除了视频，Pixabay 也提供数量众多的矢量图、插画、照片等无版权图片素材，均可免注册直接下载。</p>
+<h3>二、Pexels视频</h3>
+<p>Pexels 是集大成的素材站，无版权的图片和视频它都有，还集成了别的站点的资源，种类和数量都很可观。Pexels 上的视频均为 HD 高清格式，无需注册即可直接下载，鼠标悬停可预览，点击进入视频页面还能看到相似视频的推荐。</p>
+<h3>三、Videvo</h3>
+<p>Videvo提供大量图片素材和动态图像可供选择。Videvo库中的内容有一些限制，因此请在下载剪辑前仔细检查。</p>
+<h3>四、 Videezy</h3>
+<p>Videezy网站同样也是一个纯粹的视频提供站点，我们可以进行关键字搜索，按照时间顺序查看，按照分类查询等等，目前只支持英文。Videezy网站将素材分为了免费和付费素材，免费素材可供我们免费个人使用或者商用。要想获取素材的更多权限就要选择付费素材了，这个的话大家自行选择。</p>
+<h3>五、 CuteStockFootage</h3>
+<p>除了免费视频，CuteStockFootage还在其菜单的&#8221;免费资源&#8221;选项卡下提供各种其他好东西 &#8211; 如照片，音频剪辑，字体和纹理。</p>
+<h3>六、 MotionPlaces</h3>
+<p>MotionPlaces是免费素材的另一个重要来源。视频按菜单中的位置和主题方便地组织。为了能够下载视频，需要输入电子邮件地址。</p>
+<h3>七、 Vidsplay</h3>
+<p>Vidsplay允许按类别或关键字搜索其视频集。</p>
+<h3>八、Bottled Video</h3>
+<p>Bottled Video提供免费的640×480视频剪辑，可以购买的HD和4K素材。虽然Bottled Video 内容库相当大，但从这个网站下载可能很困难，因为多年来垃圾邮件发送者滥用了网站的服务。因此，网站所有者创建了一种算法，当他们检测到过多的可疑活动时，将&#8221;免费&#8221;素材的成本增加到2美元。</p>
+<h3>九、Ignite Motion</h3>
+<p>需要视频背景?Ignite Motion让您满意。他们欣赏 &#8211; 但不要求 &#8211; 使用他们剪辑的人的信用。</p>
+<h3>十、Wave.video</h3>
+<p>在线视频制作商Wave.video的用户可以访问内置的200多万个免费照片和视频库，可以用来制作视频。有很多免费和付费视频选项。</p>
+<h3>十一、 Mazwai</h3>
+<p>Mazwai站点为我们提供了大量的免费视频素材供我们下载使用。网站的设计风格也十分简约，网站首页便是大屏的视频背景，鼠标悬浮即可进行预览，点击视频后进入视频播放器页面即可选择视频下载。当然你也可以选择顶部的浏览模式按钮进行浏览模式切换。</p>
+<h3>十二、MotionElements</h3>
+<p>MotionElements目前提供超过3000个免费股票视频，他们每周都会发布新视频。</p>
+<h3>十三、Splasheo</h3>
+<p>并非所有Splasheo的产品都是免费的，但如果正在寻找一个提升YouTube品牌的outro，可以在&#8221;免费下载&#8221;标签下找到各种可供选择的产品。</p>
+<h3>十四、OrangeHD</h3>
+<p>如果正在寻找高清素材或任何类型的自然视频，Orange HD值得一游。他们的图书馆可能不是互联网上最广泛的，因为该网站只有两个人的作品，但剪辑是美丽和独特的。</p>
+<h3>十五、Production Crate</h3>
+<p>Production Crate将大量资源 &#8211; 如素材，特效，模板和音频 &#8211; 放在触手可及的位置。它可以免费使用，但需要创建一个帐户。免费帐户每天限制为五次下载。</p>
+<h3>十六、Vimeo</h3>
+<p>这个Vimeo组有258个免费视频可供选择，全部由Vimeo用户Phil Fried创建。</p>
+<h3>十七、 Coverr</h3>
+<p>Coverr网站就是纯粹为我们提供免费视频下载的站点，网站为我们做了详细的视频分类，每周一会更新7个视频。如果你喜欢某个视频的话，可以直接点击播放按钮进行视频预览，预览后再决定是否下载。Coverr同时也是支持拥护上传的，如果你有不错的视频素材也可以分享给大家使用哦。</p>
+<h3>十八、Life of Vids</h3>
+<p>该网站上的所有视频均有加拿大一家叫 LEEROY 的数码创意工作室拍摄并上传。也许由于是工作室的偏好吧，相比起别家的唯美视频，Life of Vids 的视频多了很多较为日常的场景，比如忙碌的码头和工作中的挖掘机什么的，用作空镜之类的应该挺适合。此外工作室还有一个无版权图片网站 。</p>
+<h3>十九、 SplitShire</h3>
+<p>SplitShire是网页设计师Daniel Nanescu的心血结晶，他想与全世界分享他的免费图片和视频集。</p>
+<h3>二十、Motion Backgrounds</h3>
+<p>顾名思义，这个网站提供免费的运动背景。你可以随意使用它们,没有任何限制。</p>
+<h3>二十一、On Stock Footage 4 Free</h3>
+<p>On Stock Footage 4 Free，你会发现各种类别的免费剪辑，通常会在每周一，周三和周五添加新剪辑, 用户必须先创建帐户，然后才能下载免费素材。</p>
+<h3>二十二、Beachfront B-Roll</h3>
+<p>Beachfront B-Roll是一个视频博客，提供高清素材和动画背景。由于格式的原因，可能需要寻找一些可以找到要查找的内容，尽管该网站允许选择要在页面顶部浏览的类别。该网站的内容是独一无二的，所以值得一看。此处的视频根据知识共享署名许可进行许可.</p>
+<h3>二十三、Mitch Martinez</h3>
+<p>如果正在搜索4K素材，请查看此站点。虽然它似乎不再更新，但仍有许多类别的视频供您浏览。如果计划在商业项目中使用剪辑，则需要先完成发布表单。</p>
+<h3>二十四、Pond5</h3>
+<p>Pond5对他们的大部分镜头收费，但他们也提供免费的旧镜头。</p>
+<h3>二十五、Fancy Footage Club</h3>
+<p>Fancy Footage Club不再运行，但他们的网站仍在运行，仍然可以浏览他们的剪辑集，还可以在此处下载所有现有的素材。</p>
+<h3>二十六、MovieTools</h3>
+<p>在MovieTools，可以下载免费的循环和背景，用于自己的非商业视频。他们的选择并不大，但你仍然可以在这里找到有用的东西。如果想将这些剪辑中的任何一个用于商业用途，则需要付费下载HD版本。</p>
+<h3>二十七、Clip Canvas</h3>
+<p>Clip Canvas提供170个免费视频。他们还有一个更大的镜头库可供购买。如果使用他们的剪辑，则无需提供归因。</p>
+<h3>二十八、 OpenFootage</h3>
+<p>OpenFootage在其网站上提供了很好的自然，延时和抽象视频选择。可以免费下载这些视频的低分辨率版本。更高质量的版本需要付费。免费下载根据知识共享署名许可进行许可。</p>
+<h3>二十九、Distill</h3>
+<p>Distill 在精不在多，它的视频均由认证作者上传，每10天更新一次，每次10个视频(Cuto 既视感)。这些作者风格各异，数量也不多，是否适合就看缘分了，偶尔上去看看找点灵感也是不错的。由于更新频率不高，也可以订阅它的 Email 推送。</p>
+
+
+	<div class="article-actions clearfix">
+        <a href="javascript:;" class="action-like" data-pid="3941" etap="like"><i class="fa fa-heart-o"></i>喜欢(<span>9</span>)</a>
+        
+        <a href="javascript:;" class="action-rewards" etap="rewards"><i class="fa fa-yen" aria-hidden="true"></i>打赏</a>
+        
+    </div>
+
+    <div class="like" onclick="likeChange(this,'999', 1)">
+    	<span class="liked-num">0</span>
+    	<span>喜欢</span>
+    </div>
+
+</article>
+
+    {% csrf_token %}
+    <button type="submit" id="test" value="点赞"></button>
+    <p id="test1">这里的信息会变化</p>
+    
+
+    
+
+</body>
+
+
+
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title>超全面！这可能是你见过最全的弹窗设计解析</title>
+    <link rel='dns-prefetch' href='//apps.bdimg.com' />
+	<link rel='dns-prefetch' href='//s.w.org' />
+	<link rel='stylesheet' id='main-css'  href='https://yusi123.com/wp-content/themes/YusiPro/style.css?ver=1.6' type='text/css' media='all' />
+	<link rel='stylesheet' id='fancybox-css'  href='https://yusi123.com/wp-content/themes/YusiPro/css/jquery.fancybox.min.css?ver=1.6' type='text/css' media='all' />
+	<link rel='stylesheet' id='wppay-css'  href='https://yusi123.com/wp-content/themes/YusiPro/shop/static/css/pay.css?ver=4.0.0' type='text/css' media='all' />
+	<script type='text/javascript' src='https://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js?ver=1.6'></script>
+	<script type='text/javascript' src='https://yusi123.com/wp-content/themes/YusiPro/js/theia-sticky-sidebar.min.js?ver=1.6'></script>
+	
+	<script>
+		$(document).ready(function(){
+			// $("p").click(function(){
+			// 	$(this).hide();
+			// });
+			$("#test").click(function(){
+				alert("134556")
+				$.ajax({
+					url:"{% url 'User:test_ajax' %}",
+					type:"post",
+					dataType:"json",
+
+					data:{
+						user:123,
+						csrfmiddlewaretoken:'{{ csrf_token }}',
+					},
+
+					success:function(result){
+						$('#test1').html(result.News)
+					},
+
+				});
+				
+			});
+		});
+
+
+		function likeChange(obj, content_type, object_id){
+			console.log(obj, content_type, object_id)
+			var is_like = obj.getElementsByClassName('active').length == 0
+			// alert("1234")
+			$.ajax({
+				url : "{% url 'User:like_change' %}",
+				type : 'GET',
+				data:{
+					content_type:content_type,
+					object_id: object_id,
+					is_like : is_like,
+				},
+
+				cache:false,
+				success: function(data){
+					console.log(data)
+				},
+
+				error:function(xhr){
+					console.log(xhr)
+				}
+			});
+		}
+
+
+	</script>
+
+
+</head>
+<body>
+
+	<section class="article-focusbox bgimg-fixed" id="focsbox-true" style="background-image: url(https://yusi123.com/wp-content/themes/YusiPro/timthumb.php?src=https://yusi123.com/wp-content/uploads/2014/10/50giftsforwebenthusiasts15.jpg&h=500&w=1920&zc=1&a=c&q=100&s=1)" >
+    <header class="article-header">
+        <h1 class="article-title">超全面！这可能是你见过最全的弹窗设计解析</h1>
+        <div class="article-meta">
+            <span class="item item-1"><i class="fa fa-clock-o"></i> 2020年2月1日 下午5:43</span>
+            <span class="item item-2"><i class="fa fa-user"></i> 作者：科科</span>
+            <span class="item item-3"><i class="fa fa-list-alt"></i> 分类：<a href="https://yusi123.com/design/material" rel="category tag">设计素材</a></span>
+            <span class="item item-4"><i class="fa fa-eye"></i> 12.4K℃</span>
+            <span class="item item-5"></span>
+        </div>
+    </header>
+	</section>
+
+
+	<section class="container">
+    <div class="content-wrap">
+    	<div class="content">
+<article class="article-content">
+		<div class="asst asst-single-header"><div class="d_banner_inner"><a target="_blank" href="https://yusi123.com/go/aliyun">
+<img class="thumb"  src="https://yusi123.com/wp-content/uploads/2019/11/1000-386.jpg" style="display: inline;" data-baiduimageplus-ignore><h4 style="position: absolute;bottom: 0;left: 0;right: 0;padding: 0px 10px 0;height: 35px;overflow: hidden;background-color: #656565;background-color: rgba(0,0,0,.3);color: #fff;margin: 0;line-height: 35px;">阿里云的服务器，欲思一直在用，最近搞活动，限时优惠，大家抓紧上！</h4></a></div></div>
+    			<p>给大家推荐一篇来自  <strong>深知与灼见</strong> 公众号的文章。能学到不少东西。</p>
+<p>弹窗，对于大家来说并不陌生。UI设计师在工作中，乃至日常App使用过程中，经常接触到形形色色的弹窗设计。今天这篇好文将让你对弹窗设计的理解更加透彻。<img class="alignnone size-full wp-image-3850" src="https://yusi123.com/wp-content/uploads/2017/12/uisdc-banner-20171209-3.jpg" alt="超全面！这可能是你见过最全的弹窗设计解析" title="超全面！这可能是你见过最全的弹窗设计解析-欲思博客" width="520" height="150" /></p>
+<h4>看完本文你会学到：</h4>
+<blockquote><p>1. 什么是弹窗，弹窗的定义</p>
+<p>2. 弹窗的分类以及他们各自的特征</p>
+<p>3. 弹窗设计的思考和优化</p></blockquote>
+<h4><strong>一. 什么是弹窗</strong></h4>
+<p>一般来说它的功能意义是：中断用户当前操作并对其作出补充，或中断用户当前操作并对其作出反馈。作为拉通产品交互与用户操作的核心枢纽，作为用户处理「即时任务」的重要载体，它的模样可谓是千变万化，但万变不离其宗。在交互形式上它分为两种形式，模态弹窗和非模态弹窗。</p>
+<p>模态弹窗，它的特征为，当它出现在用户的操作视野内时，用户需要对其作出回应，所以它是可交互的。常见的种类有对话框（Dialog），警示框（Alter），浮层（Popover/Popup）和操作栏（Actionbar），由于它的特性，它的层级注定比较高，可以很好的吸引用户的注意。同时会带来顿挫感强烈的体验风险，个人建议慎用。</p>
+<p>非模态弹窗在特征上则与模态弹窗相反，它从出现到停留消失的时间很短暂，短到用户不需要对它作出反映，所以它是一种轻量级的反馈机制。常见的种类有Hud/Toast，提示栏和Snackbar。</p>
+<h4><strong>二. 弹窗的分类</strong></h4>
+<p><strong>模态：对话框</strong></p>
+<p>对话框类型的弹窗有很多，我把他们划分为：信息下发类、信息提交类。</p>
+<p>信息下发类型的对话框通常指代程序运行的过程出现需要用户决策的「即时任务」。</p>
+<p>比较典型的：系统、版本更新、消息通知、警示栏、运营/广告弹窗等等。</p>
+<p>这类弹窗的视觉层级非常高，设计也是多种多样。通常出现在屏幕中心，伴随半透明遮罩，让你想忽略都难。他们通常用来提示重大信息，提醒用户处理当前任务等等。由于它「引人注目」的特性，用于活动运营，广告宣发的频率非常高。</p>
+<p><img class="alignnone size-full wp-image-3851" src="https://yusi123.com/wp-content/uploads/2017/12/uisdc-popove-20171209-1.jpg" alt="超全面！这可能是你见过最全的弹窗设计解析" title="超全面！这可能是你见过最全的弹窗设计解析-欲思博客" width="1200" height="666" /></p>
+<p>△ 系统位置提示 / 新版本提示 / 开启通知提示</p>
+<p><img class="alignnone size-full wp-image-3852" src="https://yusi123.com/wp-content/uploads/2017/12/uisdc-popove-20171209-2.jpg" alt="超全面！这可能是你见过最全的弹窗设计解析" title="超全面！这可能是你见过最全的弹窗设计解析-欲思博客" width="1200" height="666" /></p>
+<p>△ 系统电量提示 / 活动运营提示 / 广告弹窗</p>
+<p>信息提交类则是需要用户在弹窗内进行操作，二次提交信息。使用场景有，登录注册，改名分组等等，如下图。</p>
+<p><img class="alignnone size-full wp-image-3853" src="https://yusi123.com/wp-content/uploads/2017/12/uisdc-popove-20171209-3.jpg" alt="超全面！这可能是你见过最全的弹窗设计解析" title="超全面！这可能是你见过最全的弹窗设计解析-欲思博客" width="1200" height="666" /></p>
+<p>△ 登录对话框 / 改备注名 / 新建分组名</p>
+<p><strong>模态：浮层</strong></p>
+<p><img class="alignnone size-full wp-image-3854" src="https://yusi123.com/wp-content/uploads/2017/12/uisdc-popove-20171209-4.jpg" alt="超全面！这可能是你见过最全的弹窗设计解析" title="超全面！这可能是你见过最全的弹窗设计解析-欲思博客" width="1200" height="666" /></p>
+<p>△ 按键浮层 / 按键浮层 / 下拉菜单浮层</p>
+<p>浮层是指，用户点击某个功能控件后浮出一个临时界面对其作出补充，它通常会伴随半透明的遮罩/阴影衬底，用户需要点击临时界面的功能区域，或者点击空白处才能进行下一步操作。它也会有一些其他的名词，像是「下拉菜单」「下拉弹窗」等等。他们的功能属性是一样的，所以我把他们归类到一起，方便大家归纳。</p>
+<p><strong>模态：操作栏</strong></p>
+<p><img class="alignnone size-full wp-image-3855" src="https://yusi123.com/wp-content/uploads/2017/12/uisdc-popove-20171209-5.jpg" alt="超全面！这可能是你见过最全的弹窗设计解析" title="超全面！这可能是你见过最全的弹窗设计解析-欲思博客" width="1200" height="666" /></p>
+<p>△ 操作栏 / 操作菜单 / 操作菜单</p>
+<p>操作栏实际上和浮层很像，都是通过用户主动点击后对某一功能作出补充，只不过浮层通常出现在比较靠上的位置，操作栏通常出现在底部。浮层从形式上更强调它的归属，也就是从哪来，为用户明确操作导向。图三是让我感到很迷惑的一个设计，我几乎没法为它归类，由于它带有半透明的毛玻璃遮罩，所以我把它归为操作栏。它是点击某个分享button出现的，整个界面密封性较高，点击空白区域会撤销当前操作，不过个人感觉如果不是惯性操作，用户很容易觉得迷茫。建议适当优化，例如加个返回键，固定操作区域等等。</p>
+<p><strong>非模态：HUD/Toast</strong></p>
+<p>Hud是iOS的控件，Toast则是android的，业内大部分 App 在 iOS 提示体系内采用了Toast来设计。所以两个端不管从功能还是形式上来看都有异曲同工之处。</p>
+<p><img class="alignnone size-full wp-image-3856" src="https://yusi123.com/wp-content/uploads/2017/12/uisdc-popove-20171209-6.jpg" alt="超全面！这可能是你见过最全的弹窗设计解析" title="超全面！这可能是你见过最全的弹窗设计解析-欲思博客" width="1200" height="666" /></p>
+<p>△ 音量Hud / 更新气泡 / 更新提示条</p>
+<p><img class="alignnone size-full wp-image-3857" src="https://yusi123.com/wp-content/uploads/2017/12/uisdc-popove-20171209-7.jpg" alt="超全面！这可能是你见过最全的弹窗设计解析" title="超全面！这可能是你见过最全的弹窗设计解析-欲思博客" width="1200" height="666" /></p>
+<p>△ 清理缓存 / 更新气泡 / 更新气泡</p>
+<p><img class="alignnone size-full wp-image-3858" src="https://yusi123.com/wp-content/uploads/2017/12/uisdc-popove-20171209-8.jpg" alt="超全面！这可能是你见过最全的弹窗设计解析" title="超全面！这可能是你见过最全的弹窗设计解析-欲思博客" width="1200" height="666" /></p>
+<p>△ 按键引导 / 按键引导 / 按键引导</p>
+<p>由于他们的形式非常多变，甚至有些很难被定义，我截了以上9个界面来帮助大家理解。</p>
+<p>通过1、2行图例，大家可以看出，他们都是反馈用户的任务状态，例如更新了多少条新动态，发送成功，正在清除缓存等等。这类toast存在的时间非常短暂，大概1s左右。第3行图例中的Toast和前两行有些不同，他们主动出现，用于提示用户，对某个功能点做必要的补充。</p>
+<p>这类Toast存在的时间会稍长一点，或者伴随用户滑动/点击后才会消失，我把这类叫做引导气泡。重点想来聊一聊他们的「形式」和「位置」。从形式上来看大概分为纯文本，icon 文本，有的是气泡（POP），有的是提示条，设计师根据权重选择即可。</p>
+<p>从位置上来说，这些弹窗几乎出现在任何区域，值得注意的是，Toast出现的位置往往与用户操作息息相关，作为设计师，我们需要确保即便是这样轻量的反馈，也要出现在合适的位置，有效的被用户接收，像是下拉刷新后Toast一般出现在顶部，双击Navbar中首页icon后提示更新的Toast会出现在底部，引导气泡往往出现在按键周围等等，设计师不妨多多思考。</p>
+<h4><strong>非模态：Snackbar</strong></h4>
+<p><img class="alignnone size-full wp-image-3859" src="https://yusi123.com/wp-content/uploads/2017/12/uisdc-popove-20171209-9.jpg" alt="超全面！这可能是你见过最全的弹窗设计解析" title="超全面！这可能是你见过最全的弹窗设计解析-欲思博客" width="1200" height="666" /></p>
+<p>△ 售罄提示/ 签到提示 / 登录活动提示</p>
+<p>Snackbar和Toast一样是Android里的控件，也是现在通用于iOS端App提示提示的弹窗。同样针对用户操作的轻量反馈机制。他们通常出现在底部，可交互，短暂停留后，或滑动页面后就会消失。这两个端的交互方式存在一些区别，Android中Snackbar的出现更加针对用户某个操作，iOS中可能用户打开App，或者滑动商品列表就会出现，更像是吸引用户，进行下一步操作，在电商 App 内尤其常见。</p>
+<h4><strong>非模态：提示栏</strong></h4>
+<p>提示栏是内嵌于当前页面的一个组件，由于它和弹窗一样与当前页面有较大区别，所以我把它也归入弹窗来总结了。常态下的提示栏虽然隶属非模态弹窗，但是他们是常驻于页面的某个区域的，并且可交互。</p>
+<p><img class="alignnone size-full wp-image-3860" src="https://yusi123.com/wp-content/uploads/2017/12/uisdc-popove-20171209-10.jpg" alt="超全面！这可能是你见过最全的弹窗设计解析" title="超全面！这可能是你见过最全的弹窗设计解析-欲思博客" width="1200" height="666" /></p>
+<p>△ 登录提示 / 登录提示 / 离线提示</p>
+<h4><strong>总结</strong></h4>
+<p>弹窗设计是我非常喜欢的内容之一，我觉得它让用户真正感觉到自己与产品之间产生了某种联系。同时，设计的好坏也考量了产品背后的团队是否真正的了解用户，了解产品。</p>
+<p>不管是模态弹窗还是非模态弹窗，它的出现多多少少会影响到用户当前的体验，所以我们使用弹窗要克制，不能高频率的使用。同时，我们选择弹窗时也要谨慎，合理。</p>
+<p>当出现犯错成本很高的操作前，及时使用对话框提醒用户规避风险，用户才会觉得安心，可靠。如果在电量还剩10%时，苹果只是淡淡的浮出1s的气泡来提醒，而你恰好没有看见导致关机，你是不是感到十分崩溃？所以，选择弹窗也需要根据场景。</p>
+<p>在文章的准备期我截了差不多70个界面，有的弹窗设计十分精妙，当然也有碰到「一言难尽」的设计。下面我罗列了弹窗设计的三个「反面案例」，希望为大家规避掉设计中的一些误区。</p>
+<p><img class="alignnone size-full wp-image-3861" src="https://yusi123.com/wp-content/uploads/2017/12/uisdc-popove-20171209-11.jpg" alt="超全面！这可能是你见过最全的弹窗设计解析" title="超全面！这可能是你见过最全的弹窗设计解析-欲思博客" width="1200" height="666" /></p>
+<p>△ 版本更新提示 / 广告弹窗 / 评价提示</p>
+<p><strong>反面1的问题：文案不友好</strong></p>
+<p>用户并不关心新版本修复了什么问题，他们甚至连「Bug」是什么都不知道，弹窗的文案让人觉得很迷惑。产品方不妨把思路从「我们修复了什么」换成「我们带来了什么」，具体可以参考各大电商app的做法。</p>
+<p><strong>反面2的问题：错误的交互</strong></p>
+<p>当我打开这个App的时候，我甚至都没有滑动页面，就直接跳出一个广告，这让我觉得体验非常差。并且重点是，居然设置了5s后才能点击关闭按钮。好吧，我立马就卸载了并放进了反面案例中。不要在用户没有进行任何操作前弹窗。在高层级，高量级的弹窗上尽可能不要再次增加复杂的交互，再一次的消耗用户耐心。这样做实在太不合理了，建议参考一些新零售App的做法，利用设计 文案 布局，「聪明」的打广告。</p>
+<p><strong>反面3的问题：糟糕的时机</strong></p>
+<p>这个弹窗的文案也很好，选项也很合理，看起来没有任何问题，我把他放进反面案例的原因是，我刚下载完这个App，评价弹窗就跳了出来。我知道现在有很多App这样做，对此我真的觉得很糟糕，用户甚至没有足够的时间使用你的产品，如何给出评价呢？建议给新用户一段使用时间，再进行弹窗评价。</p>
+<p>作者： <em class="rich_media_meta rich_media_meta_text">drange</em></p>
+
+
+
+	<div class="article-actions clearfix">
+        <a href="javascript:;" class="action-like" data-pid="3941" etap="like"><i class="fa fa-heart-o"></i>喜欢(<span>9</span>)</a>
+        
+        <a href="javascript:;" class="action-rewards" etap="rewards"><i class="fa fa-yen" aria-hidden="true"></i>打赏</a>
+        
+    </div>
+
+    <div class="like" onclick="likeChange(this,'999', 1)">
+    	<span class="liked-num">0</span>
+    	<span>喜欢</span>
+    </div>
+
+</article>
+
+
+
+
+</body>
+
+
+
+</html>

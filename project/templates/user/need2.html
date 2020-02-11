@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title>20+给程序员和网页设计师带来灵感和创意的赠品</title>
+    <link rel='dns-prefetch' href='//apps.bdimg.com' />
+	<link rel='dns-prefetch' href='//s.w.org' />
+	<link rel='stylesheet' id='main-css'  href='https://yusi123.com/wp-content/themes/YusiPro/style.css?ver=1.6' type='text/css' media='all' />
+	<link rel='stylesheet' id='fancybox-css'  href='https://yusi123.com/wp-content/themes/YusiPro/css/jquery.fancybox.min.css?ver=1.6' type='text/css' media='all' />
+	<link rel='stylesheet' id='wppay-css'  href='https://yusi123.com/wp-content/themes/YusiPro/shop/static/css/pay.css?ver=4.0.0' type='text/css' media='all' />
+	<script type='text/javascript' src='https://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js?ver=1.6'></script>
+	<script type='text/javascript' src='https://yusi123.com/wp-content/themes/YusiPro/js/theia-sticky-sidebar.min.js?ver=1.6'></script>
+	
+	<script>
+		$(document).ready(function(){
+			// $("p").click(function(){
+			// 	$(this).hide();
+			// });
+			$("#test").click(function(){
+				alert("134556")
+				$.ajax({
+					url:"{% url 'User:test_ajax' %}",
+					type:"post",
+					dataType:"json",
+
+					data:{
+						user:123,
+						csrfmiddlewaretoken:'{{ csrf_token }}',
+					},
+
+					success:function(result){
+						$('#test1').html(result.News)
+					},
+
+				});
+				
+			});
+		});
+
+
+		function likeChange(obj, content_type, object_id){
+			console.log(obj, content_type, object_id)
+			var is_like = obj.getElementsByClassName('active').length == 0
+			// alert("1234")
+			$.ajax({
+				url : "{% url 'User:like_change' %}",
+				type : 'GET',
+				data:{
+					content_type:content_type,
+					object_id: object_id,
+					is_like : is_like,
+				},
+
+				cache:false,
+				success: function(data){
+					console.log(data)
+				},
+
+				error:function(xhr){
+					console.log(xhr)
+				}
+			});
+		}
+
+
+	</script>
+
+
+</head>
+<body>
+
+	<section class="article-focusbox bgimg-fixed" id="focsbox-true" style="background-image: url(https://yusi123.com/wp-content/themes/YusiPro/timthumb.php?src=https://yusi123.com/wp-content/uploads/2014/10/50giftsforwebenthusiasts15.jpg&h=500&w=1920&zc=1&a=c&q=100&s=1)" >
+    <header class="article-header">
+        <h1 class="article-title">20+给程序员和网页设计师带来灵感和创意的赠品</h1>
+        <div class="article-meta">
+            <span class="item item-1"><i class="fa fa-clock-o"></i> 2019年12月7日 下午10:43</span>
+            <span class="item item-2"><i class="fa fa-user"></i> 作者：科科</span>
+            <span class="item item-3"><i class="fa fa-list-alt"></i> 分类：<a href="https://yusi123.com/design/material" rel="category tag">设计素材</a></span>
+            <span class="item item-4"><i class="fa fa-eye"></i> 16.73K℃</span>
+            <span class="item item-5"></span>
+        </div>
+    </header>
+	</section>
+
+
+	<section class="container">
+    <div class="content-wrap">
+    	<div class="content">
+<article class="article-content">
+		<div class="asst asst-single-header"><div class="d_banner_inner"><a target="_blank" href="https://yusi123.com/go/aliyun">
+<img class="thumb"  src="https://yusi123.com/wp-content/uploads/2019/11/1000-386.jpg" style="display: inline;" data-baiduimageplus-ignore><h4 style="position: absolute;bottom: 0;left: 0;right: 0;padding: 0px 10px 0;height: 35px;overflow: hidden;background-color: #656565;background-color: rgba(0,0,0,.3);color: #fff;margin: 0;line-height: 35px;">阿里云的服务器，欲思一直在用，最近搞活动，限时优惠，大家抓紧上！</h4></a></div></div>
+    			<p>十一马上没了。好像有好些天没怎么发资源。每次发布一些新的项目资源时，这些奇妙的东西会给我们带来独有的灵感。</p>
+<p>今天继续给大家20多个梦幻赠品给所有的网页设计师和喜欢折腾网站的程序员童鞋。当然，这些全部是免费的资源。</p>
+<p>这些资源里面包括了字体、js框架、html、psd素材、模板、教程等各种<a title="前端" href="https://yusi123.com/design" target="_blank">前端</a>的所需要的东西。</p>
+<p>当然，你可能还喜欢这些：</p>
+<blockquote>
+<ul>
+<li><a title="100+精美的纹理图案素材矢量图免费下载" href="https://yusi123.com/3184.html" target="_blank">100+精美的纹理图案素材矢量图免费下载</a></li>
+<li><a title="10个值得设计师收藏的高清照片设计素材网站" href="https://yusi123.com/3187.html" target="_blank">10个值得设计师收藏的高清照片设计素材网站</a></li>
+<li><a title="送给网页设计师和程序员的48个神奇的礼物" href="https://yusi123.com/3381.html" target="_blank">送给网页设计师和程序员的48个神奇的礼物</a></li>
+</ul>
+</blockquote>
+<p>当然，最重要的是里面的创意和想法，无论你是一名网页设计师，后台开发人员，或者是不懂技术的网站小白，我相信你都一定会在这个集合里面找到你喜欢的东西。</p>
+<h2>Flubia</h2>
+<p>移动应用程序登陆页面模板。<br />
+<a href="https://www.behance.net/gallery/18686411/Flubia-(Free-PSD-Website)" rel="nofollow"><img title="20+给程序员和网页设计师带来灵感和创意的赠品" src="https://yusi123.com/wp-content/uploads/2014/10/50giftsforwebenthusiasts15.jpg" alt="20+给程序员和网页设计师带来灵感和创意的赠品" title="20+给程序员和网页设计师带来灵感和创意的赠品-欲思博客" width="782" height="540" /></a></p>
+<h2>Samsung Galaxy S5 mockup</h2>
+<p>三个根据三星Galaxy S5的样机做的psd图片展示Mockup素材。<br />
+<a href="http://graphicburger.com/samsung-galaxy-s5-psd-mockup/" rel="nofollow"><img title="20+给程序员和网页设计师带来灵感和创意的赠品" src="https://yusi123.com/wp-content/uploads/2014/10/50giftsforwebenthusiasts13.jpg" alt="20+给程序员和网页设计师带来灵感和创意的赠品" title="20+给程序员和网页设计师带来灵感和创意的赠品-欲思博客" width="782" height="540" /></a></p>
+<h2>Simple login form</h2>
+<p>简单实用的扁平化登录表单PSD。<br />
+<a href="http://www.bestpsdfreebies.com/freebie/simple-login-form/" rel="nofollow"><img title="20+给程序员和网页设计师带来灵感和创意的赠品" src="https://yusi123.com/wp-content/uploads/2014/10/50giftsforwebenthusiasts14.jpg" alt="20+给程序员和网页设计师带来灵感和创意的赠品" title="20+给程序员和网页设计师带来灵感和创意的赠品-欲思博客" width="782" height="540" /></a></p>
+<h2>Vector cupcakes</h2>
+<p>一组.AI格式的蛋糕素材集合。<br />
+<a href="http://www.freepik.com/free-vector/free-muffin-vector-set_709484.htm" rel="nofollow"><img title="20+给程序员和网页设计师带来灵感和创意的赠品" src="http://netdna.webdesignerdepot.com/uploads/2014/08/cupcakes.jpg" alt="20+给程序员和网页设计师带来灵感和创意的赠品" title="20+给程序员和网页设计师带来灵感和创意的赠品-欲思博客" width="782" height="540" /></a></p>
+<h2>Weather widgets</h2>
+<p>花式半透明小部件的天气应用程序。<br />
+<a href="http://365psd.com/day/4-342-fancy-weather-widgets/" rel="nofollow"><img title="20+给程序员和网页设计师带来灵感和创意的赠品" src="https://yusi123.com/wp-content/uploads/2014/10/50giftsforwebenthusiasts18.jpg" alt="20+给程序员和网页设计师带来灵感和创意的赠品" title="20+给程序员和网页设计师带来灵感和创意的赠品-欲思博客" width="782" height="540" /></a></p>
+<h2>Myfolio</h2>
+<p>Bootstrap为基础的个人投资组合模板。<br />
+<a href="http://w3layouts.com/myfolio-personal-portfolio-flat-bootstrap-responsive-web-template/" rel="nofollow"><img title="20+给程序员和网页设计师带来灵感和创意的赠品" src="https://yusi123.com/wp-content/uploads/2014/10/50giftsforwebenthusiasts20.jpg" alt="20+给程序员和网页设计师带来灵感和创意的赠品" title="20+给程序员和网页设计师带来灵感和创意的赠品-欲思博客" width="782" height="540" /></a></p>
+<h2>Macbook Air mockup</h2>
+<p>照片为基础的Macbook Air样机Mockup素材。<br />
+<a href="http://graphicburger.com/macbook-air-mockup/" rel="nofollow"><img title="20+给程序员和网页设计师带来灵感和创意的赠品" src="https://yusi123.com/wp-content/uploads/2014/10/50giftsforwebenthusiasts49.jpg" alt="20+给程序员和网页设计师带来灵感和创意的赠品" title="20+给程序员和网页设计师带来灵感和创意的赠品-欲思博客" width="782" height="540" /></a></p>
+<h2>Blueprint</h2>
+<p>iOS激发灵感设计的移动用户界面。<br />
+<a href="http://365psd.com/day/4-348-mobile-ui-blueprint/" rel="nofollow"><img title="20+给程序员和网页设计师带来灵感和创意的赠品" src="https://yusi123.com/wp-content/uploads/2014/10/50giftsforwebenthusiasts21.jpg" alt="20+给程序员和网页设计师带来灵感和创意的赠品" title="20+给程序员和网页设计师带来灵感和创意的赠品-欲思博客" width="782" height="540" /></a></p>
+<h2>Creative time</h2>
+<p>一个响应式加载的页面PSD模板<br />
+<a href="http://www.bestpsdfreebies.com/freebie/creative-time-responsive-template/" rel="nofollow"><img title="20+给程序员和网页设计师带来灵感和创意的赠品" src="https://yusi123.com/wp-content/uploads/2014/10/50giftsforwebenthusiasts22.jpg" alt="20+给程序员和网页设计师带来灵感和创意的赠品" title="20+给程序员和网页设计师带来灵感和创意的赠品-欲思博客" width="782" height="540" /></a></p>
+<h2>Bagguettebox.js</h2>
+<p>纯JS的灯箱脚本。<br />
+<a href="https://feimosi.github.io/baguetteBox.js/" rel="nofollow"><img title="20+给程序员和网页设计师带来灵感和创意的赠品" src="https://yusi123.com/wp-content/uploads/2014/10/50giftsforwebenthusiasts24.jpg" alt="20+给程序员和网页设计师带来灵感和创意的赠品" title="20+给程序员和网页设计师带来灵感和创意的赠品-欲思博客" width="782" height="540" /></a></p>
+<h2>Clear Tranquil</h2>
+<p>适用于博客的Highwind child WordPress 主题。<br />
+<a href="http://wordpress.org/themes/clear-tranquil" rel="nofollow"><img title="20+给程序员和网页设计师带来灵感和创意的赠品" src="https://yusi123.com/wp-content/uploads/2014/10/50giftsforwebenthusiasts25.jpg" alt="20+给程序员和网页设计师带来灵感和创意的赠品" title="20+给程序员和网页设计师带来灵感和创意的赠品-欲思博客" width="782" height="540" /></a></p>
+<h2>E-commerce UI</h2>
+<p>Windows8风格的电子商务界面，支持Web和移动。<br />
+<a href="http://www.prowebdesign.ro/free-metro-style-e-commerce-ui-kit-psd/" rel="nofollow"><img title="20+给程序员和网页设计师带来灵感和创意的赠品" src="https://yusi123.com/wp-content/uploads/2014/10/50giftsforwebenthusiasts26.jpg" alt="20+给程序员和网页设计师带来灵感和创意的赠品" title="20+给程序员和网页设计师带来灵感和创意的赠品-欲思博客" width="782" height="540" /></a></p>
+
+                <div class="article-paging"> <span class="post-page-numbers current" aria-current="page"><span>1</span></span> <a href="https://yusi123.com/3618.html/2" class="post-page-numbers"><span>2</span></a></div>
+                <div class="article-copyright">未经允许不得转载：<a href="{url 'User:index'}">keke博客</a> &raquo; <a href="https://yusi123.com/3618.html">20+给程序员和网页设计师带来灵感和创意的赠品</a></div>
+
+
+
+	<div class="article-actions clearfix">
+        <a href="javascript:;" class="action-like" data-pid="3941" etap="like"><i class="fa fa-heart-o"></i>喜欢(<span>9</span>)</a>
+        
+        <a href="javascript:;" class="action-rewards" etap="rewards"><i class="fa fa-yen" aria-hidden="true"></i>打赏</a>
+        
+    </div>
+
+    <div class="like" onclick="likeChange(this,'999', 1)">
+    	<span class="liked-num">0</span>
+    	<span>喜欢</span>
+    </div>
+
+</article>
+
+
+
+
+</body>
+
+
+
+</html>

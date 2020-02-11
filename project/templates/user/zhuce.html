@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title>注册</title>
+</head>
+<body>
+<form action="{% url 'User:zhuce' %}" method="post">{% csrf_token %}
+    <!--{% for field in rform %}-->
+        <!--{{field.errors}}-->
+    <!--{% endfor %}-->
+    {{rform.as_p}}
+    <input type="submit" value="注册">
+</form>
+</body>
+</html>

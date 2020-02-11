@@ -1,0 +1,308 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+    |生活随笔
+{% endblock %}
+
+
+{% block mycss %}
+    <link href="{% static 'css/register.css' %}" rel="stylesheet" type="text/css" media="all"/>
+    <link href="{% static 'css/lifeopen.css' %}" rel="stylesheet" type="text/css" media="all"/>
+    <link href="//fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i" rel="stylesheet">
+
+
+{% endblock %}
+
+
+{% block myjs %}
+    <script>
+        $('.content').delegate("a[id='add_like']", "click", function () {
+
+        // return alert("已经点过赞啦！")
+        if ($(this).hasClass("actived")) {
+            return alert("已经点过赞啦！")
+        } else {
+            $(this).addClass("actived");
+            var z = $(this).data("id"), x = $(this).children(".count");
+            var article = z.split(',')[0];
+            var loves = z.split(',')[1];
+            loves = Number(loves) + 1;
+            x.html(loves);
+            $.ajax({
+                type: "POST",//方法类型
+                url: "/love/",//url
+                dataType: "JSON",
+                data: {"article": article, "loves": true},
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        }
+    })
+
+    </script>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+    <div class="main">
+        <div class="main-w31">
+            <h1 class="logo-w3">个人随笔</h1>
+
+            <div class="content">
+                <article class="excerpt">
+                    <header>
+                        <a class="label label-important" href="">个人随笔<i class="label-arrow"></i></a>
+                        <h2><a target="_blank" href="" title="最近头条，朋友圈被各大新闻淹没，我该关心哪个？">最近头条，朋友圈被各大新闻淹没，我该关心哪个？</a></h2>
+                    </header>
+
+                    <div class="focus">
+                        <a target="_blank" href="">
+                            <img  class="thumb" width="200" height="123" src="{% static 'images/pb_unknow1.png' %}"
+
+                            alt ="最近头条，朋友圈被各大新闻淹没，我该关心哪个？">
+                        </a>
+                    </div>
+
+                    <span class="note"> 最近，新闻头条先后被996、京东兄弟情破裂、视觉中国瞬间崩塌、马云豪宅发表看法增热度、宝马漏油事件等霸占。
+但是在这些新闻的背后，有两个大新闻我却格外感兴趣，一个是贾跃亭再次起死回生，周鸿?彻底抽离奇安信。
+
+
+可能有人会嘲笑我，一个穷逼关心资本市场有卵用，不过我想说关心996看似和自己关系密切，但是又有卵用呢？
+一样没卵用，在自己一无是处之前，关心什么是由个人好恶决定，其实都没什么卵用，学习更多的知识才是关键</span>
+                    <p class="auth-span">
+                        <span class="muted"><i class="fa fa-user"></i> <a
+                                href="/author/stormsha">keke</a></span>
+                        <span class="muted">
+                            <i class="fa fa-clock-o"></i> 2019-04-20</span>
+                        <span class="muted"><i class="fa fa-eye"></i> 1244浏览</span>
+                        <span class="muted"><i class="fa fa-comments-o"></i>
+                            <a target="_blank" href="/article/2080#comments">0评论</a>
+                        </span>
+                       <span class="muted">
+                            <a href="javascript:;" data-action="ding" data-id="64,51"
+                               id="add_like" class="action">
+                            <i class="fa fa-heart-o"></i>
+                                <span class="count">51</span>喜欢</a>
+                        </span>
+                    </p>
+
+
+
+                </article>
+
+                <!--&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+
+                 <article class="excerpt">
+                    <header>
+                        <a class="label label-important" href="/category/生活笔记/个人随笔">
+                            个人随笔<i class="label-arrow"></i></a>
+                        <h2><a target="_blank" href="/article/2049" title="生活笔录 | 你真的适合零基础跨专业转行吗？">生活笔录 | 你真的适合零基础跨专业转行吗？</a></h2>
+                    </header>
+                    <div class="focus">
+                        <a target="_blank" href="/article/2049/">
+                            <img class="thumb" width="200" height="123"
+                                 src="{% static 'images/pb_unknow2.png' %}"
+                                 alt="生活笔录 | 你真的适合零基础跨专业转行吗？"/>
+                        </a>
+                    </div>
+                    <span class="note"> 学习 `Python` 到现在你要是让我给你解释什么是面向对象，什么是类，什么是内存，什么垃圾回收，什么是异常处理
+说实话我也给你讲不清，但是这并不妨碍我做项目。不要给我扯什么高段位程序员是什么样的我始终认为自己是一个
+不折不扣的 Copier，也不认为未来我会继续从事编程，但是此刻身在其中我必须拿出作品，需则学，不需则弃。</span>
+                    <p class="auth-span">
+                        <span class="muted"><i class="fa fa-user"></i> <a
+                                href="/author/stormsha">keke</a></span>
+                        <span class="muted">
+                            <i class="fa fa-clock-o"></i> 2019-04-14</span>
+                        <span class="muted"><i class="fa fa-eye"></i> 1716浏览</span>
+                        <span class="muted"><i class="fa fa-comments-o"></i>
+                            <a target="_blank" href="/article/2049#comments">0评论</a>
+                        </span>
+                       <span class="muted">
+                            <a href="javascript:;" data-action="ding" data-id="33,46"
+                               id="add_like" class="action">
+                            <i class="fa fa-heart-o"></i>
+                                <span class="count">46</span>喜欢</a>
+                        </span>
+                    </p>
+                </article>
+
+                <!-- -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+
+
+                <article class="excerpt">
+                    <header>
+                        <a class="label label-important" href="/category/生活笔记/个人随笔">
+                            个人随笔<i class="label-arrow"></i></a>
+                        <h2><a target="_blank" href="/article/2045" title="生活笔录 | 我为什么选择Python">生活笔录 | 我为什么选择Python</a></h2>
+                    </header>
+                    <div class="focus">
+                        <a target="_blank" href="/article/2045/">
+                            <img class="thumb" width="200" height="123"
+                                 src="{% static 'images/pb_unknow3.png' %}"
+
+                                 alt="生活笔录 | 我为什么选择Python"/>
+                        </a>
+                    </div>
+                    <span class="note"> 程序员一般有一个鄙视链：C++鄙视??&gt;JAVA鄙视??&gt;Python
+
+其实最应该被鄙视的程序员应该是自己没设计过任何分布式存储方案，有的甚至连基本SQL优化知识都不懂，天天满嘴高并发的人；没有使用Python写过任何别人可以使用的工具，天天满嘴 Python运行效率低的人</span>
+                    <p class="auth-span">
+                        <span class="muted"><i class="fa fa-user"></i> <a
+                                href="/author/stormsha">keke</a></span>
+                        <span class="muted">
+                            <i class="fa fa-clock-o"></i> 2019-04-05</span>
+                        <span class="muted"><i class="fa fa-eye"></i> 1890浏览</span>
+                        <span class="muted"><i class="fa fa-comments-o"></i>
+                            <a target="_blank" href="/article/2045#comments">0评论</a>
+                        </span>
+                       <span class="muted">
+                            <a href="javascript:;" data-action="ding" data-id="28,78"
+                               id="add_like" class="action">
+                            <i class="fa fa-heart-o"></i>
+                                <span class="count">78</span>喜欢</a>
+                        </span>
+                    </p>
+                </article>
+
+
+
+                <article class="excerpt">
+                    <header>
+                        <a class="label label-important" href="/category/生活笔记/个人随笔">
+                            个人随笔<i class="label-arrow"></i></a>
+                        <h2><a target="_blank" href="/article/2044" title="生活笔录 | 你真的想好要学Python了吗？">生活笔录 | 你真的想好要学Python了吗？</a></h2>
+                    </header>
+                    <div class="focus">
+                        <a target="_blank" href="/article/2044/">
+                            <img class="thumb" width="200" height="123"
+                                 src="{% static 'images/pb_unknow4.png' %}"
+                                 alt="生活笔录 | 你真的想好要学Python了吗？"/>
+                        </a>
+                    </div>
+                    <span class="note"> 其实很多时候是需求推动学习，当你走向工作岗位你就知道什么是学习了，在学校按部就班的走那是素质教育，不是学习。就像我最初学习 Python 时学的爬虫比较多，但是工作后由于工作需求，直接看着文档，打开Google就开始做起了 WEB 项目</span>
+                    <p class="auth-span">
+                        <span class="muted"><i class="fa fa-user"></i> <a
+                                href="/author/stormsha">keke</a></span>
+                        <span class="muted">
+                            <i class="fa fa-clock-o"></i> 2019-04-04</span>
+                        <span class="muted"><i class="fa fa-eye"></i> 1515浏览</span>
+                        <span class="muted"><i class="fa fa-comments-o"></i>
+                            <a target="_blank" href="/article/2044#comments">0评论</a>
+                        </span>
+                       <span class="muted">
+                            <a href="javascript:;" data-action="ding" data-id="27,83"
+                               id="add_like" class="action">
+                            <i class="fa fa-heart-o"></i>
+                                <span class="count">83</span>喜欢</a>
+                        </span>
+                    </p>
+                </article>
+
+
+                <article class="excerpt">
+                    <header>
+                        <a class="label label-important" href="/category/生活笔记/个人随笔">
+                            个人随笔<i class="label-arrow"></i></a>
+                        <h2><a target="_blank" href="/article/2043" title="生活笔录 | 码农的危机感">生活笔录 | 码农的危机感</a></h2>
+                    </header>
+                    <div class="focus">
+                        <a target="_blank" href="/article/2043/">
+                            <img class="thumb" width="200" height="123"
+                                 src="{% static 'images/pb_unknow5.png' %}"
+
+                                 alt="生活笔录 | 码农的危机感"/>
+                        </a>
+                    </div>
+                    <span class="note"> 人生苦短，记忆的时光中我们匆匆走过，走过喧嚣，走过孤寂
+
+时光无情地带走了我们的青春年少，不能匆匆的来，轻轻的走。</span>
+                    <p class="auth-span">
+                        <span class="muted"><i class="fa fa-user"></i> <a
+                                href="/author/stormsha">keke</a></span>
+                        <span class="muted">
+                            <i class="fa fa-clock-o"></i> 2019-04-02</span>
+                        <span class="muted"><i class="fa fa-eye"></i> 2805浏览</span>
+                        <span class="muted"><i class="fa fa-comments-o"></i>
+                            <a target="_blank" href="/article/2043#comments">0评论</a>
+                        </span>
+                       <span class="muted">
+                            <a href="javascript:;" data-action="ding" data-id="26,589"
+                               id="add_like" class="action">
+                            <i class="fa fa-heart-o"></i>
+                                <span class="count">589</span>喜欢</a>
+                        </span>
+                    </p>
+                </article>
+
+
+
+                <article class="excerpt">
+                    <header>
+                        <a class="label label-important" href="/category/生活笔记/个人随笔">
+                            个人随笔<i class="label-arrow"></i></a>
+                        <h2><a target="_blank" href="/article/2019" title="凡事先立flag，成不成只看天命，不看付出">凡事先立flag，成不成只看天命，不看付出</a></h2>
+                    </header>
+                    <div class="focus">
+                        <a target="_blank" href="/article/2019/">
+                            <img class="thumb" width="200" height="123"
+                                 src="{% static 'images/pb_big_know1.jpg' %}"
+                                 alt="凡事先立flag，成不成只看天命，不看付出"/>
+                        </a>
+                    </div>
+                    <span class="note"> 看再多的鸡汤都不如立flag来的爽，希望我的每个flag都像曾经的斗鱼一哥，“五五开绝不开挂”那般灵验，先呼口气平复一下心态，每次立flag前都像看到美女那般激动。时光不可阻挡，有的人知道自己的前方在哪里停靠，生活充实而安逸，而我每天无头鸟似的瞎忙，朦胧的眼神向世界宣告着昏暗思想，岁月交错中总需有些思量。</span>
+                    <p class="auth-span">
+                        <span class="muted"><i class="fa fa-user"></i> <a
+                                href="/author/stormsha">keke</a></span>
+                        <span class="muted">
+                            <i class="fa fa-clock-o"></i> 2019-03-06</span>
+                        <span class="muted"><i class="fa fa-eye"></i> 2267浏览</span>
+                        <span class="muted"><i class="fa fa-comments-o"></i>
+                            <a target="_blank" href="/article/2019#comments">0评论</a>
+                        </span>
+                       <span class="muted">
+                            <a href="javascript:;" data-action="ding" data-id="1,452"
+                               id="add_like" class="action">
+                            <i class="fa fa-heart-o"></i>
+                                <span class="count">452</span>喜欢</a>
+                        </span>
+                    </p>
+                </article>
+
+
+
+
+
+            </div>
+
+
+
+            <!--<div class="w3layouts-main">-->
+                <!--<h2><span>现在注册</span></h2>-->
+                <!--<p>{{msg}}</p>-->
+                <!--<form action="{% url 'User:register' %}" method="post"> {% csrf_token %}-->
+                    <!--<input placeholder="用户名" name="username" type="text" required="">-->
+                    <!--<input placeholder="邮箱" name="email" type="email" required="">-->
+                    <!--<input placeholder="手机号码" name="mobile" type="text" required="">-->
+                    <!--<input placeholder="密码" name="password" type="password" id="password1" required="">-->
+                    <!--<input placeholder="确认密码" name="repassword" type="password" id="password2" required="">-->
+                    <!--<input type="submit" value="提交注册" name="login">-->
+                <!--</form>-->
+            <!--</div>-->
+        </div>
+
+    </div>
+
+{% endblock %}
+
+
+
+
+
+

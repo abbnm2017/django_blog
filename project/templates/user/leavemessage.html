@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+    |留言板
+{% endblock %}
+
+
+{% block mycss %}
+    <link href="{% static 'css/leavemessage.css' %}" rel="stylesheet" type="text/css" media="all"/>
+    <!--<link href="{% static 'css/aboutother.css' %}" rel="stylesheet" type="text/css" media="all"/>-->
+    <!--<link href="//fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i" rel="stylesheet">-->
+
+    <!--<style>-->
+
+        <!--html, body {height:100%;overflow:auto;margin: 0;}-->
+        <!--html{overflow-y:scroll;}-->
+       <!--/*.container{*/-->
+           <!--/*width:100%;*/-->
+           <!--/*height:50%;*/-->
+           <!--/*background-color:cornflowerblue;*/-->
+
+       <!--/*}*/-->
+       <!--.lb{-->
+           <!--vertical-align: top;-->
+       <!--}-->
+       <!--.cc{-->
+          <!--margin:20px;-->
+       <!--}-->
+        <!--.container1{-->
+           <!--width:100%;-->
+           <!--height:100%;-->
+           <!--background-color:lightskyblue;-->
+           <!--color:darkgoldenrod;-->
+       <!--}-->
+       <!--.container1 #topcolor {-->
+           <!--color:black;-->
+       <!--}-->
+
+    <!--</style>-->
+
+{% endblock %}
+
+
+
+{% block content %}
+<div class="main">
+        <div class="main-w31">
+            <h2 class="logo-w3">留言</h2>
+            <div class="w3layouts-main">
+                <div class="container">
+                    <form action="{% url 'User:board_post' %}" method="post" onsubmit="return check()"> {% csrf_token%}
+                        <label>欢迎留言</label>
+                        <div class="cc">
+                            <label class="lb">姓名</label>
+                            <input type="text" class="xm" name="name">
+                        </div>
+
+                        <div class="cc">
+                            <label class="lb" for="content" >内容</label>
+                            <textarea id="content" name="content"></textarea>
+                        </div>
+
+                        <input type="submit" value="提交" id="btn">
+
+                    </form>
+                </div>
+
+                <div class="container1">
+                    <h3>历史留言</h3>
+                    {% if le_messages %}
+                    <ol>
+                        {% for message in le_messages %}
+                        <li><p style="color: blue" >{{message.name}}     在({{message.date}})留言:</p>
+
+                            <div id="topcolor" style="color: red ">
+                                <p style="color: white">{{message.content}}</p>
+                                <p style="color: midnightblue">----------------------------------------------------</p>
+                            </div>
+                            </li>
+                        {%endfor%}
+                    </ol>
+                    {%endif%}
+
+                </div>
+
+
+
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+
+
+{% block myjs %}
+    <script>
+
+        function check(){
+            var uid = $(".xm").val()
+
+            var ucon = $("#content").val();
+
+            if (uid.length == 0){
+                alert('姓名不能为空')
+                return false
+            }
+
+            if (ucon.length == 0){
+                alert('内容不能为空')
+                return false
+            }
+
+
+            return true
+
+        }
+
+        // $(function () {
+        //     $('#btn').click(function () {
+        //         var uid = $(".xm").val()
+        //         if (uid.length == 0){
+        //             alert('姓名不能为空')
+        //             return False
+        //         }
+        //
+        //     })
+        // })
+    </script>
+
+{% endblock %}
+
+

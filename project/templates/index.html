@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <div class="blog" data-scroll-reveal="enter top" >
+      <figure>
+        <ul>
+          <a href="/"><img src="{% static 'images/t01.jpg' %}"><span>Django个人博客开发</span></a>
+        </ul>
+        <p><a href="/">最近头条，朋友圈被各大新闻淹没，我该关心哪个？</a></p>
+        <figcaption>最近，新闻头条先后被996、京东兄弟情破裂、视觉中国瞬间崩塌、马云豪宅发表看法增热度、宝马漏油事件等霸占。
+但是在这些新闻的背后，有两个大新闻我却格外感兴趣，一个是贾跃亭再次起死回生，周鸿祎彻底抽离奇安信。
+
+
+可能有人会嘲笑我，一个穷逼关心资本市场有卵用，不过我想说关心996看似和自己关系密切，但是又有卵用呢？
+一样没卵用，在自己一无是处之前，关心什么是由个人好恶决定，其实都没什么卵用，学习更多的知识才是关键</figcaption>
+      </figure>
+      <figure>
+        <ul>
+          <a href="/"><img src="{% static 'images/t02.jpg' %}"><span>诗情画意</span></a>
+        </ul>
+        <p><a href="/">生活笔录 | 你真的适合零基础跨专业转行吗</a></p>
+        <figcaption>学习 `Python` 到现在你要是让我给你解释什么是面向对象，什么是类，什么是内存，什么垃圾回收，什么是异常处理
+说实话我也给你讲不清，但是这并不妨碍我做项目。不要给我扯什么高段位程序员是什么样的我始终认为自己是一个
+不折不扣的 Copier，也不认为未来我会继续从事编程，但是此刻身在其中我必须拿出作品，需则学，不需则弃。</figcaption>
+      </figure>
+      <figure>
+        <ul>
+          <a href="/"><img src="{% static 'images/t03.jpg' %}"><span>破茧成蝶</span></a>
+        </ul>
+        <p><a href="/">生活笔录 | 我为什么选择Python</a></p>
+        <figcaption>程序员一般有一个鄙视链：C++鄙视——&gt;JAVA鄙视——&gt;Python
+
+其实最应该被鄙视的程序员应该是自己没设计过任何分布式存储方案，有的甚至连基本SQL优化知识都不懂，天天满嘴高并发的人；没有使用Python写过任何别人可以使用的工具，天天满嘴 Python运行效率低的人</figcaption>
+      </figure>
+    </div>
+   <ul class="cbp_tmtimeline">
+					<li>
+						<time class="cbp_tmtime"><span>01-10</span> <span>2020</span></time>
+						<div class="cbp_tmicon"></div>
+						<div class="cbp_tmlabel" data-scroll-reveal="enter right over 1s" >
+							<h2>分享29个无版权免费的高清图片视频素材网站</h2>
+							 <p><span class="blogpic"><a href="/"><img src="{% static 'images/t03.jpg' %}"></a></span>图片胜于文字，而视频更胜于图片，相比文字和图片，视频这种多媒体形式在有效吸引用户视线、增强用户理解等方面的能力是毋庸置疑的，我们也从读图时代过渡到了现在的视频时代，各种短视频应用以及在线直播蜂拥而至，在我们日常的工作学习中也不免会用到一些视频素材。</p>
+                             <a href="{% url 'User:need1' %}" target="_blank" class="readmore">阅读全文&gt;&gt;</a>
+						</div>
+					</li>
+						<li>
+						<time class="cbp_tmtime" ><span>01-01</span> <span>2020</span></time>
+						<div class="cbp_tmicon"></div>
+						<div class="cbp_tmlabel"data-scroll-reveal="enter right over 1s" >
+							<h2>20+给程序员和网页设计师带来灵感和创意的赠品</h2>
+							 <p><span class="blogpic"><a href="/"><img src="{% static 'images/t02.jpg' %}"></a></span>今天继续给大家20多个梦幻赠品给所有的网页设计师和喜欢折腾网站的程序员童鞋。当然，这些全部是免费的资源。  这些资源里面包括了字体、js框架、html、psd素材、模板、教程等各种前端的所需要的东西。  当然，你可能还喜欢这些：   	100+精美的纹理图案素材矢量图免费下载 	10个值得 </p>
+							 <a href="{% url 'User:need2' %}" target="_blank" class="readmore">阅读全文&gt;&gt;</a>
+						</div>
+					</li>
+                    <li>
+						<time class="cbp_tmtime" ><span>12-20</span> <span>2019</span></time>
+						<div class="cbp_tmicon"></div>
+						<div class="cbp_tmlabel" data-scroll-reveal="enter right over 1s" >
+							<h2>超全面！这可能是你见过最全的弹窗设计解析</h2>
+							 <p><span class="blogpic"><a href="/"><img src="{% static 'images/t01.jpg' %}"></a></span>弹窗，对于大家来说并不陌生。UI设计师在工作中，乃至日常App使用过程中，经常接触到形形色色的弹窗设计。今天这篇好文将让你对弹窗设计的理解更加透彻。 看完本文你会学到： 1. 什么是弹窗，弹窗的定义  2. 弹窗的分类以及他们各自的特征  3. 弹窗设计的思考和优化 一. 什么是弹窗 一般来说它的功能意义是：中断用户当前操作并对其...</p>
+                             <a href="{% url 'User:need3' %}" target="_blank" class="readmore">阅读全文&gt;&gt;</a>
+						</div>
+					</li>
+                    <li>
+						<time class="cbp_tmtime" ><span>12-1</span> <span>2019</span></time>
+						<div class="cbp_tmicon"></div>
+						<div class="cbp_tmlabel" data-scroll-reveal="enter right over 1s" >
+							<h2>三步实现滚动条触动css动画效果</h2>
+							 <p><span class="blogpic"><a href="/"><img src="{% static 'images/t03.jpg' %}"></a></span>现在很多网站都有这种效果，我就整理了一下，分享出来。利用滚动条来实现动画效果，ScrollReveal.js 用于创建和管理元素进入可视区域时的动画效果，帮助你的网站增加吸引力...</p>
+                             <a href="/" target="_blank" class="readmore">阅读全文&gt;&gt;</a>
+						</div>
+					</li>
+                    <li>
+						<time class="cbp_tmtime" ><span>11-20</span> <span>2019</span></time>
+						<div class="cbp_tmicon"></div>
+						<div class="cbp_tmlabel" data-scroll-reveal="enter right over 1s" >
+							<h2>三步实现滚动条触动css动画效果</h2>
+							 <p><span class="blogpic"><a href="/"><img src="{% static 'images/t02.jpg' %}"></a></span>现在很多网站都有这种效果，我就整理了一下，分享出来。利用滚动条来实现动画效果，ScrollReveal.js 用于创建和管理元素进入可视区域时的动画效果，帮助你的网站增加吸引力...</p>
+                             <a href="/" target="_blank" class="readmore">阅读全文&gt;&gt;</a>
+						</div>
+					</li>
+                    <li>
+						<time class="cbp_tmtime" ><span>11-1</span> <span>2019</span></time>
+						<div class="cbp_tmicon"></div>
+						<div class="cbp_tmlabel" data-scroll-reveal="enter right over 1s" >
+							<h2>三步实现滚动条触动css动画效果</h2>
+							 <p><span class="blogpic"><a href="/"><img src="{% static 'images/t01.jpg' %}"></a></span>现在很多网站都有这种效果，我就整理了一下，分享出来。利用滚动条来实现动画效果，ScrollReveal.js 用于创建和管理元素进入可视区域时的动画效果，帮助你的网站增加吸引力...</p>
+                             <a href="/" target="_blank" class="readmore">阅读全文&gt;&gt;</a>
+						</div>
+					</li>
+                    <li>
+						<time class="cbp_tmtime" ><span>10-20</span> <span>2019</span></time>
+						<div class="cbp_tmicon"></div>
+						<div class="cbp_tmlabel" data-scroll-reveal="enter right over 1s" >
+							<h2>三步实现滚动条触动css动画效果</h2>
+							 <p><span class="blogpic"><a href="/"><img src="{% static 'images/t03.jpg' %}"></a></span>现在很多网站都有这种效果，我就整理了一下，分享出来。利用滚动条来实现动画效果，ScrollReveal.js 用于创建和管理元素进入可视区域时的动画效果，帮助你的网站增加吸引力...</p>
+                             <a href="/" target="_blank" class="readmore">阅读全文&gt;&gt;</a>
+						</div>
+					</li>
+					
+				</ul>
+  </div>
+{% endblock %}
+<footer>
+Design by DanceSmile <a href="/">蜀ICP备11002373号-1</a>
+</footer>
+<script>
+	if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+		(function(){
+			window.scrollReveal = new scrollReveal({reset: true});
+		})();
+	};
+</script> 
+</body>
+</html>

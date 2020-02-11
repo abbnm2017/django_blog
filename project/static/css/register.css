@@ -1,0 +1,259 @@
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.txt-rt {
+    text-align: right;
+}
+
+.txt-lt {
+    text-align: left;
+}
+
+.txt-center {
+    text-align: center;
+}
+
+.float-rt {
+    float: right;
+}
+
+.float-lt {
+    float: left;
+}
+
+.clear {
+    clear:both;
+}
+
+.pos-relative {
+    positon:relative;
+}
+
+.vertical-base {
+    vertical-align: baseline;
+}
+
+.vertical-top {
+    vertical-align: top;
+}
+
+nav.vertical ul li {
+    display: block;
+}
+
+nav.horizontal ul li {
+    display: inline-block;
+}
+
+img {
+    max-width:100%;
+}
+
+body a {
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+
+ul {
+    padding: 0;
+    margin:0;
+}
+h1,h2,h3,h4,h5,h6 {
+    margin:0;
+    padding: 0;
+}
+
+p {
+    padding:0;
+    margin: 0;
+    color:#999;
+}
+
+.main {
+    text-align:center;
+}
+
+h1.logo-w3 {
+    font-size: 3em;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #ffffff;
+    text-align: center;
+    margin: 5% 0;
+    widgth: 100%;
+}
+
+.w3layouts-main h2 {
+    color: #fff;
+    font-size: 29px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    text-align:center;
+}
+
+.w3layouts-main {
+    max-width: 420px;
+    margin: 0 auto;
+    background: rgba(0,0,0,0.2);
+    text-align: center;
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+}
+
+.w3layouts-main {
+    padding: 40px 30px;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    outline: none;
+    font-size: 15px;
+    font-weight: 100;
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
+    border: 1px solid #fff;
+    background: transparent;
+    background: rgba(0,0,0,0.2);
+    letter-spacing: 1px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius:3px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    width:100%;
+    padding: 14px 30px;
+    font-size: 14px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius:3px;
+    -ms-border-radius:3px;
+    -o-border-radius:3px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    background: #fff;
+    color: #333;
+    border:none;
+    outline: none;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+
+input[type="submit"]:hover {
+    background: #ff4f81;
+    color: #fff;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    -o-transition: 0.5s all;
+}
+
+.w3layouts-main2 input[type="submit"] {
+    margin: 27px auto 31px ;
+}
+
+::-webkit-input-placeholder {
+    color:#fff;
+}
+
+::-moz-placeholder {
+    color:#fff;
+}
+::-ms-input-placeholder{
+    color:#fff;
+}
+
+.footer-w31 p {
+    margin: 3.5em 0em 0em;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    line-height: 26px;
+}
+
+.footer-w31 a {
+    color: #999;
+    text-decoration: underline;
+}
+
+.footer-w31 a:hover{
+    color: #fff;
+    text-decoration: underline;
+}
+
+@media (max-width: 1600px) {
+    h1.logo-w3 {
+        margin: 1em 0;
+    }
+
+}
+
+@media (max-width: 1440px) {
+    h1.logo-w3 {
+        font-size: 2.8em;
+    }
+
+}
+
+
+@media (max-width: 1366px) {
+    h1.logo-w3{
+        font-size: 2.7em;
+    }
+    .footer-w31 p {
+        margin: 3em 0em 2em;
+    }
+}
+
+@media (max-width: 1280px) {
+    h1.logo-w3{
+        font-size: 2.8em;
+    }
+    .footer-w31 p {
+        margin: 4.5em 0em 0em;
+    }
+}
+
+@media (max-width: 1080px) {
+    h1.logo-w3{
+        font-size: 2.7em;
+        letter-spacing: 3px;
+    }
+    .w3layouts-main2 h2 {
+         font-size: 27px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
