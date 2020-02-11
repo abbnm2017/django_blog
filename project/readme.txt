@@ -90,6 +90,25 @@ session 的使用:
 
 sudo fuser -k 80/tcp   #关闭端口占用
 
+git 相关指令
+1.$ git clone https://github.com/abbnm2017/django_blog.git
+2. $ cd django_blog
+3. $ git add .    添加所有 （注：别忘记后面的.，此操作是把Test文件夹下面的文件都添加进来）
+4. $ git config --global user.email "437627679@qq.com"
+5. $ git config --global user.name "abbnm2017"
+6. $ git commit -m "first commit"   （注：“提交信息”里面换成你需要，如“first commit”）
+7. $ git push -u origin master    #（注：此操作目的是把本地仓库push到github上面，此步骤需要你输入帐号和密码）
+
+以后 都用 8：
+8. $ git push origin master
+
+
+
+
+
+
+
+
 
 
 
