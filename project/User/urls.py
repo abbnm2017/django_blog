@@ -23,5 +23,12 @@ urlpatterns = [
     url(r'like_change/', views.like_change, name = "like_change"),
     url(r'need2/', views.need2, name = "need2"),
     url(r'need3/', views.need3, name = "need3"),
+    url(r'need4/', views.need4, name = "need4"),
+    url(r'need5/', views.need5, name = "need5"),
+    url(r'need6/', views.need6, name = "need6"),
+    url(r'need7/', views.need7, name = "need7"),
+
+    url(r'loading/', views.loading, name = "loading"),
+    url(r'floatpic/', views.floatpic, name = 'floatpic')
 
 ]

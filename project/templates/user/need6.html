@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title>MySQL数据库初学者指南：你必须知道的注意事项</title>
+    <link rel='dns-prefetch' href='//apps.bdimg.com' />
+	<link rel='dns-prefetch' href='//s.w.org' />
+	<link rel='stylesheet' id='main-css'  href='https://yusi123.com/wp-content/themes/YusiPro/style.css?ver=1.6' type='text/css' media='all' />
+	<link rel='stylesheet' id='fancybox-css'  href='https://yusi123.com/wp-content/themes/YusiPro/css/jquery.fancybox.min.css?ver=1.6' type='text/css' media='all' />
+	<link rel='stylesheet' id='wppay-css'  href='https://yusi123.com/wp-content/themes/YusiPro/shop/static/css/pay.css?ver=4.0.0' type='text/css' media='all' />
+	<script type='text/javascript' src='https://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js?ver=1.6'></script>
+	<script type='text/javascript' src='https://yusi123.com/wp-content/themes/YusiPro/js/theia-sticky-sidebar.min.js?ver=1.6'></script>
+	
+	<script>
+		$(document).ready(function(){
+			// $("p").click(function(){
+			// 	$(this).hide();
+			// });
+			$("#test").click(function(){
+				alert("134556")
+				$.ajax({
+					url:"{% url 'User:test_ajax' %}",
+					type:"post",
+					dataType:"json",
+
+					data:{
+						user:123,
+						csrfmiddlewaretoken:'{{ csrf_token }}',
+					},
+
+					success:function(result){
+						$('#test1').html(result.News)
+					},
+
+				});
+				
+			});
+		});
+
+
+		function likeChange(obj, content_type, object_id){
+			console.log(obj, content_type, object_id)
+			var is_like = obj.getElementsByClassName('active').length == 0
+			// alert("1234")
+			$.ajax({
+				url : "{% url 'User:like_change' %}",
+				type : 'GET',
+				data:{
+					content_type:content_type,
+					object_id: object_id,
+					is_like : is_like,
+				},
+
+				cache:false,
+				success: function(data){
+					console.log(data)
+				},
+
+				error:function(xhr){
+					console.log(xhr)
+				}
+			});
+		}
+
+
+	</script>
+
+
+</head>
+<body>
+
+	<section class="article-focusbox bgimg-fixed" id="focsbox-true" style="background-image: url(https://yusi123.com/wp-content/themes/YusiPro/timthumb.php?src=https://yusi123.com/wp-content/uploads/2014/10/50giftsforwebenthusiasts15.jpg&h=500&w=1920&zc=1&a=c&q=100&s=1)" >
+    <header class="article-header">
+        <h1 class="article-title">超全面！这可能是你见过最全的弹窗设计解析</h1>
+        <div class="article-meta">
+            <span class="item item-1"><i class="fa fa-clock-o"></i> 2020年2月1日 下午5:43</span>
+            <span class="item item-2"><i class="fa fa-user"></i> 作者：科科</span>
+            <span class="item item-3"><i class="fa fa-list-alt"></i> 分类：<a href="https://yusi123.com/design/material" rel="category tag">设计素材</a></span>
+            <span class="item item-4"><i class="fa fa-eye"></i> 12.4K℃</span>
+            <span class="item item-5"></span>
+        </div>
+    </header>
+	</section>
+
+
+<section class="container">
+    <div class="content-wrap">
+    	<div class="content">
+<article class="article-content">
+		<div class="asst asst-single-header"><div class="d_banner_inner"><a target="_blank" href="https://yusi123.com/go/aliyun">
+<img class="thumb"  src="https://yusi123.com/wp-content/uploads/2019/11/1000-386.jpg" style="display: inline;" data-baiduimageplus-ignore><h4 style="position: absolute;bottom: 0;left: 0;right: 0;padding: 0px 10px 0;height: 35px;overflow: hidden;background-color: #656565;background-color: rgba(0,0,0,.3);color: #fff;margin: 0;line-height: 35px;">阿里云的服务器，欲思一直在用，最近搞活动，限时优惠，大家抓紧上！</h4></a></div></div>
+    			<p>数据库是大多数网站的重要组成部分。从简单的博客到复杂的电子商务网站，这些网站都由数据库来驱动运行。</p>
+<p>如果你是一名Web开发人员，你肯定已经知道了很多关于MySQL数据库的基础知识：</p>
+<blockquote>
+<ul>
+<li>MySQL是一个开放源码的小型关联式数据库管理系统，是最流行的开源数据库系统 。</li>
+<li>使用C和C++编写，并使用了多种编译器进行测试，保证源代码的可移植性。</li>
+<li>使用标准的SQL（结构化查询语言）数据语言形式来的处理数据库中的信息</li>
+<li>它是免费的，支持多线程，非常可靠和快速</li>
+<li>它为多种编程语言提供了API。这些编程语言包括C、C++、Python、Java、Perl、PHP、Eiffel、Ruby和Tcl等</li>
+<li>他对于开发人员来说是一个易于使用的开发软件或应用程序</li>
+<li>Mysql是可以定制的，采用了GPL协议，你可以修改源码来开发自己的Mysql系统。</li>
+</ul>
+</blockquote>
+<p>本文是一篇关于MySQL初学者指南的文章，介绍了一些关于MySQL的基础知识和学习途径。</p>
+<p><img class="alignnone wp-image-3331 size-full" title="MySQL的初学者指南：你必须知道的注意事项" src="https://yusi123.com/wp-content/uploads/2014/07/MySQL.jpg" alt="MySQL数据库初学者指南：你必须知道的注意事项" title="MySQL数据库初学者指南：你必须知道的注意事项-欲思博客" width="900" height="466" /></p>
+<h2>什么是MySQL？</h2>
+<p>MySQL原本是一个开放源代码的关系数据库管理系统，原开发者为瑞典的MySQL AB公司，该公司于2008年被升阳微系统（Sun Microsystems）收购。2009年，甲骨文公司（Oracle）收购升阳微系统公司，MySQL成为Oracle旗下产品。</p>
+<p>MySQL在过去由于性能高、成本低、可靠性好，已经成为最流行的开源数据库，因此被广泛地应用在Internet上的中小型网站中。随着MySQL的不断成熟，它也逐渐用于更多大规模网站和应用，比如Google和Facebook等网站。非常流行的开源软件组合LAMP中的“M”指的就是MySQL。</p>
+<h2>MySQL的两个组成部分</h2>
+<p>有两个主要的组件到MySQL：</p>
+<p>1、MySQL数据库服务器，mysqlId &#8211; 它一直在后台运行，接受所有来自客户端程序的连接等等。</p>
+<p>2、各种客户端和实用程序 &#8211; 包括mysql命令行的MySQL监控客户端。</p>
+<h2>如何安装MySQL及其相关程序</h2>
+<p>1、官方的<a href="http://dev.mysql.com/downloads/" target="_blank" rel="nofollow">MySQL安装包</a> &#8211; 进入MySQL的官方网站，上面有各个平台上不同的预编译软件包。只需下载包文件，将其解压缩，然后运行安装程序。</p>
+<p>2、<a href="http://www.linux.com/" target="_blank" rel="nofollow">Linux的包管理器</a> &#8211; 使用Linux的软件包管理器，如Ubuntu软件自由中心配备了安装的MySQL以及Apache和PHP以及其他一些软件。</p>
+<p>3、<a href="https://www.apachefriends.org/index.html" target="_blank" rel="nofollow">XAMPP</a>，<a href="http://lamphowto.com/" target="_blank">LAMP</a>，<a href="http://www.wampserver.com/en/" target="_blank" rel="nofollow">WAMP</a>软件包 &#8211; 这是在计算机上快速安装一个完整的MySQL配置环境最简单的方法。它包括Apache网络服务器，MySQL，PHP和Perl的安装。</p>
+<h2>MySQL的基本语法</h2>
+<p>下面这些基本的MySQL语句列表是对基本的CRUD操作（在做计算处理时的增加（Create)、查询(Retrieve)（重新得到数据）、更新(Update)和删除(Delete)几个单词的首字母简写）和并执行一些用户身份验证过程比较有用的。</p>
+<ul>
+<li>ALTER DATABASE</li>
+<li>ALTER TABLE</li>
+<li>ALTER VIEW</li>
+<li>ANALYZE TABLE</li>
+<li>BACKUP TABLE</li>
+<li>CACHE INDEX</li>
+<li>CHANGE MASTER TO</li>
+<li>CHECK TABLE</li>
+<li>CHECKSUM TABLE</li>
+<li>COMMIT</li>
+<li>CREATE DATABASE</li>
+<li>CREATE INDEX</li>
+<li>CREATE TABLE</li>
+<li>CREATE VIEW</li>
+<li>DELETE</li>
+<li>DESCRIBE</li>
+<li>DO</li>
+<li>DROP DATABASE</li>
+<li>DROP INDEX</li>
+<li>DROP TABLE</li>
+<li>DROP USER</li>
+<li>DROP VIEW</li>
+<li>EXPLAIN</li>
+<li>FLUSH</li>
+<li>GRANT</li>
+<li>HANDLER</li>
+<li>INSERT</li>
+<li>JOIN</li>
+<li>KILL</li>
+<li>LOAD DATA FROM MASTER</li>
+<li>LOAD DATA INFILE</li>
+<li>LOAD INDEX INTO CACHE</li>
+<li>LOAD TABLE…FROM MASTER</li>
+<li>LOCK TABLES</li>
+<li>OPTIMIZE TABLE</li>
+<li>PURGE MASTER LOGS</li>
+<li>RENAME TABLE</li>
+<li>REPAIR TABLE</li>
+<li>REPLACE</li>
+<li>RESET</li>
+<li>RESET MASTER</li>
+<li>RESET SLAVE</li>
+<li>RESTORE TABLE</li>
+<li>REVOKE</li>
+<li>ROLLBACK</li>
+<li>ROLLBACK TO SAVEPOINT</li>
+<li>SAVEPOINT</li>
+<li>SELECT</li>
+<li>SET</li>
+<li>SET PASSWORD</li>
+<li>SET SQL_LOG_BIN</li>
+<li>SET TRANSACTION</li>
+<li>SHOW BINLOG EVENTS</li>
+<li>SHOW CHARACTER SET</li>
+<li>SHOW COLLATION</li>
+<li>SHOW COLUMNS</li>
+<li>SHOW CREATE DATABASE</li>
+<li>SHOW CREATE TABLE</li>
+<li>SHOW CREATE VIEW</li>
+<li>SHOW DATABASES</li>
+<li>SHOW ENGINES</li>
+<li>SHOW ERRORS</li>
+<li>SHOW GRANTS</li>
+<li>SHOW INDEX</li>
+<li>SHOW INNODB STATUS</li>
+<li>SHOW LOGS</li>
+<li>SHOW MASTER LOGS</li>
+<li>SHOW MASTER STATUS</li>
+<li>SHOW PRIVILEGES</li>
+<li>SHOW PROCESSLIST</li>
+<li>SHOW SLAVE HOSTS</li>
+<li>SHOW SLAVE STATUS</li>
+<li>SHOW STATUS</li>
+<li>SHOW TABLE STATUS</li>
+<li>SHOW TABLES</li>
+<li>SHOW VARIABLES</li>
+<li>SHOW WARNINGS</li>
+<li>START SLAVE</li>
+<li>START TRANSACTION</li>
+<li>STOP SLAVE</li>
+<li>TRUNCATE TABLE</li>
+<li>UNION</li>
+<li>UNLOCK TABLES</li>
+<li>USE</li>
+</ul>
+<h2>MySQL的字符串函数</h2>
+<p>以下是MySQL的字符串函数列表，它们大多用于创建字符串和其他一些元素联营条件语句。</p>
+<ul>
+<li>AES_DECRYPT</li>
+<li>AES_ENCRYPT</li>
+<li>ASCII</li>
+<li>BIN</li>
+<li>BINARY</li>
+<li>BIT_LENGTH</li>
+<li>CHAR</li>
+<li>CHAR_LENGTH</li>
+<li>CHARACTER_LENGTH</li>
+<li>COMPRESS</li>
+<li>CONCAT</li>
+<li>CONCAT_WS</li>
+<li>CONV</li>
+<li>DECODE</li>
+<li>DES_DECRYPT</li>
+<li>DES_ENCRYPT</li>
+<li>ELT</li>
+<li>ENCODE</li>
+<li>ENCRYPT</li>
+<li>EXPORT_SET</li>
+<li>FIELD</li>
+<li>FIND_IN_SET</li>
+<li>HEX</li>
+<li>INET_ATON</li>
+<li>INET_NTOA</li>
+<li>INSERT</li>
+<li>INSTR</li>
+<li>LCASE</li>
+<li>LEFT</li>
+<li>LENGTH</li>
+<li>LOAD_FILE</li>
+<li>LOCATE</li>
+<li>LOWER</li>
+<li>LPAD</li>
+<li>LTRIM</li>
+<li>MAKE_SET</li>
+<li>MATCH AGAINST</li>
+<li>MD5</li>
+<li>MID</li>
+<li>OCT</li>
+<li>OCTET_LENGTH</li>
+<li>OLD_PASSWORD</li>
+<li>ORD</li>
+<li>PASSWORD</li>
+<li>POSITION</li>
+<li>QUOTE</li>
+<li>REPEAT</li>
+<li>REPLACE</li>
+<li>REVERSE</li>
+<li>RIGHT</li>
+<li>RPAD</li>
+<li>RTRIM</li>
+<li>SHA</li>
+<li>SHA1</li>
+<li>SOUNDEX</li>
+<li>SPACE</li>
+<li>STRCMP</li>
+<li>SUBSTRING</li>
+<li>SUBSTRING_INDEX</li>
+<li>TRIM</li>
+<li>UCASE</li>
+<li>UNCOMPRESS</li>
+<li>UNCOMPRESSED_LENGTH</li>
+<li>UNHEX</li>
+<li>UPPER</li>
+</ul>
+<h2>MySQL的日期和时间函数</h2>
+<p>以下是MySQL的日期和时间函数的名称列表，这些命令是用于操作日期和时间的。</p>
+<ul>
+<li>ADDDATE</li>
+<li>ADDTIME</li>
+<li>CONVERT_TZ</li>
+<li>CURDATE</li>
+<li>CURRENT_DATE</li>
+<li>CURRENT_TIME</li>
+<li>CURRENT_TIMESTAMP</li>
+<li>CURTIME</li>
+<li>DATE</li>
+<li>DATE_ADD</li>
+<li>DATE_FORMAT</li>
+<li>DATE_SUB</li>
+<li>DATEDIFF</li>
+<li>DAY</li>
+<li>DAYNAME</li>
+<li>DAYOFMONTH</li>
+<li>DAYOFWEEK</li>
+<li>DAYOFYEAR</li>
+<li>EXTRACT</li>
+<li>FROM_DAYS</li>
+<li>FROM_UNIXTIME</li>
+<li>GET_FORMAT</li>
+<li>HOUR</li>
+<li>LAST_DAY</li>
+<li>LOCALTIME</li>
+<li>LOCALTIMESTAMP</li>
+<li>MAKEDATE</li>
+<li>MAKETIME</li>
+<li>MICROSECOND</li>
+<li>MINUTE</li>
+<li>MONTH</li>
+<li>MONTHNAME</li>
+<li>NOW</li>
+<li>PERIOD_ADD</li>
+<li>PERIOD_DIFF</li>
+<li>QUARTER</li>
+<li>SEC_TO_TIME</li>
+<li>SECOND</li>
+<li>STR_TO_DATE</li>
+<li>SUBDATE</li>
+<li>SUBTIME</li>
+<li>SYSDATE</li>
+<li>TIME</li>
+<li>TIMEDIFF</li>
+<li>TIMESTAMP</li>
+<li>TIMESTAMPDIFF</li>
+<li>TIMESTAMPADD</li>
+<li>TIME_FORMAT</li>
+<li>TIME_TO_SEC</li>
+<li>TO_DAYS</li>
+<li>UNIX_TIMESTAMP</li>
+<li>UTC_DATE</li>
+<li>UTC_TIME</li>
+<li>UTC_TIMESTAMP</li>
+<li>WEEK</li>
+<li>WEEKDAY</li>
+<li>WEEKOFYEAR</li>
+<li>YEAR</li>
+<li>YEARWEEK</li>
+</ul>
+
+
+<p>作者：Russell Dyer.</p>
+<p>本书涵盖了适用于MySQL 5．1版本的所有命令和编程信息，其中包括一些新增特性和语言接口，对于列举的大部分语句和函数，给出了它们的用法示例。</p>
+<p>本书大概：</p>
+<ul>
+<li>提供了MySQL语句、函数、配置选项和实用工具的一个完整手册。</li>
+<li>给出了几个指导章节用于帮助新手入门。</li>
+<li>为PHP、Perl和C语言提供了应用程序编程接口(API)。</li>
+<li>在每章的API开头部分提供了简要的指南。</li>
+<li>新增复制、触发器和存储过程章节。</li>
+<li>提供了许多MySQL的实用示例。</li>
+<li>给出了一些有用的提示，用于帮助读者克服难题。</li>
+</ul>
+<p>无论你为何而使用MySQL，本书充满了大量的知识财富，给你节省了许多用于尝试的时间以及令人厌烦的在线搜索。</p>
+<p><strong>3. MySQL Stored Procedure Programming（同上）</strong></p>
+<p>作者：Guy Harrison, Steven Feuerstein.</p>
+<p>Oracle开发人员都不重视MySQL，直到Stored Procedure（存储过程，是一组为了完成特定功能的SQL语句集）在MySQL5中得到很好支持。</p>
+<p>这本书包含了以下内容：</p>
+<ul>
+<li>如何实现MySQL的存储过程</li>
+<li>大量的实际例子配合具体解说</li>
+<li>涵盖了存储过程的基础知识，包括语言基础，条件语句和错误处理等。</li>
+</ul>
+<h2>结束语：</h2>
+<p>MySQL数据库是一个可以进行讨论的大话题。但也还有一些更重要的领域等我们去探索，例如，像数据库范式，表分组，更新和删除数据库中的记录等。</p>
+<p>在这篇文章中，给你介绍了一些需要了解的MySQL基本信息。建议在网络上看看一些相关的书籍和视频教程，学MySQL基础的应该就可以更加扎实。</p>
+<p>希望你从文章中学到一些东西，下次再见！</p>
+
+
+
+<p>注：原文参考自：<a href="http://www.1stwebdesigner.com/tutorials/mysql-guide/" target="_blank" rel="nofollow">MySQL Guide for Beginners: What You Must Know</a>。本文由<a href="https://yusi123.com/" target="_blank">科科博客</a>原创编译。部分内容有删改，翻译如有误请指正。</p>
+
+
+
+	<div class="article-actions clearfix">
+        <a href="javascript:;" class="action-like" data-pid="3941" etap="like"><i class="fa fa-heart-o"></i>喜欢(<span>9</span>)</a>
+        
+        <a href="javascript:;" class="action-rewards" etap="rewards"><i class="fa fa-yen" aria-hidden="true"></i>打赏</a>
+        
+    </div>
+
+    <div class="like" onclick="likeChange(this,'999', 1)">
+    	<span class="liked-num">0</span>
+    	<span>喜欢</span>
+    </div>
+
+</article>
+
+
+
+
+</body>
+
+
+
+</html>

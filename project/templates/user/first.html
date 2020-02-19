@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+    |关于自己
+{% endblock %}
+
+
+{% block mycss %}
+    <link href="{% static 'css/register.css' %}" rel="stylesheet" type="text/css" media="all"/>
+    <link href="{% static 'css/aboutother.css' %}" rel="stylesheet" type="text/css" media="all"/>
+    <link href="//fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i" rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}
+<div class="main">
+        <div class="main-w31">
+            <h2 class="logo-w3">个人简介</h2>
+            <div class="w3layouts-main">
+                <p><img src="/static/images/picture.ico" style="border-radius:50%;width:100px" /></p>
+                <p style="text-align: center;font-size:16px">KeKe</p>
+                <p id="brief" style="text-align: center;">爱生活、爱艺术、爱书画、爱音乐、爱设计、爱编程。</p>
+                <p id="brief" style="text-align: center;">人生百态，笑口常开，秉承自我，谨慎独行。静觅，静静寻觅生活的美好。</p>
+
+                <p style="text-align: center;"><a href="/article/666"><input type="button" value="了解更多" style="width: 310px; margin: 10px auto 0px; background-color: rgb(245, 138, 135); color: rgb(255, 255, 255); height: 40px; border: none; font-family: 'Microsoft Yahei'; font-size: 16px; letter-spacing: 2px;" onmouseover="this.style.backgroundColor='rgb(252, 125, 121)'" onmouseout="this.style.backgroundColor='#F58A87'"/></a></p>
+                <p style="text-align: center;">
+                <p><!--end personal --></p>
+                <p><!-- tech tree --></p>
+                <h2 style="text-align: center;margin-top:40px;margin-bottom:40px;">我的技能树</h2>
+
+                <section class="tech">
+
+                    <div class="item">
+                        <div class="describe">
+                            HTML/CSS/JS
+                        </div>
+                        <div class="progress">
+                            <span class="green" style="width: 74%"><span>74%</span></span>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="describe">
+                            C/C++
+                        </div>
+                        <div class="progress">
+                            <span class="orange" style="width: 65%"><span>65%</span></span>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="describe">
+                            PHOTOSHOP
+                        </div>
+                        <div class="progress">
+                            <span class="red" style="width: 72%"><span>72%</span></span>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="describe">
+                            JAVA
+                        </div>
+                        <div class="progress">
+                            <span class="blue" style="width: 67%"><span>67%</span></span>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="describe">
+                            PHP/MYSQL
+                        </div>
+                        <div class="progress">
+                            <span class="darkblue" style="width: 60%"><span>60%</span></span>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="describe">
+                            COCOS2DX
+                        </div>
+                        <div class="progress">
+                            <span class="green" style="width: 65%"><span>65%</span></span>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="describe">
+                            PYTHON
+                        </div>
+                        <div class="progress">
+                            <span class="orange" style="width: 92%"><span>92%</span></span>
+                        </div>
+                    </div>
+
+
+                    <div class="item">
+                        <div class="describe">
+                            PR/AE
+                        </div>
+                        <div class="progress">
+                            <span class="blue" style="width: 47%"><span>47%</span></span>
+                        </div>
+                    </div>
+
+                </section>
+
+
+                <p><!-- end tech --></p>
+                <p style="text-align: center;">
+                <a href="/link/"><input type="button" value="申请友链" style="width: 310px; margin: 10px auto 20px auto; background-color: rgb(3, 202, 177); color: rgb(255, 255, 255); height: 40px; border: none; font-family: 'Microsoft Yahei'; font-size: 16px; letter-spacing: 2px;" onmouseover="this.style.backgroundColor='rgb(7, 179, 158)'" onmouseout="this.style.backgroundColor='rgb(3, 202, 177)'"/>
+
+                <p style="text-align: center;">
+                <p><!-- contact --></p>
+                <h2 style="text-align: center;">与我联系</h2>
+                <div class = "icon-contact" style="margin-bottom:120px">
+                    <div class="col" id="icon">
+                        <a href="https://weibo.com/" target="_blank" class="social-icon tool-tip sinaweibo" title="新浪微博" data-placement="top">
+                            <i class="fa fa-weibo">新浪</i>
+                        </a>
+                    </div>
+                    <div class="col" id="icon">
+                        <a href="" target="_blank" class="social-icon tool-tip tencentweibo" title="腾讯微博" data-placement="top">
+                            <i class="fa fa-tencent-weibo">腾讯</i>
+                        </a>
+                    </div>
+
+                    <div class="col" id="icon">
+                        <a href="" target="_blank" title="437627679@qq.com" class="social-icon tool-tip qq"  data-placement="top">
+                            <i class="fa fa-qq">QQ</i>
+                        </a>
+                    </div>
+
+                    <div class="col" id="icon">
+                        <a href="" target="_blank" class="social-icon tool-tip wechat" title="wangziyuqq2010" data-placement="top">
+                            <i class="weixins fa fa-weixin">微信</i>
+                        </a>
+                    </div>
+
+                    <div class="col" id="icon">
+                        <a href="https://github.com/stormsha" target="_blank" class="social-icon tool-tip github" title="GitHub" data-placement="top">
+                            <i class="fa fa-github">GitHub</i
+                            ></a>
+                    </div>
+
+                    <div class="col" id="icon">
+                        <a href="/feed/" target="_blank" class="social-icon tool-tip renren" title="RSS" data-placement="top">
+                            <i class="fa fa-rss">人人</i>
+                        </a>
+                    </div>
+                </div>
+            <p><!-- end contact -->
+
+
+                <!--<h2><span><a href="{% url 'User:login' %} ">密码登录</a></span>  <span><a href="{% url 'User:codelogin' %}">验证码登录2</a></span></h2>-->
+                <!--<p>{{msg}} {{errors}}</p>-->
+                <!--<form action="{% url 'User:login' %}" method="post"> {% csrf_token %}-->
+                    <!--<input placeholder="用户名" name="username" type="text" required="">-->
+                    <!--<input placeholder="密码" name="password" type="password" id="password1" required="">-->
+                    <!--<input type="submit" value="用户登录" name="login">-->
+                <!--</form>-->
+
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+

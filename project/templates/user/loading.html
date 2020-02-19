@@ -1,0 +1,117 @@
+{% load staticfiles %}
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Loading等待中</title>
+
+  <style>
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
+
+</style>
+
+    <style>
+body {
+ 	background: #000; 
+}
+
+img {
+  display: block;
+	
+  margin: 0 auto;
+}
+
+canvas {
+	display: block;
+
+	margin:0 auto;
+
+  /* uncomment to test overlay */
+
+  /*
+  position: absolute;
+  left: 0;
+  opacity: .5;
+  top: 0;
+  */  
+
+}
+
+
+.myid{
+  color: white;
+}
+.myid p{
+  text-indent: 20px
+}
+
+img .small{
+  height: 400px;
+  width: 400px;
+}
+</style>
+    
+
+    
+
+    <script src="{% static 'js/prefixfree.min.js' %}"></script>
+    <!-- <script src="js/prefixfree.min.js"></script> -->
+
+</head>
+
+<body>
+
+  <!-- source image and inspiration from Ramiro Galan on Dribbble: http://dribbble.com/shots/674715-Sparkle-Light-Trail -->
+<canvas id="c"></canvas>
+
+
+  <script src="{% static 'js/jquery.js' %}"></script>
+
+  <script src="{% static 'js/index.js' %}"></script>
+<div style="text-align:center;clear:both;">
+<!-- <script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
+<script src="/follow.js" type="text/javascript"></script> -->
+</div>
+
+<div class="myid">
+<p>这些年，“善良”好像离我们越来越远。<p>
+<p>一方面是物质财富的急剧增长，一方面又是社会戾气的空前弥散。</p>
+<p>就拿最近几个月说，先后被996、京东兄弟情破裂、视觉中国瞬间崩塌、马云豪宅发表看法增热度、宝马漏油事件等霸占。复旦名师陈果有一次讲座，主题就是人的善良。</p>
+<p>一句话总结她的意思，那就是：真正懂得并且珍惜善良的人，才能活成一束光。可是，在这样一个时代，要做一个内心有光的人，真是一件不易的事情。我想，当你或者你身边的人还有下面4个迹象，那就证明你们依旧保有善良的本性，也就能够让自己变成温暖他人的一束光。</p>
+<img src="{% static 'images/chenguo.jpg' %}">
+
+<h2>懂得怜悯，更懂得尊重</h2>
+<p>纽约有个商人在街上看到一个衣衫褴褛的铅笔推销员，顿生一股怜悯之情。他把1元钱丢进卖铅笔人的怀中就走了。</p>
+<p>很快，他觉得这样做不妥，就连忙返回，从卖铅笔人那里取出几支铅笔，并抱歉地解释说自己忘记取笔了，希望不要介意。最后他说：“你跟我都是商人，你有东西要卖，而且上面有标价。”</p>
+<p>善良的人都有一颗同情弱者的心，但很多时候，怜悯带有居高临下的意味。甚至会让被救助的人觉得理所当然，久而久之心甘情愿的做一个被可怜的人。</p>
+<p>听在卢旺达做义工的朋友聊起过一个亲身经历的故事。</p>
+<p>他刚到卢旺达的时候，有一次，看到一位瘦骨嶙峋，衣不蔽体的黑人男孩跑到他们的营地，顿时心生怜悯，准备把食物提供给孩子。可是，却被同伴制止了。</p>
+<p>在他的疑惑中，同伴朝小男孩俯下身子，用当地语言说：</p>
+<p>你好，我们从很远的地方来，车上有很多东西，你能帮我们搬下来吗？我们会付报酬的。</p>
+<p>很快聚集了很多孩子，小男孩尝试从车上往下搬了一桶饼干。同伴拿起一床棉被和一桶饼干递给他，说：“非常感谢你，这是奖励你的，其他人愿意一起帮忙吗？”其他孩子也都劲头十足一拥而上，没多久就卸货完毕，义工给每个孩子一份救济物品。</p>
+<p>后来同伴和他说：</p>
+<p>陷入贫穷里不是他们的错，可是如果你轻而易举的把东西给他们，让他们觉得贫穷可以成为不劳而获的谋生手段，从心底里认为自己就是一个被别人同情的弱者，那么这就是你的错了。</p>
+<h2>心生悲怜之心，想救助弱者这是每个善良的人都会做的，但如果在做的过程中懂得尊重对方，让他们找到自己价值，那么这才是关键所在。</h2>
+<img src="{% static 'images/chengguo_1.jpg' %}">
+<h2>不心怀恶意揣度别人</h2>
+<p>这段时间，很多名人相继去世，很多人都陷入追思中，当“靓绝五台山”的蓝洁瑛去世后，古天乐帮忙操办。</p>
+<p>这本是很正常的一件事，但有些人开始纷纷指责古仔，说他只是沽名钓誉，人活着的时候，干什么去了？想来真是可笑。</p>
+<p>有很多人整天闲着无聊，总是心怀恶意去揣度对方，只要自己不爽，就会不分青红皂白的把别人骂一顿，显得自己特别高尚，而实际上这才是最LOW的表现。</p>
+<p>无独有偶，当杨振宁放弃美国国籍，重新变成中国人了时，很多人坐不住了，觉得他们大肆评论的机会来了。</p>
+<p>无独有偶，当杨振宁放弃美国国籍，重新变成中国人了时，很多人坐不住了，觉得他们大肆评论的机会来了。按理说，一位在世界物理学界堪称泰斗级人物的老前辈重新回到祖国，我们应该举起双手欢迎才对。但事实上，杨振宁回国的消息却遭到了很多人的谩骂。比如：“老杨谁给的钱多叫谁亲爹，没人质疑吕布的能力，质疑的都是人品。”再比如：“天寒地冻你不来，春晚花开养老来。这样的人也不能说成是纯粹的科学家”是不是很伤人，可这些人根本不管，只要自己痛快就行。杨振宁为什么回国我们不知道，但我们用这样的语言来评价一位物理学界巨匠合适吗？小时候，父母教导我们要做一个善良且正直的人，可长大后却连最基本的善意都忘记了。
+</p>
+<h2>善良的人绝对不会在不了解真相时轻易揣度别人。每个人的人生都不同，不随意对一个人评头论足，才是善良最好的体现。</h2>
+
+<!-- <img src="{% static 'images/chengguo_2.jpg' %}" class="small"> -->
+
+
+<img src="{% static 'images/chengguo_2.jpg' %}" class="small" width= "900" height="450">
+
+</body>
+
+</html>

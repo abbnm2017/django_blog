@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title>超全面！这可能是你见过最全的弹窗设计解析</title>
+    <link rel='dns-prefetch' href='//apps.bdimg.com' />
+	<link rel='dns-prefetch' href='//s.w.org' />
+	<link rel='stylesheet' id='main-css'  href='https://yusi123.com/wp-content/themes/YusiPro/style.css?ver=1.6' type='text/css' media='all' />
+	<link rel='stylesheet' id='fancybox-css'  href='https://yusi123.com/wp-content/themes/YusiPro/css/jquery.fancybox.min.css?ver=1.6' type='text/css' media='all' />
+	<link rel='stylesheet' id='wppay-css'  href='https://yusi123.com/wp-content/themes/YusiPro/shop/static/css/pay.css?ver=4.0.0' type='text/css' media='all' />
+	<script type='text/javascript' src='https://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js?ver=1.6'></script>
+	<script type='text/javascript' src='https://yusi123.com/wp-content/themes/YusiPro/js/theia-sticky-sidebar.min.js?ver=1.6'></script>
+	
+	<script>
+		$(document).ready(function(){
+			// $("p").click(function(){
+			// 	$(this).hide();
+			// });
+			$("#test").click(function(){
+				alert("134556")
+				$.ajax({
+					url:"{% url 'User:test_ajax' %}",
+					type:"post",
+					dataType:"json",
+
+					data:{
+						user:123,
+						csrfmiddlewaretoken:'{{ csrf_token }}',
+					},
+
+					success:function(result){
+						$('#test1').html(result.News)
+					},
+
+				});
+				
+			});
+		});
+
+
+		function likeChange(obj, content_type, object_id){
+			console.log(obj, content_type, object_id)
+			var is_like = obj.getElementsByClassName('active').length == 0
+			// alert("1234")
+			$.ajax({
+				url : "{% url 'User:like_change' %}",
+				type : 'GET',
+				data:{
+					content_type:content_type,
+					object_id: object_id,
+					is_like : is_like,
+				},
+
+				cache:false,
+				success: function(data){
+					console.log(data)
+				},
+
+				error:function(xhr){
+					console.log(xhr)
+				}
+			});
+		}
+
+
+	</script>
+
+
+</head>
+<body>
+
+	<section class="article-focusbox bgimg-fixed" id="focsbox-true" style="background-image: url(https://yusi123.com/wp-content/themes/YusiPro/timthumb.php?src=https://yusi123.com/wp-content/uploads/2014/10/50giftsforwebenthusiasts15.jpg&h=500&w=1920&zc=1&a=c&q=100&s=1)" >
+    <header class="article-header">
+        <h1 class="article-title">超全面！这可能是你见过最全的弹窗设计解析</h1>
+        <div class="article-meta">
+            <span class="item item-1"><i class="fa fa-clock-o"></i> 2020年2月1日 下午5:43</span>
+            <span class="item item-2"><i class="fa fa-user"></i> 作者：科科</span>
+            <span class="item item-3"><i class="fa fa-list-alt"></i> 分类：<a href="https://yusi123.com/design/material" rel="category tag">设计素材</a></span>
+            <span class="item item-4"><i class="fa fa-eye"></i> 12.4K℃</span>
+            <span class="item item-5"></span>
+        </div>
+    </header>
+	</section>
+
+	<section class="container">
+    <div class="content-wrap">
+    	<div class="content">
+<article class="article-content">
+		<div class="asst asst-single-header"><div class="d_banner_inner"><a target="_blank" href="https://yusi123.com/go/aliyun">
+<img class="thumb"  src="https://yusi123.com/wp-content/uploads/2019/11/1000-386.jpg" style="display: inline;" data-baiduimageplus-ignore><h4 style="position: absolute;bottom: 0;left: 0;right: 0;padding: 0px 10px 0;height: 35px;overflow: hidden;background-color: #656565;background-color: rgba(0,0,0,.3);color: #fff;margin: 0;line-height: 35px;">阿里云的服务器，欲思一直在用，最近搞活动，限时优惠，大家抓紧上！</h4></a></div></div>
+    			<p>一般软件开发中必备的一样工具就是代码编辑器。传统的代码编辑器一般都是以软件安装包的形式安装到电脑里面，代码编辑保存后一般也是通过ftp或者svn等工具提交到服务器的（当然，像.NET开发中Microsoft Visual Studio这样强大的集成工具另说了。）。</p>
+<p>在实际的项目开发中这样的方式也是挺便捷的。但是，随着各种云服务的兴起，云存储时代几乎已经是大势所趋了。个人或者小公司搭建一个类似的服务自然代价不菲。这时候利用一些现有的在线代码编辑器，可以为你的项目进度和日常学习带来很大的帮助。特别是一些开源项目的代码维护和分享。</p>
+<p><img title="5个程序员最喜欢的HTML和CSS代码在线编辑器" src="https://yusi123.com/wp-content/uploads/2014/09/codepen-online-code-editor.jpg" alt="10个程序员最喜欢的 HTML和CSS 等在线代码编辑器" title="10个程序员最喜欢的 HTML和CSS 等在线代码编辑器-欲思博客" width="716" height="296" /></p>
+<p>今天给大家带来的就是10个程序员最喜欢的在线代码编辑器。包括HTML，CSS、JavaScriptPHP、Python 、Ruby on Rails和C/C++等。具体的大家可以自己去官方网站详细了解。</p>
+<p>当然，另外的也有一些你可能会喜欢的：</p>
+<blockquote>
+<ul>
+<li><a title="分享5款Linux系统下免费的 CSS 编辑器" href="https://yusi123.com/3433.html" target="_blank">分享5款Linux系统下免费的 CSS 编辑器</a></li>
+<li><a title="盘点20个非常实用的Sublime Text插件" href="https://yusi123.com/2472.html" target="_blank">盘点20个非常实用的Sublime Text插件</a></li>
+<li><a title="送给网页设计师和程序员的48个神奇的礼物" href="https://yusi123.com/3381.html" target="_blank">送给网页设计师和程序员的48个神奇的礼物</a></li>
+</ul>
+</blockquote>
+<p>好了，废话不多说。来看看具体都有哪些在线代码编辑器。或许有一些你应该会比较熟悉。</p>
+<h2><a href="http://codepen.io/" target="_blank" rel="nofollow">1. CodePe</a></h2>
+<p><img title=" CodePen编辑器" src="https://yusi123.com/wp-content/uploads/2014/09/codepen.jpg" alt="10个程序员最喜欢的 HTML和CSS 等在线代码编辑器" title="10个程序员最喜欢的 HTML和CSS 等在线代码编辑器-欲思博客" width="895" height="536" /></p>
+<p>CodePen是我最喜欢的代码编辑器之一。 CodePen有一些炫酷而独特的功能，这使得它成为Web开发中最流行的在线代码编辑器之一。</p>
+<p>CodePen的特点是：</p>
+<ul>
+<li>实时预览HTML，CSS和JavaScript</li>
+<li>您可以使用预处理程序的语法像Sass, LESS, Stylus. Markdown, Haml, Slim, Jade</li>
+<li>使用CodePen组合展示才华和设计自己的组合主页。</li>
+<li>您可以使用Hire Me（聘用我）功能服务找到兼职工作。</li>
+<li>任何资源都可以嵌入在任何其他网站。</li>
+</ul>
+<h2><a href="http://dabblet.com/" target="_blank" rel="nofollow">Dabblet</a></h2>
+<p><img title="Dabblet编辑器" src="https://yusi123.com/wp-content/uploads/2014/09/dabblet.jpg" alt="10个程序员最喜欢的 HTML和CSS 等在线代码编辑器" title="10个程序员最喜欢的 HTML和CSS 等在线代码编辑器-欲思博客" width="909" height="570" /></p>
+<p>Dabblet的界面十分简洁，操作起来并不复杂，特别适合新手和想尝试最新HTML5标签和CSS3样式的前端攻城师使用。Dabblet的一大特色是代码编写时可免加CSS前缀。因为，Lea Verou（工具的作者）本人就是免CSS前缀JavaScript脚本 <a href="http://leaverou.github.com/prefixfree/" target="_blank" rel="nofollow">-prefix-free</a>的作者，Dabblet拥有此功能当然是顺理成章的事。HTML和CSS代码间的切换也很方便，点击隐藏工具栏右上方的标签即可。用户可以根据习惯，调整前端代码的预览效果，浏览器内全屏预览将新标签页中打开。</p>
+<p>Dabblet支持用Github帐号登录，测试的代码段既可以匿名保存也可以保存在用户的Github:gist中，以便用户将代码段嵌入自己的站点或是进一步分享给其他人。</p>
+p>Dabblet支持用Github帐号登录，测试的代码段既可以匿名保存也可以保存在用户的Github:gist中，以便用户将代码段嵌入自己的站点或是进一步分享给其他人。</p>
+<h2><a href="https://thimble.webmaker.org/" target="_blank" rel="nofollow">Thimble</a></h2>
+<p><img title="Thimble编辑器" src="https://yusi123.com/wp-content/uploads/2014/09/mozilathimble.jpg" alt="10个程序员最喜欢的 HTML和CSS 等在线代码编辑器" title="10个程序员最喜欢的 HTML和CSS 等在线代码编辑器-欲思博客" width="899" height="445" /></p>
+<p>Mozilla 推出 的HTML/CSS 在线交互式学习网站 Thimble：左侧编辑，右侧实时预览，带有大量真实案例。该站是 Mozilla 新近推出的 Webmaker 计划 的组成部分，旨在帮助普通用户在线学习编写 HTML 和 CSS。</p>
+<p>Thimble 提供的是双面板设计， 左侧为带语法高亮的代码编辑，右侧可实时预览 网页效果， 如果用户对效果满意， 可通过右上方的蓝色 “Publish” 按钮一键发布， 还可通过提供的 Twitter 发布按钮与好友分享你的设计成果。</p>
+<h2><a href="http://jsfiddle.net/" target="_blank" rel="nofollow">JSFiddle</a></h2>
+<p><img title="JSFiddle编辑器" src="https://yusi123.com/wp-content/uploads/2014/09/jsfiddle.jpg" alt="10个程序员最喜欢的 HTML和CSS 等在线代码编辑器" title="10个程序员最喜欢的 HTML和CSS 等在线代码编辑器-欲思博客" width="902" height="556" /></p>
+<p>JSFiddle是一个老牌的在线JavaScript代码调试工具。支持JavaScript、CSS、HTML代码可视化在线调试工具，支持多种应用多种主流框架，用起来非常方便，而且还可以将调试好的结果以非常简洁的页面直接嵌其他网页里。</p>
+<p>除了可以调试代码外，还可以方便的发布到社区，论坛或者社交媒体上与朋友们分享或者提问。整合了很多的不同的类库供大家选择。</p>
+<h2><a href="http://cssdesk.com/" target="_blank" rel="nofollow">CSSDesk</a></h2>
+<p><img src="https://yusi123.com/wp-content/uploads/2014/09/cssgesk.jpg" alt="10个程序员最喜欢的 HTML和CSS 等在线代码编辑器" title="10个程序员最喜欢的 HTML和CSS 等在线代码编辑器-欲思博客" width="827" height="445" /></p>
+<p>CSSDesk工具是一个标准的CSS沙盒，可以给予CSS初学者最大的帮助，网站分成三栏，我们可以非常方便的通过在左侧实时修改代码来查看某个CSS属性的改变给HTML元素带来的影响，甚至我们可以把整个网站都放到其中来进行调试，并将调试完成的文件保存为HTMl。唯一的遗憾是缺少代码提示，需要手工输入CSS属性。</p>
+<h2><a href="http://codemirror.net/" target="_blank" rel="nofollow">CodeMirror</a></h2>
+<p><img title="CodeMirror在线编辑器" src="https://yusi123.com/wp-content/uploads/2014/09/codemirror.jpg" alt="10个程序员最喜欢的 HTML和CSS 等在线代码编辑器" title="10个程序员最喜欢的 HTML和CSS 等在线代码编辑器-欲思博客" width="886" height="636" /></p>
+<p>又一款“Online Source Editor”，基于Javascript，短小精悍，实时在线代码高亮显示，他不是某个富文本编辑器的附属产品，他是许多大名鼎鼎的在线代码编辑器的基础库。</p>
+
+<p>上述的这些在线代码编辑器都是基于CodeMirror的，是不是感到惊讶，里面有你熟悉的JS Library。</p>
+<p>CodeMirror本身的定位也很明确，短小精悍，但代码质量很高，在Google Group的群里面，人们热烈的进行着用CodeMirror做各式各样改造的讨论，可见对他的欢迎。</p>
+<p>假如你有项目需要在线代码编辑，还等什么？CodeMirror，绝对是你最好的选择。</p>
+<h2><a href="http://jsbin.com/" target="_blank" rel="nofollow">JS Bin</a></h2>
+<p><img title="JS Bin在线编辑器" src="https://yusi123.com/wp-content/uploads/2014/09/jsbing.jpg" alt="10个程序员最喜欢的 HTML和CSS 等在线代码编辑器" title="10个程序员最喜欢的 HTML和CSS 等在线代码编辑器-欲思博客" width="810" height="441" /></p>
+<p>JSBin 是一个 Web 应用，主要用于帮助测试 JavaScript 和 CSS 的代码片段。功能与 jsFiddle 网站一致。</p>
+<h2><a href="http://ecoder.quintalinda.com/" target="_blank" rel="nofollow">eCoder</a></h2>
+<p><img title="eCoder在线编辑器" src="https://yusi123.com/wp-content/uploads/2014/09/quintalinda.gif" alt="10个程序员最喜欢的 HTML和CSS 等在线代码编辑器" title="10个程序员最喜欢的 HTML和CSS 等在线代码编辑器-欲思博客" width="844" height="588" /></p>
+<p>ecoder是一个基于Web的代码编辑器，采用PHP和JavaScript开发。它包括：实时语法加亮，一个文件浏览器，一个文件上传器和一个标签系统能够实现直接在服务器上同时编辑多个文件。</p>
+<h2><a href="https://codeanywhere.com/" target="_blank" rel="nofollow">Codeanywhere</a></h2>
+<p><img title="Codeanywhere在线编辑器" src="https://yusi123.com/wp-content/uploads/2014/09/codeanywhere.jpg" alt="10个程序员最喜欢的 HTML和CSS 等在线代码编辑器" title="10个程序员最喜欢的 HTML和CSS 等在线代码编辑器-欲思博客" width="938" height="506" /></p>
+<p>Codeanywhere是一个在线的代码编辑器，你可以在浏览器中编写html、css、javascript、php、XML的代码，目前支持chrome、firefox、Opera、Safari、IE，当然也可以在android、iphone上安装codeanywhere的软件。</p>
+<p>Codeanywhere的特点是：随时随地可以写代码（虽然我认为手机上写代码有点搞笑）。</p>
+<p>Codeanywhere支持连接FTP Server、Dropbox、Github，比如Dropbox，你只要有一个账号，连上Dropbox后，Codeanywhere能够在Dropbox上创建html等文件，你写的代码都存放在Dropbox上了。</p>
+
+
+<h2><a href="https://c9.io/" target="_blank" rel="nofollow">Cloud9 IDE</a></h2>
+<p><img class="alignnone wp-image-3597 size-full" title="Cloud9 IDE在线编辑器" src="https://yusi123.com/wp-content/uploads/2014/09/Cloud9ide.jpg" alt="10个程序员最喜欢的 HTML和CSS 等在线代码编辑器" title="10个程序员最喜欢的 HTML和CSS 等在线代码编辑器-欲思博客" width="882" height="464" /></p>
+<p>Cloud9 IDE是一个用来测试运行<a href="https://yusi123.com/tag/node-js" target="_blank">Node.js </a>和 JavaScript平台，但也支持Python, Ruby和 Apache+PHP的应用程序，例如Wordpress。前几天分享了支持Node.js、Python、Go、Rails等程序语言的Nitrous.io空间，很快有朋友给部落写邮件，告知Cloud9可以比Nitrous.io更长久地运行应用实例。</p>
+<p>Cloud9支持的程序语言有Node.js、HTML5、PHP、Python / Django、Ruby on Rails、C/C++、StrongLoop，提供FTP、S-S-H和空间托管，有MysqL、MongoDB、SQLite数据库，可以一键安装Wordpress，也可以自己上传程序代码，支持协同编辑合作，另外可以和其它的云空间整合。</p>
+<p>Cloud9支持将代码一键发布到Heroku、Windows Azure、Google App Engine、CloudFoundry等云空间上，还可以同步应用到Github空间上，总之，除了Cloud9空间不支持绑定自己的域名、无法永久保持应用在线外，Cloud9空间用来测试程序和代码还是不错的。</p>
+<blockquote><p>注：部分内容参考自<a href="http://www.codingbyte.com/best-online-html-and-css-code-editor-for-web-developers/" target="_blank" rel="nofollow">Best Online HTML and CSS Code Editor For Web Developers</a>。有个别编辑器网站可能需要VPN翻墙才能打开。有需要的可以自己去看看<a href="https://yusi123.com/3108.html" target="_blank">红杏插件</a>。</p></blockquote>
+
+
+
+	<div class="article-actions clearfix">
+        <a href="javascript:;" class="action-like" data-pid="3941" etap="like"><i class="fa fa-heart-o"></i>喜欢(<span>9</span>)</a>
+        
+        <a href="javascript:;" class="action-rewards" etap="rewards"><i class="fa fa-yen" aria-hidden="true"></i>打赏</a>
+        
+    </div>
+
+    <div class="like" onclick="likeChange(this,'999', 1)">
+    	<span class="liked-num">0</span>
+    	<span>喜欢</span>
+    </div>
+
+</article>
+
+
+
+
+</body>
+
+
+
+</html>

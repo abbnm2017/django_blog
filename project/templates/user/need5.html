@@ -1,0 +1,154 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title>为什么说10月24日是程序员的节日？</title>
+    <link rel='dns-prefetch' href='//apps.bdimg.com' />
+	<link rel='dns-prefetch' href='//s.w.org' />
+	<link rel='stylesheet' id='main-css'  href='https://yusi123.com/wp-content/themes/YusiPro/style.css?ver=1.6' type='text/css' media='all' />
+	<link rel='stylesheet' id='fancybox-css'  href='https://yusi123.com/wp-content/themes/YusiPro/css/jquery.fancybox.min.css?ver=1.6' type='text/css' media='all' />
+	<link rel='stylesheet' id='wppay-css'  href='https://yusi123.com/wp-content/themes/YusiPro/shop/static/css/pay.css?ver=4.0.0' type='text/css' media='all' />
+	<script type='text/javascript' src='https://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js?ver=1.6'></script>
+	<script type='text/javascript' src='https://yusi123.com/wp-content/themes/YusiPro/js/theia-sticky-sidebar.min.js?ver=1.6'></script>
+	
+	<script>
+		$(document).ready(function(){
+			// $("p").click(function(){
+			// 	$(this).hide();
+			// });
+			$("#test").click(function(){
+				alert("134556")
+				$.ajax({
+					url:"{% url 'User:test_ajax' %}",
+					type:"post",
+					dataType:"json",
+
+					data:{
+						user:123,
+						csrfmiddlewaretoken:'{{ csrf_token }}',
+					},
+
+					success:function(result){
+						$('#test1').html(result.News)
+					},
+
+				});
+				
+			});
+		});
+
+
+		function likeChange(obj, content_type, object_id){
+			console.log(obj, content_type, object_id)
+			var is_like = obj.getElementsByClassName('active').length == 0
+			// alert("1234")
+			$.ajax({
+				url : "{% url 'User:like_change' %}",
+				type : 'GET',
+				data:{
+					content_type:content_type,
+					object_id: object_id,
+					is_like : is_like,
+				},
+
+				cache:false,
+				success: function(data){
+					console.log(data)
+				},
+
+				error:function(xhr){
+					console.log(xhr)
+				}
+			});
+		}
+
+
+	</script>
+
+
+</head>
+<body>
+
+	<section class="article-focusbox bgimg-fixed" id="focsbox-true" style="background-image: url(https://yusi123.com/wp-content/themes/YusiPro/timthumb.php?src=https://yusi123.com/wp-content/uploads/2014/10/50giftsforwebenthusiasts15.jpg&h=500&w=1920&zc=1&a=c&q=100&s=1)" >
+    <header class="article-header">
+        <h1 class="article-title">超全面！这可能是你见过最全的弹窗设计解析</h1>
+        <div class="article-meta">
+            <span class="item item-1"><i class="fa fa-clock-o"></i> 2020年2月1日 下午5:43</span>
+            <span class="item item-2"><i class="fa fa-user"></i> 作者：科科</span>
+            <span class="item item-3"><i class="fa fa-list-alt"></i> 分类：<a href="https://yusi123.com/design/material" rel="category tag">设计素材</a></span>
+            <span class="item item-4"><i class="fa fa-eye"></i> 12.4K℃</span>
+            <span class="item item-5"></span>
+        </div>
+    </header>
+	</section>
+
+
+<section class="container">
+    <div class="content-wrap">
+    	<div class="content">
+<article class="article-content">
+		<div class="asst asst-single-header"><div class="d_banner_inner"><a target="_blank" href="https://yusi123.com/go/aliyun">
+<img class="thumb"  src="https://yusi123.com/wp-content/uploads/2019/11/1000-386.jpg" style="display: inline;" data-baiduimageplus-ignore><h4 style="position: absolute;bottom: 0;left: 0;right: 0;padding: 0px 10px 0;height: 35px;overflow: hidden;background-color: #656565;background-color: rgba(0,0,0,.3);color: #fff;margin: 0;line-height: 35px;">阿里云的服务器，欲思一直在用，最近搞活动，限时优惠，大家抓紧上！</h4></a></div></div>
+    			<p>数据库是大多数网站的重要组成部分。从简单的博客到复杂的电子商务网站，这些网站都由数据库来驱动运行。</p>
+
+
+    <p class="bloginfo"><i class="avatar"><img src="{% static 'images/chengxuyuan.jpg' %}"></i><span></span><span>2018-11-08</span><span>
+    <p>程序员日常使用计算机是一个二进制的世界，在二进制中，1024是个整数（2的十次方），久而久之，有人将10月24日和程序员联系起来了，倡议作为程序员节。</p>
+    <img src="{% static 'images/1024_1.jpg' %}">
+    <h1>程序员节的由来</h1>
+    <p>从2015年起，每年10月24日被传智播客定义为程序员节。近几年随着程序员行业的不断发展和社会的推动，10.24程序员节已经开始渐渐被更多的人知晓。程序员的世界是二进制的，1024就是2的10次方，也是程序员心目中的整数。1 G =1024 MB（1G与1级谐音，也有一级棒的意思）1MB=1024KB1KB=1024B这就是1024程序员节的由来。</p>
+    <img src="{% static 'images/1024_2.jpg' %}">
+
+   <h1>人们对程序员的理解</h1>
+   <li>雷打不动的格子衫</li>
+   <li>修电脑的直男</li>
+   <li>20几岁稀疏的头发</li>
+   <li>年收入很高很高</li>
+   <li>颈椎不好、黑眼圈......</li>
+
+   <p>我觉得很多程序员都有着很好的文化修养和审美情趣，也有很多爱旅游、爱健身、爱生活的程序员。他们可能只是在工作的时候，为了让自己舒适最重要，所以并不在意形象是否时尚和优雅。</p>
+
+   <img src="{% static 'images/1024_3.jpg' %}">
+
+   <p>所以大家别再误解程序员邋遢、木讷、不懂乐趣了，那可能只是表面现象，程序在改变世界，越来越多的事物或者科技离不开代码了，离不开程序了，所以请大家关爱程序员，提倡不加班。</p>
+
+   <img src="{% static 'images/1024_4.jpg' %}">
+
+   <h1>@所有程序员 愿你们
+
+加班不常有，
+
+头发一直在，
+
+bug不再有，
+
+桃花旺旺旺。
+
+
+
+祝福所有的程序员节日快乐！！</h1>
+
+
+	<div class="article-actions clearfix">
+        <a href="javascript:;" class="action-like" data-pid="3941" etap="like"><i class="fa fa-heart-o"></i>喜欢(<span>9</span>)</a>
+        
+        <a href="javascript:;" class="action-rewards" etap="rewards"><i class="fa fa-yen" aria-hidden="true"></i>打赏</a>
+        
+    </div>
+
+    <div class="like" onclick="likeChange(this,'999', 1)">
+    	<span class="liked-num">0</span>
+    	<span>喜欢</span>
+    </div>
+
+</article>
+
+
+
+
+</body>
+
+
+
+</html>

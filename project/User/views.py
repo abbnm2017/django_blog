@@ -25,6 +25,8 @@ from django.contrib.contenttypes.models import ContentType
 from  django.core.exceptions import ObjectDoesNotExist
 
 
+#RJ4587
+
 def index(request):
     temp_count, total_count = change_info(request)
     return render(request, 'index.html', context={'msg1':'今日访问量：%s'%temp_count,'msg2':'历史访问量：%s'%total_count})
@@ -238,6 +240,25 @@ def need2(request):
 
 def need3(request):
     return render(request,'user/need3.html')
+
+def need4(request):
+    return render(request, 'user/need4.html')
+
+def need5(request):
+    return render(request,'user/need5.html')
+
+def need6(request):
+    return render(request, 'user/need6.html')
+
+def need7(request):
+    return render(request,'user/need7.html')
+
+
+def loading(request):
+    return render(request,'user/loading.html')
+
+def floatpic(request):
+    return render(request,'user/floatpic.html')
 
 
 #点赞
