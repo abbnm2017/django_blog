@@ -80,6 +80,11 @@ class LikeRecord(models.Model):
     like_time = models.DateTimeField(auto_now_add = True)
 
 
+class ImgK(models.Model):
+    img = models.ImageField(upload_to='img')
+    name = models.CharField(max_length = 1000)
+
+
 
 
 

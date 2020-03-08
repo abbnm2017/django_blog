@@ -1,0 +1,123 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<!-- saved from url=(0019)http://gl.0507.org/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="UTF-8">
+	<title>3D CG 照片</title>
+<style type="text/css" herf="{% static 'css/3dstyle.css' %}"></style>
+<script type="text/javascript">
+
+/*rotateX/rotateY/rotateZ可以帮助理解三维坐标，则translateZ则可以帮你理解透视位置(translateZ的功能就是让元素在自己的眼前或近或远)*/
+
+	window.onload=function(){
+		var oUl=document.getElementById("ul1");
+		var aImg=document.getElementsByTagName("img");
+		var aLi=oUl.getElementsByTagName("li");
+        var deg=360/aLi.length;
+
+		for(var i=0;i<aLi.length;i++){
+			aLi[i].style.transition='all 0.5s '+((aLi.length-1-i)*0.2)+'s';					//每张图片缩放的时间
+
+			aLi[i].style.WebkitTransform='rotateY('+deg*i+'deg) translateZ(450px)';
+			aLi[i].style.MozTransform='rotateY('+deg*i+'deg) translateZ(450px)';
+		}
+		
+		//禁止拖动照片
+       document.onselectstart=function(){
+     	    return false;
+     }   
+
+     for(var i=0;i<aImg.length;i++){
+   	      aImg[i].setAttribute("ondragstart", "return false")
+     }
+
+       var roY=0;
+       var roX=-10;
+       var xN=0;
+       var yN=0;
+       var timer=null;
+        document.onmousedown=function(ev){
+            var ev=ev||event;
+   
+            var disX_=ev.clientX;
+            
+            var disY_=ev.clientY;
+         
+
+        
+         document.onmousemove=function(ev){
+         	 var ev=ev||event;
+         	 var disX=ev.clientX;
+         	 var disY=ev.clientY;
+           
+             xN=disX-disX_;
+             yN=disY-disY_;
+             
+             roY+=xN*0.1;
+             roX-=yN*0.1;
+
+             oUl.style.WebkitTransform='perspective(800px) rotateX('+roX+'deg) rotateY('+roY+'deg)';
+             oUl.style.MozTransform='perspective(800px) rotateX('+roX+'deg) rotateY('+roY+'deg)';
+             
+
+             disX_=ev.clientX;
+             disY_=ev.clientY;
+         }
+   
+		//实现鼠标按着滑动后，松开鼠标，画面继续跟进 差值 进行滑动
+        document.onmouseup=function(){
+	             document.onmousemove=null;
+
+	             timer=setInterval(function(){
+                       xN=xN*0.99;
+                       yN=yN*0.99;
+                      if(Math.abs(xN)<=0.5 && Math.abs(yN)<=0.5){		//决定滑动的周期，如果乘以 1.0，则一直滑动下去不停止
+                      	clearInterval(timer);
+                      }
+                     roY+=xN*0.5;
+                     roX-=yN*0.5; 
+
+
+                     oUl.style.WebkitTransform='perspective(800px) rotateX('+roX+'deg) rotateY('+roY+'deg)';		//360 浏览器适用这个
+                     //oUl.style.MozTransform='perspective(800px) rotateX('+roX+'deg) rotateY('+roY+'deg)';
+	             },30)
+         }
+
+
+    }
+
+	//取消鼠标右键
+   document.oncontextmenu=function(){
+   	   return false
+   }
+
+  document.onkeydown=function(ev){
+  	var ev=ev||event;
+  
+  	if(ev.keyCode==123){
+  		return false
+  	}
+  }
+
+
+
+	}
+</script>	
+</head>
+<body>
+	<ul id="ul1" style="transform: perspective(800px) rotateX(-24.8166deg) rotateY(3490.68deg);"> 
+		<li style="transition: all 0.5s 2.2s; transform: rotateY(0deg) translateZ(450px);"><img src="{% static 'media/img/1.jpg' %}" ondragstart="return false"></li>
+		<li style="transition: all 0.5s 2s; transform: rotateY(30deg) translateZ(450px);"><img src="{% static 'media/img/2.jpg' %}" ondragstart="return false"></li>
+		<li style="transition: all 0.5s 1.8s; transform: rotateY(60deg) translateZ(450px);"><img src="{% static 'media/img/3.jpg' % " ondragstart="return false"></li>
+		<li style="transition: all 0.5s 1.6s; transform: rotateY(90deg) translateZ(450px);"><img src="{% static 'media/img/4.jpg' %}" ondragstart="return false"></li>
+		<li style="transition: all 0.5s 1.4s; transform: rotateY(120deg) translateZ(450px);"><img src="{% static 'media/img/5.jpg' %}"ondragstart="return false"></li>
+		<li style="transition: all 0.5s 1.2s; transform: rotateY(150deg) translateZ(450px);"><img src="{% static 'media/img/6.jpg' %}" ondragstart="return false"></li>
+		<li style="transition: all 0.5s 1s; transform: rotateY(180deg) translateZ(450px);"><img src="{% static 'media/img/7.jpg' %}" ondragstart="return false"></li>
+		<li style="transition: all 0.5s 0.8s; transform: rotateY(210deg) translateZ(450px);"><img src="{% static 'media/img/8.jpg' %}" ondragstart="return false"></li>
+		<li style="transition: all 0.5s 0.6s; transform: rotateY(240deg) translateZ(450px);"><img src="{% static 'media/img/9.jpg' %}" ondragstart="return false"></li>
+		<li style="transition: all 0.5s 0.4s; transform: rotateY(270deg) translateZ(450px);"><img src="{% static 'media/img/10.jpg' %}" ondragstart="return false"></li>
+		<li style="transition: all 0.5s 0.2s; transform: rotateY(300deg) translateZ(450px);"><img src="{% static 'media/img/11.jpg' %}" ondragstart="return false"></li>
+		<li style="transition: all 0.5s 0s; transform: rotateY(330deg) translateZ(450px);"><img src="{% static 'media/img/12.jpg' %}" ondragstart="return false"></li>
+	</ul>
+
+</body></html>

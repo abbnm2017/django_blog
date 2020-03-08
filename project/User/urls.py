@@ -29,6 +29,11 @@ urlpatterns = [
     url(r'need7/', views.need7, name = "need7"),
 
     url(r'loading/', views.loading, name = "loading"),
-    url(r'floatpic/', views.floatpic, name = 'floatpic')
+    url(r'floatpic/', views.floatpic, name = 'floatpic'),
+
+    url(r'uploadImg/', views.uploadImg, name = "uploadImg"),
+
+    url(r'showImg/', views.showImg, name = "showImg"),
+
 
 ]

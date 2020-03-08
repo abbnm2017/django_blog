@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 
 from User.forms import UserRegisterForm, RegisterForm, LoginForm
-from User.models import UserProfile,MessageBoard,LikeCount, LikeRecord
+from User.models import UserProfile,MessageBoard,LikeCount, LikeRecord,ImgK
 from django.db.models import Q  # 导入F类
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -363,6 +363,42 @@ def like_change(request):
         else:
             #没有点赞过，不能重复点赞
             return ErrorResponse(403,'你没有点赞过')
+
+
+
+def uploadImg(request):
+    #图片上传
+    if request.method == "POST":
+        print("kekeke11111:%s"%request.FILES.get('img'))
+        print("kekeke100022222:%s"%request.FILES.get('img').name)
+        new_img = ImgK(
+            img = request.FILES.get('img'),
+            name = request.FILES.get('img').name
+
+            )
+
+        new_img.save()
+
+        messages.info(request,'上传成功')
+        return redirect(reverse('User:showImg'))
+
+
+    return render(request,'user/uploadpic.html')
+
+
+
+def showImg(request):
+    imgs = ImgK.objects.all()
+    print ("keke111:%s"%imgs)
+    print ("keke222:%s"%imgs[0])
+    print ("keke333:%s"%imgs[0].img)
+    print ("keke444:%s"%imgs[0].name)
+    content = {
+        'imgs':imgs,
+    }
+    # for i in imgs:
+    #     print (i.img.url)
+    return render(request,'user/showpic.html',content)
 
 
 

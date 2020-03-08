@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+    |上传图片
+{% endblock %}
+
+{% block content %}
+
+ <form action="{% url 'User:uploadImg' %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="file" name="img" >
+      <button type="submit"  >上传</button>
+      
+   </form>
+
+{% endblock %}
