@@ -1,3 +1,5 @@
 $ git clone https://github.com.cnpmjs.org/abbnm2017/django_blog.git
 
-之前一直是大项目  拉不下来
+之前一直是大项目  拉不下
+
+https://www.cnblogs.com/tinywan/p/12589194.html
