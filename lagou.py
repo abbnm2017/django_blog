@@ -53,6 +53,9 @@ cookies = {
               'LGRID=20170901155728-336ca29d-8eeb-11e7-9043-5254005c3644',
 }
 
+
+#增加动态cooies 我说TM的 怎么爬拉钩怎么有的爬的下来，有的爬的是空的，原因是之前一直用的是固定的cookies，被反爬虫机制拦掉了、
+#模仿浏览器登录   独家经验
 class Spider(object):
     def __init__(self):
         self.header_lagou = {
