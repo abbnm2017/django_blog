@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+"""
+" Author: keke
+" Data: 2020/8/27
+" Desc: 拉钩爬虫jd
+"""
 import requests
 import math
 import time
