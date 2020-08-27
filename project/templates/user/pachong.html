@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+    |爬虫AI
+{% endblock %}
+
+{% block content %}
+
+{% block mycss %}
+    <link href="{% static 'css/register.css' %}" rel="stylesheet" type="text/css" media="all"/>
+    <link href="//fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i" rel="stylesheet">
+
+{% endblock %}
+
+<style type="text/css">
+    .yihang{
+        float: left;
+    }
+    .yihang2{
+         margin-bottom: 20px;
+    }
+    .img-cs{
+        width:20%;
+        height:20%;
+        float:left;
+        margin-left:33px;
+        margin-bottom: 20px;
+        margin-right : 10px;
+    }
+
+</style>
+
+<div class="main">
+    <div class="main-w31">
+        <h1 class="logo-w3">请输入名称查询可得到当前图片</h1>
+    <form action="{% url 'User:reptile' %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input placeholder="图片名" name="playername" type="text" required="">
+      <input placeholder="页数" name="page_num" type="text" required="">
+      <input type="submit" value="开始查询" name="login">
+   </form>
+
+    </div>
+
+    <div class="yihang2">
+
+    </div>
+
+    <div class="yihang">
+        <!--这地方不用数据库的图片缓存刷新不上，我好无语-->
+        <!--<img src="{% static 'purge/img/1.jpg' %}" class="img-cs" width="250",height="250">-->
+        <!--<img src="{% static 'purge/img/2.jpg' %}" class="img-cs" width="250",height="250">-->
+
+        <!--<img src="{% static 'purge/img/3.jpg' %}" class="img-cs" width="250",height="250">-->
+        <!--<img src="{% static 'purge/img/4.jpg' %}" class="img-cs" width="250",height="250">-->
+        <!--<img src="{% static 'purge/img/5.jpg' %}" class="img-cs" width="250",height="250">-->
+        <!--<img src="{% static 'purge/img/6.jpg' %}" class="img-cs" width="250",height="250">-->
+        <!--<img src="{% static 'purge/img/7.jpg' %}" class="img-cs" width="250",height="250">-->
+        <!--<img src="{% static 'purge/img/8.jpg' %}" class="img-cs" width="250",height="250">-->
+        <!--<img src="{% static 'purge/img/9.jpg' %}" class="img-cs" width="250",height="250">-->
+        <!--<img src="{% static 'purge/img/10.jpg' %}" class="img-cs" width="250",height="250">-->
+        <!--<img src="{% static 'purge/img/11.jpg' %}" class="img-cs" width="250",height="250">-->
+        <!--<img src="{% static 'purge/img/12.jpg' %}" class="img-cs" width="250",height="250">-->
+        <!--<img src="{% static 'purge/img/13.jpg' %}" class="img-cs" width="250",height="250">-->
+        <!--<img src="{% static 'purge/img/14.jpg' %}" class="img-cs" width="250",height="250">-->
+        <!--<img src="{% static 'purge/img/15.jpg' %}" class="img-cs" width="250",height="250">-->
+        <!--<img src="{% static 'purge/img/16.jpg' %}" class="img-cs" width="250",height="250">-->
+        <!--<img src="{% static 'purge/img/17.jpg' %}" class="img-cs" width="250",height="250">-->
+        <!--<img src="{% static 'purge/img/18.jpg' %}" class="img-cs" width="250",height="250">-->
+        <!--<img src="{% static 'purge/img/19.jpg' %}" class="img-cs" width="250",height="250">-->
+        <!--<img src="{% static 'purge/img/20.jpg' %}" class="img-cs" width="250",height="250">-->
+
+        {% for img_obj in imgs %}
+
+        <!-- <img src="{% static 'media/' %}{{img_obj.img}}"> -->
+
+            <img src="{% static 'purge/' %}{{img_obj.img}}" class="img-cs" width="250",height="250">
+
+        {% endfor %}
+
+
+
+    </div>
+
+</div>
+
+{% endblock %}

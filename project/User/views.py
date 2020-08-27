@@ -2,8 +2,8 @@
 from __future__ import unicode_literals
 
 
-from User.forms import UserRegisterForm, RegisterForm, LoginForm
-from User.models import UserProfile,MessageBoard,LikeCount, LikeRecord,ImgK
+from User.forms import UserRegisterForm, RegisterForm, LoginForm, PaChongForm
+from User.models import UserProfile,MessageBoard,LikeCount, LikeRecord,ImgK,PcImgK
 from django.db.models import Q  # 导入F类
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -24,6 +24,8 @@ from django.contrib.contenttypes.models import ContentType
 
 from  django.core.exceptions import ObjectDoesNotExist
 
+import  pachongnew
+from django.views.decorators.cache import cache_page
 
 #RJ4587
 
@@ -371,9 +373,13 @@ def uploadImg(request):
     if request.method == "POST":
         print("kekeke11111:%s"%request.FILES.get('img'))
         print("kekeke100022222:%s"%request.FILES.get('img').name)
+
+        #
+        img_new_obj = request.FILES.get('img').replace()
+
         new_img = ImgK(
-            img = request.FILES.get('img'),
-            name = request.FILES.get('img').name
+            img = request.FILES.get('img').replace(".MOV","mp4"),
+            name = request.FILES.get('img').name.replace(".MOV","mp4"),
 
             )
 
@@ -389,12 +395,30 @@ def uploadImg(request):
 
 def showImg(request):
     imgs = ImgK.objects.all()
-    print ("keke111:%s"%imgs)
-    print ("keke222:%s"%imgs[0])
-    print ("keke333:%s"%imgs[0].img)
-    print ("keke444:%s"%imgs[0].name)
+    print("wangkeke:%s"%imgs)
+    if len(imgs) > 0:
+        print ("keke111:%s"%imgs)
+        print ("keke222:%s"%imgs[0])
+        print ("keke333:%s"%imgs[0].img)
+        print ("keke444:%s"%imgs[0].name)
+
+    new_video = []
+
+    new_img = []
+
+    for imgobj in  imgs :
+        c_name = imgobj.name
+        new_name = c_name.split('.')
+        if new_name[-1] == "mp4" or new_name[-1] == "MOV":
+            new_video.append(imgobj)
+        else:
+            new_img.append(imgobj)
+
+    print ("kekeshow_pic1:%s,%s"%(new_img,new_img[0].name))
+    print ("kekeshow_pic2:%s,%s" % (new_video,new_video[0].name))
     content = {
-        'imgs':imgs,
+        'imgs':new_img,
+        'videos':new_video,
     }
     # for i in imgs:
     #     print (i.img.url)
@@ -402,7 +426,44 @@ def showImg(request):
 
 
 
+# def chat(request):
+#
+#     return render(request,'user/chat_index.html')
 
+@cache_page(1*1)  #秒数 （一般是 60 * 15 ） 代表15分钟
+def reptile(request):
+    if request.method == "POST":
+        lform = PaChongForm(request.POST)
+        print ("pachong_1111:%s" % lform)
+        print ("pachong_2222:%s" % lform.is_valid())
+        if not lform.is_valid():
+            messages.info(request, '图片名长度至少2位以上')
+
+            return redirect(reverse('User:reptile'))
+        playername = lform.cleaned_data.get('playername')
+        page_num = lform.cleaned_data.get('page_num')
+
+        pachongnew.Run(playername,page_num)
+
+
+
+        imgs = PcImgK.objects.all()
+
+        print ("keke_tttttoooo:%s"%imgs)
+        #请求后的数据
+
+        content = {
+            'imgs': imgs,
+        }
+
+        #Ctrl + Alt + Space  快速导入任意类
+        return render(request,'user/pachong.html',content)
+
+    imgs = PcImgK.objects.all()
+    content = {
+        'imgs': imgs,
+    }
+    return render(request,'user/pachong.html',content)
 
 
 

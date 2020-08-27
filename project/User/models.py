@@ -85,6 +85,12 @@ class ImgK(models.Model):
     name = models.CharField(max_length = 1000)
 
 
+class PcImgK(models.Model):
+    img = models.ImageField(upload_to='keke')
+    name = models.CharField(max_length=1000)
+
+
+
 
 
 

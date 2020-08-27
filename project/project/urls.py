@@ -26,6 +26,8 @@ urlpatterns = [
     # url(r'^index/', index, name='index'),
     url(r'^user/', include('User.urls', namespace='User')),
     # url(r'^$', include('User.urls', namespace='User')),
+    url(r'', include('User.urls', namespace='User')),
+
 
 
 ]

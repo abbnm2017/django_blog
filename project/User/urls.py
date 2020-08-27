@@ -35,5 +35,7 @@ urlpatterns = [
 
     url(r'showImg/', views.showImg, name = "showImg"),
 
+    url(r'reptile/', views.reptile, name = "reptile"),
+
 
 ]

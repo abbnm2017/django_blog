@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block title %}
-    展示
+    展示图片
 {% endblock %}
 
 
@@ -26,6 +26,10 @@
 	.jssora05l.jssora05lds { background-position: -10px -40px; opacity: .3; pointer-events: none; }
 	.jssora05r.jssora05rds { background-position: -70px -40px; opacity: .3; pointer-events: none; }
 	/* jssor slider thumbnail navigator skin 01 css *//*.jssort01 .p            (normal).jssort01 .p:hover      (normal mouseover).jssort01 .p.pav        (active).jssort01 .p.pdn        (mousedown)*/.jssort01 .p {    position: absolute;    top: 0;    left: 0;    width: 72px;    height: 72px;}.jssort01 .t {    position: absolute;    top: 0;    left: 0;    width: 100%;    height: 100%;    border: none;}.jssort01 .w {    position: absolute;    top: 0px;    left: 0px;    width: 100%;    height: 100%;}.jssort01 .c {    position: absolute;    top: 0px;    left: 0px;    width: 68px;    height: 68px;    border: #000 2px solid;    box-sizing: content-box;    background: url('img/t01.png') -800px -800px no-repeat;    _background: none;}.jssort01 .pav .c {    top: 2px;    _top: 0px;    left: 2px;    _left: 0px;    width: 68px;    height: 68px;    border: #000 0px solid;    _border: #fff 2px solid;    background-position: 50% 50%;}.jssort01 .p:hover .c {    top: 0px;    left: 0px;    width: 70px;    height: 70px;    border: #fff 1px solid;    background-position: 50% 50%;}.jssort01 .p.pdn .c {    background-position: 50% 50%;    width: 68px;    height: 68px;    border: #000 2px solid;}* html .jssort01 .c, * html .jssort01 .pdn .c, * html .jssort01 .pav .c {    /* ie quirks mode adjust */    width /**/: 72px;    height /**/: 72px;}
+
+	.myid{
+		color: white;
+	}
 	</style>
 
 {% endblock %}
@@ -40,7 +44,15 @@
 			<div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
 			<div style="position:absolute;display:block;background:url({% static 'media/img/loading.gif' %}) no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
 		</div>
+		<h1 class="myid">暂无上传任何图片</h1>
 		<div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 800px; height: 600px; overflow: hidden;">
+				alert("66666")
+				<!--{% if imgs %}-->
+					<!--alert("1234")-->
+					<h1>暂无上传任何图片</h1>
+
+				<!--{% endif %}-->
+
 
 				{% for img_obj in imgs %}
 
@@ -49,8 +61,10 @@
 					<img data-u="image" src="{% static 'media/' %}{{img_obj.img}}" />
 					<img data-u="thumb" src="{% static 'media/' %}{{img_obj.img}}" />
 				</div>
-
 				{% endfor %}
+
+
+
 			<!-- <div data-p="144.50">
 				<img data-u="image" src="{% static 'media/img/1.jpg' %}" />
 				<img data-u="thumb" src="img/thumb-01.jpg" />
@@ -117,6 +131,16 @@
 		<!-- Arrow Navigator -->
 		<span data-u="arrowleft" class="jssora05l" style="top:158px;left:8px;width:40px;height:40px;"></span>
 		<span data-u="arrowright" class="jssora05r" style="top:158px;right:8px;width:40px;height:40px;"></span>
+	</div>
+
+	<div>
+		{% for video_obj in videos %}
+			<video controls="controls" width="320" height="240">
+				<source src="{% static 'media/' %}{{video_obj.img}}">
+
+				您的浏览器不支持 video 标签。
+			</video>
+		{% endfor %}
 	</div>
 
 

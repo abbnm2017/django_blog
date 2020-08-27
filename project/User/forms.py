@@ -62,3 +62,9 @@ class LoginForm(Form):
             raise ValidationError('用户名不存在')
         return username
 
+
+class PaChongForm(Form):
+    playername = forms.CharField(max_length=50, min_length=2, error_messages={'min_length': '用户名长度至少6位', }, label="图片名")
+    page_num = forms.CharField(max_length=2, min_length=1, error_messages={'min_length':'用户名长度至少6位',},label="页数")
+
+
