@@ -132,5 +132,5 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 DEFAUTLT_CHARSET = 'utf-8'
 FILE_CHARSET = 'gb18030'
 
-MEDIA_URL = '/static/media/'
+MEDIA_URL = '/site_media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')

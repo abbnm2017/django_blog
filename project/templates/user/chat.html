@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gb2312">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://www.easyicon.net/api/resizeApi.php?id=1281762&size=128">
+    <title>小喇叭交流厅</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #d2d2d2;
+        }
+        .container{
+            width: 70%;
+            margin: 5vh auto 0;
+            box-shadow: #b9b9b9 0 0 6px 4px;
+            background-color: white;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+        }
+        .header{
+            text-align: right;
+            padding: 6px 0;
+        }
+        .body{
+            height: 85vh;
+            border-top: 1px solid #aaa;
+            /* background-color: burlywood; */
+            display: flex;
+            }
+        .person-list{
+            width: 15%;
+            border-right: 1px solid #aaa;
+            text-align: center;
+            /* background-color: red; */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .person-list-top {
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        .tperson-list-bottom {
+            height: 3%;
+        }
+
+        .main {
+            /* background-color: yellow; */
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .info{
+            height: 80%;
+            flex-grow: 1;
+            /* background-color: blue; */
+        }
+        .send{
+            border-top: 1px solid #aaa;
+            /* background-color: chartreuse; */
+            height: 20%;
+            display: flex;
+            flex-direction: column;
+        }
+        .msg{
+            resize: none;
+            flex-grow: 1;
+            border: none;
+            border-bottom: 1px  #aaa;
+        }
+        .msg:focus{
+            outline: none;
+        }
+        .send-bottom{
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5em;
+            align-items: center;
+            font-size: small;
+            color: #bdbdbb;
+            background-color: #fff;
+        }
+        .btn-send{  
+            padding: 0.2em 1em;
+            border-radius: 6px;
+            box-shadow: none;
+        }
+
+        li {list-style-type:none;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span id="nickname">Welcome【{{ request.session.nickname }}】进入小喇叭交流厅</span>
+            <span style="padding:0.5em" ><button onclick="logout()">注销</button></span>
+        </div>
+        <div class="body">
+            <div class="person-list">
+                <div class="person-list-top">
+                    <ul id="person">
+                        {% for a in person_list %}
+                            <li>{{ a }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="tperson-list-bottom">
+                    <ul>
+                        <hr>
+                        <li>在线人数： <span id="count"></span></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="main">
+                <div class="info"></div>
+                <div class="send">
+                    <textarea class="msg" placeholder="输入你的发言" onkeydown="sendShortCut(event)"></textarea>
+                    <div class="send-bottom">
+                        <span>Enter发送，ctrl+Enter换行</span>
+                        <button class="btn-send" onclick="sendBtn()">喷他</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    var ws
+    var ws_url='ws://127.0.0.1:8000/user/conn/'
+    var nickname='{{ request.session.nickname }}'
+    var count=document.getElementById("person").getElementsByTagName("li").length
+    window.onload=function () {
+        ws=new WebSocket(ws_url)
+        ws.onopen=function () {
+            console.log('connenct!')
+            var str=nickname+',加入聊天'
+            calc_count_person()
+            addMsg(str)
+            sendServerMsg(str)
+        }
+        ws.onmessage=function (e) {
+            var str=e.data
+            console.log(str)
+            var joinreg=RegExp(',加入聊天')
+            var leavereg=RegExp(',离开聊天')
+
+            if (str.match(joinreg)){
+                var person=str.substring(0,str.length-5)
+                addPerson(person)
+                //calc_count_person()
+                addMsg(str)
+
+            }else if(str.match(leavereg)){
+                var person=str.substring(0,str.length-5)
+                subPerson(person)
+                addMsg(str)
+            }else{
+                addMsg(str)
+            }
+
+        }
+        ws.onclose=function () {
+            console.log('disconnect')
+
+        }
+    }
+
+    function logout() {
+        var str=nickname+',离开聊天'
+        sendServerMsg(str)
+        window.location.href = '/logout/?nickname='+nickname;
+    }
+    function sendBtn() {
+        var input=document.getElementsByClassName('msg')[0];
+        var msg=input.value;
+        var str='【'+nickname+'】say:'+msg
+        result=addMsg(str)
+        if(result){
+            input.value=''
+            sendServerMsg(str)
+        }
+    }
+    function sendShortCut(event) {
+        if(event.keyCode==13){
+            var input=event.target
+            var msg=input.value
+            if(event.ctrlKey){
+                //ctrl+enter
+                input.value=msg+'\n'
+            }else{
+                //enter
+                event.preventDefault()
+                var str='【'+nickname+'】say:'+msg
+                result=addMsg(str)
+                if(result){
+                    input.value=''
+                    sendServerMsg(str)
+                }
+            }
+
+        }
+    }
+    function addMsg(text) {
+        var element=document.getElementsByClassName('info')[0];
+        var msg=document.createElement('p');
+        msg.innerText=text;
+        element.appendChild(msg)
+        return true
+    }
+
+    function sendServerMsg(text) {
+        ws.send(text)
+    }
+    function calc_count_person() {
+        var span=document.getElementById('count')
+        span.innerHTML=count
+    }
+    function addPerson(person) {
+        var ele=document.createElement('li')
+        ele.innerHTML=person
+        document.getElementById('person').appendChild(ele)
+        var span=document.getElementById('count')
+        var count=span.innerText
+        count=parseInt(count)+1
+        span.innerHTML=count
+
+    }
+    function subPerson(person) {
+        var list=document.getElementById("person").getElementsByTagName("li");
+        for(var i = 0; i < list.length; i++) {
+            var aa=list[i].innerText
+            if (aa==person){
+                list[i].remove()
+            }
+        }
+        //在线人数
+        var span=document.getElementById('count')
+        var count=span.innerText
+        count=parseInt(count)-1
+        span.innerHTML=count
+
+    }
+</script>
+</html>

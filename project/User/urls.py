@@ -6,6 +6,7 @@ app_name = 'User'
 
 urlpatterns = [
     url(r'^$', views.index, name="index"),
+    url(r'chatlogin/', views.chatlogin, name = "chatlogin"),
     url(r'codelogin/', views.code_login, name="codelogin"),
     url(r'^register/', views.user_register, name="register"),
     url(r'fail/', views.failed, name = 'fail'),
@@ -36,6 +37,11 @@ urlpatterns = [
     url(r'showImg/', views.showImg, name = "showImg"),
 
     url(r'reptile/', views.reptile, name = "reptile"),
+
+    url(r'chat/', views.chat, name = "chat"),
+
+    url(r'conn/', views.conn, name = "conn")
+
 
 
 ]

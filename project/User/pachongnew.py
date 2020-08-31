@@ -2,10 +2,10 @@
 import re
 import os
 import urllib
-import urllib2
+# import urllib2
 import shutil
 from PIL import Image
-from models import PcImgK
+from .models import PcImgK
 import random
 
 url = ('https://image.baidu.com/search/acjson?'
@@ -15,7 +15,10 @@ url = ('https://image.baidu.com/search/acjson?'
        'pn={pn}&rn=30&gsm=5a&1516945650575=')
 
 def getHtml(url):
-    page = urllib.urlopen(url)
+    #python2.7
+        # page = urllib.urlopen(url)
+    #python 3
+    page = urllib.request.urlopen(url)
     html = page.read()
     return html
 
@@ -24,10 +27,13 @@ def getImg(html):
     reg = '"thumbURL":"(.+?\.jpg)"'
     imgre = re.compile(reg)
 
-    print imgre
-    imglist = re.findall(imgre,html)
+    print (imgre)
+    #python 2
+    # imglist = re.findall(imgre,html)
+    #python3
+    imglist = re.findall(imgre, html.decode('utf-8'))
     l = len(imglist)
-    print l
+    print (l)
     return imglist
 
 def downLoad(urls,path):
@@ -49,7 +55,10 @@ def downLoad(urls,path):
 
         filename = os.path.join(path,str(index) +str(suijishu)+".jpg")
 
-        urllib.urlretrieve(url,filename)
+        #python2
+        # urllib.urlretrieve(url,filename)
+        #python3
+        urllib.request.urlretrieve(url, filename)
 
         img = Image.open(filename)
 
@@ -89,7 +98,7 @@ def geturls(num, online_word):
 
     # p1 = s1.encode("utf-8")
     import sys
-    print sys.stdin.encoding
+    print (sys.stdin.encoding)
 
 
     keke1 = online_word.encode('utf-8')
@@ -102,8 +111,10 @@ def geturls(num, online_word):
 
     # p1 = online_word
     #
-    word = urllib.quote(keke1)
-
+    #python2
+        # word = urllib.quote(keke1)
+    #python3
+    word = urllib.request.quote(keke1)
     # word = "%E6%9D%A8%E5%B9%82"
     urls = []
     pn = (num // 30 + 1) * 30
