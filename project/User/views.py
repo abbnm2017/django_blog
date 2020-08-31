@@ -7,12 +7,12 @@ from User.models import UserProfile,MessageBoard,LikeCount, LikeRecord,ImgK,PcIm
 from django.db.models import Q  # 导入F类
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-# from django.urls import reverse
-from django.core.urlresolvers import reverse
+from django.urls import reverse
+# from django.core.urlresolvers import reverse
 from django.contrib.auth.hashers import make_password, check_password
 # from . import forms
 
-from User.utils import util_sendmsg
+# from User.utils import util_sendmsg
 from .visit_info import change_info
 
 from django.contrib import messages
@@ -24,8 +24,13 @@ from django.contrib.contenttypes.models import ContentType
 
 from  django.core.exceptions import ObjectDoesNotExist
 
-import  pachongnew
 from django.views.decorators.cache import cache_page
+
+from .pachongnew import Run
+
+from django.views.decorators.csrf import csrf_exempt
+
+from dwebsocket.decorators import accept_websocket
 
 #RJ4587
 
@@ -375,13 +380,20 @@ def uploadImg(request):
         print("kekeke100022222:%s"%request.FILES.get('img').name)
 
         #
-        img_new_obj = request.FILES.get('img').replace()
+        # img_new_obj = request.FILES.get('img').replace()
 
+        # python2.7
+        # new_img = ImgK(
+        #     img = request.FILES.get('img').replace(".MOV","mp4"),
+        #     name = request.FILES.get('img').name.replace(".MOV","mp4"),
+        #
+        #     )
+        #python3
         new_img = ImgK(
-            img = request.FILES.get('img').replace(".MOV","mp4"),
-            name = request.FILES.get('img').name.replace(".MOV","mp4"),
+            img=request.FILES.get('img'),
+            name=request.FILES.get('img').name.replace(".MOV", "mp4"),
 
-            )
+        )
 
         new_img.save()
 
@@ -415,7 +427,7 @@ def showImg(request):
             new_img.append(imgobj)
 
     print ("kekeshow_pic1:%s,%s"%(new_img,new_img[0].name))
-    print ("kekeshow_pic2:%s,%s" % (new_video,new_video[0].name))
+    print ("kekeshow_pic2:%s,%s" % (new_video,new_video[0].name if len(new_video) > 0 else None))
     content = {
         'imgs':new_img,
         'videos':new_video,
@@ -442,8 +454,8 @@ def reptile(request):
             return redirect(reverse('User:reptile'))
         playername = lform.cleaned_data.get('playername')
         page_num = lform.cleaned_data.get('page_num')
-
-        pachongnew.Run(playername,page_num)
+        # imporongnew
+        Run(playername,page_num)
 
 
 
@@ -466,8 +478,49 @@ def reptile(request):
     return render(request,'user/pachong.html',content)
 
 
+person_list = []
 
+@csrf_exempt
+def chatlogin(request):
+    request.session.flush()
+    nickname = request.POST.get('nickname')
+    print("kekek~~~~~~~~~~`22")
+    if nickname in person_list:
+        person_list.append(nickname)
+        request.session['msg'] = 'CurName had exist!'
+        return redirect(reverse('User:chat'))
+    if nickname != None:
+        person_list.append(nickname)
+        request.session['nickname'] = nickname
 
+    return redirect(reverse('User:chat'))
 
+def chat(request):
+    nickname = request.session.get('nickname')
+    if nickname:
+        return render(request,'user/chat.html',{'person_list':person_list})
+    return render(request,'user/chatlogin.html')
 
+def logout(request):
+    nickname = request.GET.get('nickname')
+    flag = 0
+    for i in range(len(person_list)):
+        if person_list[i] == nickname:
+            print ('flag:', flag)
+            flag = i
+    person_list.pop(flag)
+    request.session.flush()
+    return redirect(reverse('User:chat'))
 
+allconn = []
+
+@accept_websocket
+def conn(request):
+    print ("kekemememe33333")
+    global allconn
+    if request.is_websocket():
+        allconn.append(request.websocket)
+        for message in request.websocket:
+            for i in allconn:
+                if i!=request.websocket:
+                    i.send(message)

@@ -1,13 +1,13 @@
-{% load staticfiles %}
+{% load static %}
 <!DOCTYPE html>
 <!-- saved from url=(0019)http://gl.0507.org/ -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta charset="UTF-8">
-	<title>3D CG 照片</title>
+	<title>3D CG ???</title>
 <style type="text/css" herf="{% static 'css/3dstyle.css' %}"></style>
 <script type="text/javascript">
 
-/*rotateX/rotateY/rotateZ可以帮助理解三维坐标，则translateZ则可以帮你理解透视位置(translateZ的功能就是让元素在自己的眼前或近或远)*/
+/*rotateX/rotateY/rotateZ???????????????????translateZ??????????????锟斤拷??(translateZ?????????????????????????????)*/
 
 	window.onload=function(){
 		var oUl=document.getElementById("ul1");
@@ -16,13 +16,13 @@
         var deg=360/aLi.length;
 
 		for(var i=0;i<aLi.length;i++){
-			aLi[i].style.transition='all 0.5s '+((aLi.length-1-i)*0.2)+'s';					//每张图片缩放的时间
+			aLi[i].style.transition='all 0.5s '+((aLi.length-1-i)*0.2)+'s';					//?????????????
 
 			aLi[i].style.WebkitTransform='rotateY('+deg*i+'deg) translateZ(450px)';
 			aLi[i].style.MozTransform='rotateY('+deg*i+'deg) translateZ(450px)';
 		}
 		
-		//禁止拖动照片
+		//?????????
        document.onselectstart=function(){
      	    return false;
      }   
@@ -64,21 +64,21 @@
              disY_=ev.clientY;
          }
    
-		//实现鼠标按着滑动后，松开鼠标，画面继续跟进 差值 进行滑动
+		//?????????????????????????????? ??? ???锟斤拷???
         document.onmouseup=function(){
 	             document.onmousemove=null;
 
 	             timer=setInterval(function(){
                        xN=xN*0.99;
                        yN=yN*0.99;
-                      if(Math.abs(xN)<=0.5 && Math.abs(yN)<=0.5){		//决定滑动的周期，如果乘以 1.0，则一直滑动下去不停止
+                      if(Math.abs(xN)<=0.5 && Math.abs(yN)<=0.5){		//?????????????????????? 1.0?????????????????
                       	clearInterval(timer);
                       }
                      roY+=xN*0.5;
                      roX-=yN*0.5; 
 
 
-                     oUl.style.WebkitTransform='perspective(800px) rotateX('+roX+'deg) rotateY('+roY+'deg)';		//360 浏览器适用这个
+                     oUl.style.WebkitTransform='perspective(800px) rotateX('+roX+'deg) rotateY('+roY+'deg)';		//360 ????????????
                      //oUl.style.MozTransform='perspective(800px) rotateX('+roX+'deg) rotateY('+roY+'deg)';
 	             },30)
          }
@@ -86,7 +86,7 @@
 
     }
 
-	//取消鼠标右键
+	//?????????
    document.oncontextmenu=function(){
    	   return false
    }
