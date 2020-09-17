@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gb2312">
+    <title>学生班级</title>
+</head>
+
+<!--{% if messages %}-->
+  <!--<script>-->
+    <!--{% for msg in messages %}-->
+        <!--alert('{{msg.message}}')-->
+    <!--{% endfor %}-->
+  <!--</script>-->
+<!--{% endif %}-->
+
+
+<body>
+    <div>
+        <a href="{% url 'User:addstudent' %}">添加</a>
+    </div>
+    <table>
+        <tr>
+            <td>序号</td>
+            <td>设计者名字</td>
+            <td>时间</td>
+            <td>内容</td>
+            <td>操作</td>
+        </tr>
+
+        {% for item in message_result %}
+            <tr>
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.date}}</td>
+            <td>{{item.content}}</td>
+            <td><a href="/user/edit_student/?nid={{item.id}}">编辑</a></td>
+            <td><a href="/user/del_student/?nid={{item.id}}">删除</a></td>
+
+            </tr>
+        {% endfor %}
+
+
+    </table>
+
+</body>
+</html>

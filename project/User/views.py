@@ -32,6 +32,8 @@ from django.views.decorators.csrf import csrf_exempt
 
 from dwebsocket.decorators import accept_websocket
 
+import utils.sqlhelper as sqlhelper
+
 #RJ4587
 
 def index(request):
@@ -335,7 +337,6 @@ def like_change(request):
     #处理数据
     if is_like == 'true':
         #要点赞
-        print ("keke:tttttttttttttttttttttt")
         like_record, created = LikeRecord.objects.get_or_create(content_type=content_type,object_id=object_id)
         
         if created:
@@ -351,7 +352,6 @@ def like_change(request):
 
     else:
         #要取消点赞
-        print ("keke:ffffffffffffffffffffff")
         if LikeRecord.objects.filter(content_type=content_type,object_id=object_id,user=user).exists():
             #有点赞过取消点赞
             like_record = LikeRecord.objects.get(content_type=content_type,object_id=object_id,user=user)
@@ -407,7 +407,6 @@ def uploadImg(request):
 
 def showImg(request):
     imgs = ImgK.objects.all()
-    print("wangkeke:%s"%imgs)
     if len(imgs) > 0:
         print ("keke111:%s"%imgs)
         print ("keke222:%s"%imgs[0])
@@ -426,8 +425,6 @@ def showImg(request):
         else:
             new_img.append(imgobj)
 
-    print ("kekeshow_pic1:%s,%s"%(new_img,new_img[0].name))
-    print ("kekeshow_pic2:%s,%s" % (new_video,new_video[0].name if len(new_video) > 0 else None))
     content = {
         'imgs':new_img,
         'videos':new_video,
@@ -484,7 +481,7 @@ person_list = []
 def chatlogin(request):
     request.session.flush()
     nickname = request.POST.get('nickname')
-    print("kekek~~~~~~~~~~`22")
+
     if nickname in person_list:
         person_list.append(nickname)
         request.session['msg'] = 'CurName had exist!'
@@ -524,3 +521,95 @@ def conn(request):
             for i in allconn:
                 if i!=request.websocket:
                     i.send(message)
+
+
+def classes(request):
+
+    print ("keke_classes:%s"%request)
+    print("keke_classes:%s" % request.method)
+
+    #eg: sql="insert into cdinfo values(%s,%s,%s,%s,%s)"
+
+
+    sql = "select * from user_messageboard"
+    result = sqlhelper.get_list(sql,())
+
+
+    # print ("cur_state:%s"%result)
+
+
+    return render(request,"user/class.html",{"message_result":result})
+
+
+def addstudent(request):
+
+    print ("###########",request)
+
+    if request.method == "GET":
+        now_time = sqlhelper.get_now_time()
+        print ("kpl_cur_time:%s"%now_time)
+
+        return render(request, "user/addstudent.html")
+
+
+    else:
+
+        name = request.POST.get("name1")
+        content = request.POST.get("name2")
+
+        sql = "select * from user_messageboard"
+        result = sqlhelper.get_list(sql, ())
+
+
+        print ("1007777:%s"% request.POST.get("name1"))
+        print("1007777:%s" % request.POST.get("name2"))
+
+        # sql = "insert into user_messageboard(name,date,content) value (%s,%s,%s,%s)"
+        # result = sqlhelper.modify(sql, (len(result) + 1, name, "2020.9.16",content))
+
+        cur_data_time = sqlhelper.get_now_time()
+
+        sql = "insert into user_messageboard(name,date,content) values (%s,%s,%s)"
+        # args = [name, "2020.9.17", content]
+        args = [name, cur_data_time, content]
+        sqlhelper.modify(sql, args)
+
+
+        return redirect(reverse('User:classes'))
+
+
+def edit_student(request):
+    if request.method == "GET":
+        cur_id = request.GET.get("nid")
+        print ("keke_cur_id:%s"%cur_id)
+        #查询数据库
+
+        sql = "select id,name, content from user_messageboard where id= %s"
+        args = [cur_id]
+
+        result_list = sqlhelper.get_one_list(sql,args)
+
+        print ("keke:getsql",result_list)
+
+        return render(request, 'user/editstudent.html',{"result_list":result_list})
+    else:
+        cur_id = request.GET.get("pid")
+        name = request.POST.get("name1")
+        content = request.POST.get("name2")
+
+        print("keke_提交表单:%s" % cur_id)
+        sql = "update user_messageboard set name = %s,content = %s where id = %s"
+        args = [name,content,cur_id]
+        sqlhelper.modify(sql,args)
+        return redirect(reverse('User:classes'))
+
+
+def del_student(request):
+    cur_id = request.GET.get("nid")
+    print ("keke删除这个数据:%s"%cur_id)
+    sql = "delete from user_messageboard where id = %s"
+    args = [cur_id,]
+    sqlhelper.modify(sql, args)
+    # messages.info(request, '删除成功')
+    return redirect(reverse('User:classes'))
+

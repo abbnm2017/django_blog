@@ -40,7 +40,15 @@ urlpatterns = [
 
     url(r'chat/', views.chat, name = "chat"),
 
-    url(r'conn/', views.conn, name = "conn")
+    url(r'conn/', views.conn, name = "conn"),
+
+    url(r'classes/',views.classes, name = 'classes'),
+
+    url(r'addstudent/',views.addstudent, name = 'addstudent'),
+
+    url(r'edit_student/',views.edit_student, name = 'edit_student'),
+
+    url(r'del_student/',views.del_student, name = 'edit_student'),
 
 
 
