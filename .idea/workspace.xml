@@ -100,8 +100,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/project/User/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="539" lean-forward="true" selection-start-line="539" selection-end-line="539" />
+            <state relative-caret-position="433">
+              <caret line="614" lean-forward="true" selection-start-line="614" selection-end-line="614" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
               </folding>
@@ -174,7 +174,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>excerpt header h2 a</find>
       <find>d9534f</find>
       <find>excerpt header</find>
       <find>excerpt h2</find>
@@ -204,6 +203,7 @@
       <find>messages</find>
       <find>del_student</find>
       <find>msg</find>
+      <find>user_messageboard</find>
     </findStrings>
     <dirStrings>
       <dir>F:\8990\django_blog\project</dir>
@@ -251,8 +251,8 @@
         <option value="$PROJECT_DIR$/project/utils/sqlhelper.py" />
         <option value="$PROJECT_DIR$/project/templates/user/editstudent.html" />
         <option value="$PROJECT_DIR$/project/User/urls.py" />
-        <option value="$PROJECT_DIR$/project/User/views.py" />
         <option value="$PROJECT_DIR$/project/templates/user/class.html" />
+        <option value="$PROJECT_DIR$/project/User/views.py" />
       </list>
     </option>
   </component>
@@ -425,12 +425,12 @@
       <workItem from="1578710349730" duration="12048000" />
       <workItem from="1578986552837" duration="8056000" />
       <workItem from="1579490410751" duration="692000" />
-      <workItem from="1599876325379" duration="41953000" />
+      <workItem from="1599876325379" duration="45045000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="265742000" />
+    <option name="totallyTimeSpent" value="268834000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -443,11 +443,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" sideWeight="0.500684" side_tool="true" weight="0.20234114" />
       <window_info id="Favorites" order="1" side_tool="true" weight="0.32943144" />
-      <window_info active="true" content_ui="combo" x="749" y="333" width="242" height="491" id="Project" order="2" sideWeight="0.499316" visible="true" weight="0.19070904" />
+      <window_info content_ui="combo" x="749" y="333" width="242" height="491" id="Project" order="2" sideWeight="0.499316" visible="true" weight="0.19070904" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.4098544" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32931727" />
@@ -459,7 +458,7 @@
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32922733" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49938875" visible="true" weight="0.3449048" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49938875" visible="true" weight="0.3449048" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50061125" side_tool="true" weight="0.3449048" />
       <window_info anchor="bottom" id="Python Console" order="13" weight="0.16107382" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -880,8 +879,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/project/User/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="539" lean-forward="true" selection-start-line="539" selection-end-line="539" />
+        <state relative-caret-position="433">
+          <caret line="614" lean-forward="true" selection-start-line="614" selection-end-line="614" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
           </folding>

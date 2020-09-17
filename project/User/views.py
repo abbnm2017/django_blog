@@ -531,7 +531,7 @@ def classes(request):
     #eg: sql="insert into cdinfo values(%s,%s,%s,%s,%s)"
 
 
-    sql = "select * from user_messageboard"
+    sql = "select * from User_messageboard"
     result = sqlhelper.get_list(sql,())
 
 
@@ -557,19 +557,19 @@ def addstudent(request):
         name = request.POST.get("name1")
         content = request.POST.get("name2")
 
-        sql = "select * from user_messageboard"
+        sql = "select * from User_messageboard"
         result = sqlhelper.get_list(sql, ())
 
 
         print ("1007777:%s"% request.POST.get("name1"))
         print("1007777:%s" % request.POST.get("name2"))
 
-        # sql = "insert into user_messageboard(name,date,content) value (%s,%s,%s,%s)"
+        # sql = "insert into User_messageboard(name,date,content) value (%s,%s,%s,%s)"
         # result = sqlhelper.modify(sql, (len(result) + 1, name, "2020.9.16",content))
 
         cur_data_time = sqlhelper.get_now_time()
 
-        sql = "insert into user_messageboard(name,date,content) values (%s,%s,%s)"
+        sql = "insert into User_messageboard(name,date,content) values (%s,%s,%s)"
         # args = [name, "2020.9.17", content]
         args = [name, cur_data_time, content]
         sqlhelper.modify(sql, args)
@@ -584,7 +584,7 @@ def edit_student(request):
         print ("keke_cur_id:%s"%cur_id)
         #查询数据库
 
-        sql = "select id,name, content from user_messageboard where id= %s"
+        sql = "select id,name, content from User_messageboard where id= %s"
         args = [cur_id]
 
         result_list = sqlhelper.get_one_list(sql,args)
@@ -598,7 +598,7 @@ def edit_student(request):
         content = request.POST.get("name2")
 
         print("keke_提交表单:%s" % cur_id)
-        sql = "update user_messageboard set name = %s,content = %s where id = %s"
+        sql = "update User_messageboard set name = %s,content = %s where id = %s"
         args = [name,content,cur_id]
         sqlhelper.modify(sql,args)
         return redirect(reverse('User:classes'))
@@ -607,7 +607,7 @@ def edit_student(request):
 def del_student(request):
     cur_id = request.GET.get("nid")
     print ("keke删除这个数据:%s"%cur_id)
-    sql = "delete from user_messageboard where id = %s"
+    sql = "delete from User_messageboard where id = %s"
     args = [cur_id,]
     sqlhelper.modify(sql, args)
     # messages.info(request, '删除成功')
