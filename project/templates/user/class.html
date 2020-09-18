@@ -3,6 +3,36 @@
 <head>
     <meta charset="gb2312">
     <title>学生班级</title>
+
+    <style>
+        .hide{
+            display:none;
+        }
+        .shadow{
+            position: fixed;
+            left:0;
+            top:0;
+            right:0;
+            bottom:0;
+            background-color: black;
+            opacity: 0.4;
+            z-index: 999;
+            /*z-index: 999;  值越大层级越高，越能看到*/
+        }
+        .modal{
+            z-index: 1000;
+            position: fixed;
+            left:50%;
+            top: 50%;
+            height:300px;
+            width:400px;
+            background-color:white;
+            margin-left: -200px;
+            margin-top: -150px;
+
+        }
+    </style>
+
 </head>
 
 <!--{% if messages %}-->
@@ -17,6 +47,7 @@
 <body>
     <div>
         <a href="{% url 'User:addstudent' %}">添加</a>
+        <a onclick="showModal();">对话框添加</a>
     </div>
     <table>
         <tr>
@@ -39,8 +70,28 @@
             </tr>
         {% endfor %}
 
-
     </table>
+
+    <div id ="shadow" class="shadow hide"></div>
+    <!--遮罩层-->
+    <div id ="modal" class="modal hide">
+        <!--modal层-->
+        <form method="POST" action="/user/modal_addstudent/">
+            <p>
+                <input type="text" name="title"/>
+            </p>
+            <p>
+                <input type="text" name="title2"/>
+            </p>
+            <input type="submit" value="提交"/>
+        </form>
+    </div>
+
+    <script>
+        function showModal() {
+            
+        }
+    </script>
 
 </body>
 </html>

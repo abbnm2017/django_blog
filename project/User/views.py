@@ -613,3 +613,20 @@ def del_student(request):
     # messages.info(request, '删除成功')
     return redirect(reverse('User:classes'))
 
+
+def modal_addstudent(request):
+    dy_sname = request.POST.get("title")
+    dy_content = request.POST.get("title2")
+
+    print ("keke添加学生弹出框:%s,%s"%(dy_sname,dy_content))
+    cur_data_time = sqlhelper.get_now_time()
+
+    sql = "insert into User_messageboard (name, date,content) values(%s,%s,%s)"
+
+    args = (dy_sname,cur_data_time,dy_content)
+
+    sqlhelper.modify(sql,args)
+
+    return redirect(reverse('User:classes'))
+
+
