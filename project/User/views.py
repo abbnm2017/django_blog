@@ -618,14 +618,34 @@ def modal_addstudent(request):
     dy_sname = request.POST.get("title")
     dy_content = request.POST.get("title2")
 
+    get_cur_title = request.POST.get("title")
+
     print ("keke添加学生弹出框:%s,%s"%(dy_sname,dy_content))
-    cur_data_time = sqlhelper.get_now_time()
 
-    sql = "insert into User_messageboard (name, date,content) values(%s,%s,%s)"
+    # print("keke添加学生弹出框:%s" % (get_cur_title))
 
-    args = (dy_sname,cur_data_time,dy_content)
+    if len(dy_sname) > 0 and len(dy_content) > 0:
+        cur_data_time = sqlhelper.get_now_time()
+        sql = "insert into User_messageboard (name, date,content) values(%s,%s,%s)"
+        args = (dy_sname,cur_data_time,dy_content)
+        sqlhelper.modify(sql,args)
+        return HttpResponse("ok")
+    else:
+        return HttpResponse("not ok")
 
-    sqlhelper.modify(sql,args)
+
+
+    # cur_data_time = sqlhelper.get_now_time()
+    #
+    # sql = "insert into User_messageboard (name, date,content) values(%s,%s,%s)"
+    #
+    # args = (dy_sname,cur_data_time,dy_content)
+    #
+    # sqlhelper.modify(sql,args)
+    # import time
+    # time.sleep(5)
+
+    return HttpResponse("aopang")
 
     return redirect(reverse('User:classes'))
 

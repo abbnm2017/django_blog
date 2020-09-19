@@ -75,22 +75,64 @@
     <div id ="shadow" class="shadow hide"></div>
     <!--遮罩层-->
     <div id ="modal" class="modal hide">
+        <!--form会刷新，ajax不会刷新-->
         <!--modal层-->
-        <form method="POST" action="/user/modal_addstudent/">
-            <p>
-                <input type="text" name="title"/>
-            </p>
-            <p>
-                <input type="text" name="title2"/>
-            </p>
-            <input type="submit" value="提交"/>
-        </form>
+        <!--用表单提交没法使用模态对话框-->
+        <!--<form method="POST" action="/user/modal_addstudent/">-->
+            <!--<p>-->
+                <!--<input type="text" name="title"/>-->
+            <!--</p>-->
+            <!--<p>-->
+                <!--<input type="text" name="title2"/>-->
+            <!--</p>-->
+            <!--<input type="submit" value="提交"/>-->
+        <!--</form>-->
+
+        <p>
+            <input id="title" type="text" name="title"/>
+        </p>
+        <p>
+            <input id="title2" type="text" name="title2"/>
+        </p>
+        <input type="button" value="提交" onclick="AjaxSend();"/>
+
     </div>
+
+    <script src="/static/js/jquery-1.11.0.min.js"></script>
 
     <script>
         function showModal() {
-            
+            document.getElementById("shadow").classList.remove("hide")
+            document.getElementById("modal").classList.remove("hide")
         }
+
+        // ajax偷偷的发
+
+        function  AjaxSend() {
+            $.ajax({
+                url:'/user/modal_addstudent/',
+                type:"POST",
+                data:{'title':$('#title').val(),'title2':$('#title2').val()},
+
+                // 等到服务端处理完了， 返回数据，success自动调用
+                // data=服务端返回的值
+                success:function(data){
+                    console.log(data)
+                    if (data == "ok"){
+                        alert("添加成功")
+                    }
+                    else{
+                        alert("添加失败")
+                    }
+
+
+                }
+
+
+            })
+
+        }
+
     </script>
 
 </body>
