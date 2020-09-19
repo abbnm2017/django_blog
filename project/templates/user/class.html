@@ -94,7 +94,8 @@
         <p>
             <input id="title2" type="text" name="title2"/>
         </p>
-        <input type="button" value="提交" onclick="AjaxSend();"/>
+        <input type="button" value="提交" onclick="AjaxSend();"/> <span id="errormsg"></span>
+        <input type="button" value="取消" onclick="cancleModal();"/>
 
     </div>
 
@@ -107,7 +108,13 @@
         }
 
         // ajax偷偷的发
+        function cancleModal(){
+            document.getElementById("shadow").classList.add("hide")
+            document.getElementById("modal").classList.add("hide")
+        }
 
+
+        //
         function  AjaxSend() {
             $.ajax({
                 url:'/user/modal_addstudent/',
@@ -119,10 +126,13 @@
                 success:function(data){
                     console.log(data)
                     if (data == "ok"){
-                        alert("添加成功")
+                        // alert("添加成功")
+                        location.href = 'user/classes'
                     }
                     else{
-                        alert("添加失败")
+                        // alert("添加失败")
+
+                        $('#errormsg').text(data);
                     }
 
 

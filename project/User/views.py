@@ -631,7 +631,12 @@ def modal_addstudent(request):
         sqlhelper.modify(sql,args)
         return HttpResponse("ok")
     else:
-        return HttpResponse("not ok")
+        return HttpResponse("班级标题不能为空")
+
+
+    #如果是用post的表单 提交的话， 则可以 使用redirect
+
+    #如果是ajax的话，只能是返回的字符串 只能是用js写
 
 
 
