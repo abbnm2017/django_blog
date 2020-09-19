@@ -31,6 +31,19 @@
             margin-top: -150px;
 
         }
+        .deletecon{
+            z-index: 1000;
+            position: fixed;
+            left:50%;
+            top: 50%;
+            height:300px;
+            width:400px;
+            background-color:white;
+            margin-left: -200px;
+            margin-top: -150px;
+
+        }
+
     </style>
 
 </head>
@@ -64,8 +77,14 @@
             <td>{{item.name}}</td>
             <td>{{item.date}}</td>
             <td>{{item.content}}</td>
+            <td><a onclick="showEdit();">对话框编辑</a><td>
+            <td><a onclick="showDelete();">对话框删除</a><td>
             <td><a href="/user/edit_student/?nid={{item.id}}">编辑</a></td>
             <td><a href="/user/del_student/?nid={{item.id}}">删除</a></td>
+
+            <input type="text" id="cunjie" class="cunjie hide" value="{{item.id}}"/>
+
+
 
             </tr>
         {% endfor %}
@@ -87,7 +106,6 @@
             <!--</p>-->
             <!--<input type="submit" value="提交"/>-->
         <!--</form>-->
-
         <p>
             <input id="title" type="text" name="title"/>
         </p>
@@ -98,6 +116,18 @@
         <input type="button" value="取消" onclick="cancleModal();"/>
 
     </div>
+
+    <!--删除层级-->
+    <div id ="deletecon" class="deletecon hide">
+        <p>你是否要删除这条内容？</p>
+        <input type="button" value="删除" onclick="AjaxDelete();"/>
+        <input type="button" value="取消" onclick="cancleDelete();"/>
+
+    </div>
+
+
+    <!--删除层级-->
+
 
     <script src="/static/js/jquery-1.11.0.min.js"></script>
 
@@ -113,8 +143,27 @@
             document.getElementById("modal").classList.add("hide")
         }
 
+       function showDelete() {
+            document.getElementById("shadow").classList.remove("hide")
+            document.getElementById("deletecon").classList.remove("hide")
+       }
 
-        //
+       function cancleDelete() {
+            document.getElementById("shadow").classList.add("hide")
+            document.getElementById("deletecon").classList.add("hide")
+       }
+
+       function AjaxDelete() {
+           $.ajax({
+               url:"/user/del_student/",
+               type:"POST",
+               data:{'tgp':$('#cunjie').val()},
+           })
+       }
+
+
+
+        //js 实现页面跳转： location.href = "www.baidu.com"
         function  AjaxSend() {
             $.ajax({
                 url:'/user/modal_addstudent/',
@@ -137,7 +186,6 @@
 
 
                 }
-
 
             })
 

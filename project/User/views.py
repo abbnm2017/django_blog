@@ -607,6 +607,11 @@ def edit_student(request):
 def del_student(request):
     cur_id = request.GET.get("nid")
     print ("keke删除这个数据:%s"%cur_id)
+
+    cur_id2 = request.POST.get("tgp")
+    print ("keke:ajax:传过来的:%s"%cur_id2)
+
+
     sql = "delete from User_messageboard where id = %s"
     args = [cur_id,]
     sqlhelper.modify(sql, args)
@@ -653,5 +658,7 @@ def modal_addstudent(request):
     return HttpResponse("aopang")
 
     return redirect(reverse('User:classes'))
+
+# 让网站好看起来，---------Bootstrap   fontawesome
 
 
