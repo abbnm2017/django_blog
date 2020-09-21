@@ -43,6 +43,18 @@
             margin-top: -150px;
 
         }
+        .editcon{
+            z-index: 1000;
+            position: fixed;
+            left:50%;
+            top: 50%;
+            height:300px;
+            width:400px;
+            background-color:white;
+            margin-left: -200px;
+            margin-top: -150px;
+
+        }
 
     </style>
 
@@ -123,10 +135,11 @@
     <div id ="editcon" class="editcon hide">
         <h3>编辑框</h3>
 
-        <input type="text" id = "temp_edit_id" name="temp_del" />
-        <input type="text" id = "temp_edit_title" name="temp_del" />
-        <input type="button" value="删除" onclick="AjaxDelete();"/>
-        <input type="button" value="取消" onclick="cancleDelete();"/>
+        <input type="text" id = "temp_edit_id" name="temp_del"  style="display: none"/>
+        <input type="text" id = "temp_edit_name" name="temp_edit_name" />
+        <input type="text" id = "temp_edit_content" name="temp_edit_content" />
+        <input type="button" value="确定" onclick="AjaxEdit();"/>
+        <input type="button" value="取消" onclick="cancleEdit();"/>
 
     </div>
 
@@ -149,12 +162,25 @@
 
     <script>
 
-        function showEdit() {
+        function showEdit(ths) {
             document.getElementById("shadow").classList.remove("hide")
             document.getElementById("editcon").classList.remove("hide")
+            var v = $(ths).parent().prevAll();
+            var cur_id = $(v[3]).text()
+            var cur_content = $(v[0]).text()
+            var cur_name = $(v[2]).text()
+            console.log(cur_id,cur_content)
+
+            $('#temp_edit_name').val(cur_name)
+            $('#temp_edit_content').val(cur_content)
+            $('#temp_edit_id').val(cur_id)
 
         }
 
+        function cancleEdit() {
+             document.getElementById("shadow").classList.add("hide")
+             document.getElementById("editcon").classList.add("hide")
+        }
 
 
         function showModal() {
@@ -191,6 +217,20 @@
             document.getElementById("shadow").classList.add("hide")
             document.getElementById("deletecon").classList.add("hide")
        }
+
+        function AjaxEdit() {
+            $.ajax({
+                url:"/user/modal_addstudent2/",
+                type:"POST",
+                data:{"name":$("#temp_edit_name").val(),"cur_id":$("#temp_edit_id").val(), "content":$("#temp_edit_content").val()},
+                success:function (data) {
+                    if (data == "ok"){
+                        // alert("编辑成功");
+                        location.reload()
+                    }
+                }
+            })
+        }
 
        function AjaxDelete() {
            $.ajax({

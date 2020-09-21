@@ -653,12 +653,9 @@ def modal_addstudent(request):
     else:
         return HttpResponse("班级标题不能为空")
 
-
     #如果是用post的表单 提交的话， 则可以 使用redirect
 
     #如果是ajax的话，只能是返回的字符串 只能是用js写
-
-
 
     # cur_data_time = sqlhelper.get_now_time()
     #
@@ -675,5 +672,23 @@ def modal_addstudent(request):
     return redirect(reverse('User:classes'))
 
 # 让网站好看起来，---------Bootstrap   fontawesome
+#模态编辑框
+def modal_addstudent2(request):
+
+    dy_sname = request.POST.get("name")
+    dy_id = request.POST.get("cur_id")
+
+    dy_content = request.POST.get("content")
+
+    print ("keke添加学生弹出框222:%s,%s"%(dy_sname,dy_content))
+
+    if len(dy_sname) > 0 and len(dy_content) > 0:
+        cur_data_time = sqlhelper.get_now_time()
+        sql = "update User_messageboard set name= %s,content = %s  where id=%s"
+        args = (dy_sname,dy_content,dy_id)
+        sqlhelper.modify(sql,args)
+        return HttpResponse("ok")
+    else:
+        return HttpResponse("班级标题不能为空")
 
 
