@@ -77,14 +77,15 @@
             <td>{{item.name}}</td>
             <td>{{item.date}}</td>
             <td>{{item.content}}</td>
-            <td><a onclick="showEdit();">对话框编辑</a><td>
-            <td><a onclick="showDelete();">对话框删除</a><td>
-            <td><a href="/user/edit_student/?nid={{item.id}}">编辑</a></td>
-            <td><a href="/user/del_student/?nid={{item.id}}">删除</a></td>
-
-            <input type="text" id="cunjie" class="cunjie hide" value="{{item.id}}"/>
-
-
+            <td>
+                <a onclick="showEdit(this);">对话框编辑</a>
+                |
+                <a onclick="showDelete(this);">对话框删除</a>
+                |
+                <a href="/user/edit_student/?nid={{item.id}}">编辑</a>
+                |
+                <a href="/user/del_student/?nid={{item.id}}">删除</a>
+            </td>
 
             </tr>
         {% endfor %}
@@ -117,14 +118,29 @@
 
     </div>
 
-    <!--删除层级-->
-    <div id ="deletecon" class="deletecon hide">
-        <p>你是否要删除这条内容？</p>
+
+     <!--编辑对话框层级-->
+    <div id ="editcon" class="editcon hide">
+        <h3>编辑框</h3>
+
+        <input type="text" id = "temp_edit_id" name="temp_del" />
+        <input type="text" id = "temp_edit_title" name="temp_del" />
         <input type="button" value="删除" onclick="AjaxDelete();"/>
         <input type="button" value="取消" onclick="cancleDelete();"/>
 
     </div>
 
+    <!--编辑对话框层级-->
+
+
+    <!--删除层级-->
+    <div id ="deletecon" class="deletecon hide">
+        <p>你是否要删除这条内容？</p>
+        <input type="text" id = "temp_del" name="temp_del" style="display: none"/>
+        <input type="button" value="删除" onclick="AjaxDelete();"/>
+        <input type="button" value="取消" onclick="cancleDelete();"/>
+
+    </div>
 
     <!--删除层级-->
 
@@ -132,6 +148,15 @@
     <script src="/static/js/jquery-1.11.0.min.js"></script>
 
     <script>
+
+        function showEdit() {
+            document.getElementById("shadow").classList.remove("hide")
+            document.getElementById("editcon").classList.remove("hide")
+
+        }
+
+
+
         function showModal() {
             document.getElementById("shadow").classList.remove("hide")
             document.getElementById("modal").classList.remove("hide")
@@ -143,9 +168,23 @@
             document.getElementById("modal").classList.add("hide")
         }
 
-       function showDelete() {
-            document.getElementById("shadow").classList.remove("hide")
-            document.getElementById("deletecon").classList.remove("hide")
+       function showDelete(ths) {
+            document.getElementById("shadow").classList.remove("hide");
+            document.getElementById("deletecon").classList.remove("hide");
+
+           //  console.log(ths);
+           //
+           // console.log($(ths));
+           //
+           // console.log($(ths).parent());
+            v = $(ths).parent().prevAll();
+            console.log(v)
+
+            var cur_id = $(v[3]).text()
+            console.log(cur_id)
+            $('#temp_del').val(cur_id)
+
+
        }
 
        function cancleDelete() {
@@ -155,12 +194,19 @@
 
        function AjaxDelete() {
            $.ajax({
-               url:"/user/del_student/",
+               url:"/user/del_student2/",
                type:"POST",
-               data:{'tgp':$('#cunjie').val()},
-           })
-       }
+               data:{'tgp':$('#temp_del').val()},
 
+               success:function (data) {
+                   if (data == "ok"){
+                       location.reload()
+                   }
+               }
+
+           })
+
+       }
 
 
         //js 实现页面跳转： location.href = "www.baidu.com"

@@ -51,6 +51,9 @@ urlpatterns = [
 
     url(r'del_student/',views.del_student, name = 'del_student'),
 
+    url(r'del_student2/',views.del_student2, name = 'del_student2'),
+
+
 
 
 ]

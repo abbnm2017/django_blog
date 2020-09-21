@@ -618,6 +618,21 @@ def del_student(request):
     # messages.info(request, '删除成功')
     return redirect(reverse('User:classes'))
 
+#模态删除。。。。
+def del_student2(request):
+    cur_id = request.GET.get("nid")
+    print ("keke删除这个数据:%s"%cur_id)
+
+    cur_id2 = request.POST.get("tgp")
+    print ("keke:ajax:传过来的:%s"%cur_id2)
+
+
+    sql = "delete from User_messageboard where id = %s"
+    args = [cur_id2,]
+    sqlhelper.modify(sql, args)
+    # messages.info(request, '删除成功')
+    return HttpResponse("ok")
+
 
 def modal_addstudent(request):
     dy_sname = request.POST.get("title")
