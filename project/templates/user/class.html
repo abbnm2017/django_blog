@@ -224,9 +224,19 @@
                 type:"POST",
                 data:{"name":$("#temp_edit_name").val(),"cur_id":$("#temp_edit_id").val(), "content":$("#temp_edit_content").val()},
                 success:function (data) {
-                    if (data == "ok"){
+                    console.log(data)
+                    //JSON.parse(字符串) ==》对象
+                    //JSON.stringify(对象) ==》字符串
+
+                    transobj = JSON.parse(data)
+                    console.log(transobj)
+
+                    if (transobj.status){
                         // alert("编辑成功");
                         location.reload()
+                    }
+                    else{
+                        alert(arg.message)
                     }
                 }
             })

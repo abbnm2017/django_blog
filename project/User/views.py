@@ -34,6 +34,8 @@ from dwebsocket.decorators import accept_websocket
 
 import utils.sqlhelper as sqlhelper
 
+import simplejson as json
+
 #RJ4587
 
 def index(request):
@@ -674,21 +676,36 @@ def modal_addstudent(request):
 # 让网站好看起来，---------Bootstrap   fontawesome
 #模态编辑框
 def modal_addstudent2(request):
+    # 一个对象转化成字符串   序列化
+    # 字符串转化成对象      反序列化
 
-    dy_sname = request.POST.get("name")
-    dy_id = request.POST.get("cur_id")
+    ret = {"status":True,"message":None}
 
-    dy_content = request.POST.get("content")
+    try:
 
-    print ("keke添加学生弹出框222:%s,%s"%(dy_sname,dy_content))
+        dy_sname = request.POST.get("name")
+        dy_id = request.POST.get("cur_id")
 
-    if len(dy_sname) > 0 and len(dy_content) > 0:
-        cur_data_time = sqlhelper.get_now_time()
-        sql = "update User_messageboard set name= %s,content = %s  where id=%s"
-        args = (dy_sname,dy_content,dy_id)
-        sqlhelper.modify(sql,args)
-        return HttpResponse("ok")
-    else:
-        return HttpResponse("班级标题不能为空")
+        dy_content = request.POST.get("content")
+
+        print ("keke添加学生弹出框222:%s,%s"%(dy_sname,dy_content))
+
+        if len(dy_sname) > 0 and len(dy_content) > 0:
+            cur_data_time = sqlhelper.get_now_time()
+            sql = "update User_messageboard set name= %s,content = %s  where id=%s"
+            args = (dy_sname,dy_content,dy_id)
+            sqlhelper.modify(sql,args)
+
+    except Exception as e:
+        ret['status'] = False
+        ret['message'] = "处理异常"
+
+
+    need_string = json.dumps(ret)
+
+    print ("keke_json--dict to string:%s"%need_string)
+
+    return HttpResponse(need_string)
+
 
 
