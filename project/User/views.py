@@ -708,4 +708,9 @@ def modal_addstudent2(request):
     return HttpResponse(need_string)
 
 
+def newstudent(request):
+
+    return render(request,'user/students.html')
+
+
 

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gb2312">
+    <title>学生信息</title>
+
+    <style>
+        .shadow{
+            position: fixed;    /*固定在浏览器的某个地方,相对于窗口来说的*/
+            left: 0;
+            right: 0;
+            bottom:0;
+            top: 0;             /*离上下左右窗口都是0*/
+            background-color: black;
+            opacity: 0.4;
+            z-index : 999;
+        }
+        .add-modal{
+            position: fixed;    /*固定在浏览器的某个地方,相对于窗口来说的*/
+            left: 50%;
+            top: 50%;             /*离上下左右窗口都是0*/
+            width: 400px;
+            height:300px;
+            z-index : 1000;
+            background-color: white;
+            margin-left: -200px;
+            margin-top: -200px;
+        }
+
+    </style>
+
+</head>
+
+<!--{% if messages %}-->
+  <!--<script>-->
+    <!--{% for msg in messages %}-->
+        <!--alert('{{msg.message}}')-->
+    <!--{% endfor %}-->
+  <!--</script>-->
+<!--{% endif %}-->
+
+<body>
+   <h1>学生列表</h1>
+    <div>
+        <a id="addModal">对话框添加</a>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <td>ID</td>
+            <td>学生姓名</td>
+            <td>所属班级</td>
+            <td>操作</td>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for row in student_list %}
+            <tr>
+            <td>{{row.id}}</td>
+            <td>{{row.name}}</td>
+            <td>{{row.classes}}</td>
+            <td>
+                <!--阻止默认事件的调用(url) onclick要加return返回值-->
+                <a href="www.baidu.com" onclick="return showEdit(this);">对话框编辑</a>
+                |
+                <a onclick="showDelete(this);">对话框删除</a>
+                |
+                <a href="/user/edit_student/?nid={{item.id}}">编辑</a>
+                |
+            </td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    <div class="shadow"></div>
+    <div class="add-modal"></div>
+
+
+    <script src="/static/js/jquery-1.11.0.min.js"></script>
+    <script>
+        // JQyery 也可以阻止后面时间发生 加return
+        $(function () {
+            $('#addModal').click(function () {
+                alert("123")
+                return false
+            })
+        })
+        
+    </script>
+
+
+
+
+
+</body>
+</html>
