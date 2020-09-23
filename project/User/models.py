@@ -91,9 +91,17 @@ class PcImgK(models.Model):
 
 class student(models.Model):
     name = models.CharField(max_length=100)
-    classes = models.CharField(max_length=100)
+    class_id = models.CharField(max_length=100)
 
+class allclass(models.Model):
+    cls_title = models.CharField(max_length=100)
 
+class teacher(models.Model):
+    teacher_name = models.CharField(max_length=100)
+
+class tea2class(models.Model):
+    teacher_id = models.CharField(max_length=100)
+    class_id = models.CharField(max_length=100)
 
 
 

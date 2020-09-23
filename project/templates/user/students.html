@@ -5,6 +5,9 @@
     <title>学生信息</title>
 
     <style>
+        .hide{
+            display: none;
+        }
         .shadow{
             position: fixed;    /*固定在浏览器的某个地方,相对于窗口来说的*/
             left: 0;
@@ -77,8 +80,21 @@
     </table>
 
 
-    <div class="shadow"></div>
-    <div class="add-modal"></div>
+    <div id= "shadow" class="shadow hide"></div>
+    <div id= "addModal" class="add-modal hide">
+        <p>
+            姓名: <input id="addName" type="text" name="name" placeholder="姓名"/>
+        </p>
+        <p>
+            班级:
+            <select id="addClassid" name="classId">
+                {% for row in class_list %}
+                    <option value="{{ row.id }}">{{ row.cls_title }}</option>
+                {% endfor %}
+            </select>
+        </p>
+        <input id="btnAdd" type="button" value="添加"/>
+    </div>
 
 
     <script src="/static/js/jquery-1.11.0.min.js"></script>
@@ -86,10 +102,21 @@
         // JQyery 也可以阻止后面时间发生 加return
         $(function () {
             $('#addModal').click(function () {
-                alert("123")
+                $('#shadow,#addModal').removeClass('hide');
                 return false
             })
+            $('#btnAdd').click(function () {
+                $.ajax({
+                    url:"/user/modal_add_student/",
+                    type:'POST',
+                    data:{'name':$('#addName').val(),'class_id':$('#addClassid').val()},
+                    success:function (arg) {
+                        console.log(arg)
+                    }
+                })
+            })
         })
+
         
     </script>
 

@@ -709,8 +709,19 @@ def modal_addstudent2(request):
 
 
 def newstudent(request):
+    sql = "select * from user_allclass"
+    classes_list = sqlhelper.get_list(sql,[])
+    print("keke:%s"%classes_list)
+    return render(request,'user/students.html',{"class_list":classes_list})
 
-    return render(request,'user/students.html')
+def modal_add_student(request):
+    ret = {"status":True,"message":None}
+    name = request.POST.get("name")
+    class_id = request.POST.get("class_id")
+    print ("keke_模态添加学生:%s,%s"%(name,class_id))
+    #序列化
+    string_ret = json.dumps(ret)
+    return HttpResponse(string_ret)
 
 
 
