@@ -45,7 +45,7 @@
 <body>
    <h1>学生列表</h1>
     <div>
-        <a id="addModal">对话框添加</a>
+        <a id="addModal2">对话框添加</a>
     </div>
 
     <table>
@@ -63,7 +63,7 @@
             <tr>
             <td>{{row.id}}</td>
             <td>{{row.name}}</td>
-            <td>{{row.classes}}</td>
+            <td>{{row.cls_title}}</td>
             <td>
                 <!--阻止默认事件的调用(url) onclick要加return返回值-->
                 <a href="www.baidu.com" onclick="return showEdit(this);">对话框编辑</a>
@@ -94,6 +94,7 @@
             </select>
         </p>
         <input id="btnAdd" type="button" value="添加"/>
+        <input id="btncancle" type="button" value="取消"/>
     </div>
 
 
@@ -101,7 +102,10 @@
     <script>
         // JQyery 也可以阻止后面时间发生 加return
         $(function () {
-            $('#addModal').click(function () {
+            $("#btncancle").click(function () {
+                $('#shadow,#addModal').addClass("hide");
+            })
+            $('#addModal2').click(function () {
                 $('#shadow,#addModal').removeClass('hide');
                 return false
             })
@@ -110,8 +114,15 @@
                     url:"/user/modal_add_student/",
                     type:'POST',
                     data:{'name':$('#addName').val(),'class_id':$('#addClassid').val()},
+                    dataType:"json",
                     success:function (arg) {
-                        console.log(arg)
+                        if (arg.status){
+                            location.reload()
+                        }
+                        else{
+                            console.log("error")
+                        }
+
                     }
                 })
             })

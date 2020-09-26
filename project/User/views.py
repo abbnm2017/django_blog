@@ -712,7 +712,11 @@ def newstudent(request):
     sql = "select * from user_allclass"
     classes_list = sqlhelper.get_list(sql,[])
     print("keke:%s"%classes_list)
-    return render(request,'user/students.html',{"class_list":classes_list})
+    sql2 = "select user_student.id,user_student.name, user_allclass.cls_title from user_student left JOIN" \
+           " user_allclass on user_student.class_id = user_allclass.id"
+
+    student_list = sqlhelper.get_list(sql2,[])
+    return render(request,'user/students.html',{"class_list":classes_list,"student_list":student_list})
 
 def modal_add_student(request):
     ret = {"status":True,"message":None}
@@ -720,6 +724,11 @@ def modal_add_student(request):
     class_id = request.POST.get("class_id")
     print ("keke_模态添加学生:%s,%s"%(name,class_id))
     #序列化
+
+    sql = "insert into user_student(name , class_id ) values (%s,%s)"
+    args = [name,class_id]
+    sqlhelper.modify(sql,args)
+
     string_ret = json.dumps(ret)
     return HttpResponse(string_ret)
 
