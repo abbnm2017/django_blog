@@ -711,8 +711,8 @@ def modal_addstudent2(request):
 def newstudent(request):
     sql = "select * from user_allclass"
     classes_list = sqlhelper.get_list(sql,[])
-    print("keke:%s"%classes_list)
-    sql2 = "select user_student.id,user_student.name, user_allclass.cls_title from user_student left JOIN" \
+    # print("keke:%s"%classes_list)
+    sql2 = "select user_student.id,user_student.name, user_allclass.cls_title,user_student.class_id from user_student left JOIN" \
            " user_allclass on user_student.class_id = user_allclass.id"
 
     student_list = sqlhelper.get_list(sql2,[])
@@ -728,6 +728,20 @@ def modal_add_student(request):
     sql = "insert into user_student(name , class_id ) values (%s,%s)"
     args = [name,class_id]
     sqlhelper.modify(sql,args)
+
+    string_ret = json.dumps(ret)
+    return HttpResponse(string_ret)
+
+def update_add_student(request):
+    ret = {"status":True,"message":None}
+    name = request.POST.get("name")
+    class_id = request.POST.get("class_id")
+    print ("keke_更新添加学生:%s,%s"%(name,class_id))
+    #序列化
+
+    # sql = "insert into user_student(name , class_id ) values (%s,%s)"
+    # args = [name,class_id]
+    # sqlhelper.modify(sql,args)
 
     string_ret = json.dumps(ret)
     return HttpResponse(string_ret)

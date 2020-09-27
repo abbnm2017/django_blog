@@ -30,6 +30,18 @@
             margin-top: -200px;
         }
 
+         .edit-modal{
+            position: fixed;    /*固定在浏览器的某个地方,相对于窗口来说的*/
+            left: 50%;
+            top: 50%;             /*离上下左右窗口都是0*/
+            width: 400px;
+            height:300px;
+            z-index : 1000;
+            background-color: white;
+            margin-left: -200px;
+            margin-top: -200px;
+        }
+
     </style>
 
 </head>
@@ -63,10 +75,12 @@
             <tr>
             <td>{{row.id}}</td>
             <td>{{row.name}}</td>
-            <td>{{row.cls_title}}</td>
+            <td clsid = "{{row.class_id}} ">{{row.cls_title}}</td>
+            <!--<td>{{row.class_id}}</td>-->
+
             <td>
                 <!--阻止默认事件的调用(url) onclick要加return返回值-->
-                <a href="www.baidu.com" onclick="return showEdit(this);">对话框编辑</a>
+                <a id ="editModal" class="btn_edit">对话框编辑</a>
                 |
                 <a onclick="showDelete(this);">对话框删除</a>
                 |
@@ -79,7 +93,7 @@
         </tbody>
     </table>
 
-
+<!--_______________________________________________________________________-->
     <div id= "shadow" class="shadow hide"></div>
     <div id= "addModal" class="add-modal hide">
         <p>
@@ -97,6 +111,32 @@
         <input id="btncancle" type="button" value="取消"/>
     </div>
 
+<!--_____________________________________________-->
+
+
+<!--_______________________________________________________________________-->
+    <div id= "editModal2" class="edit-modal hide">
+        <h3>编辑学生信息</h3>
+        <p>
+            姓名: <input id="editName" type="text" name="name" placeholder="姓名"/>
+            <input id="editID" type="text" style="display: none"/>
+        </p>
+        <p>
+            班级:
+            <select id="editClassid" name="classId">
+                {% for row in class_list %}
+                    <option value="{{ row.id }}">{{ row.cls_title }}</option>
+                {% endfor %}
+            </select>
+        </p>
+        <input id="btnEdit" type="button" value="更新"/>
+        <input id="btnback" type="button" value="返回"/>
+    </div>
+
+<!--_____________________________________________-->
+
+
+
 
     <script src="/static/js/jquery-1.11.0.min.js"></script>
     <script>
@@ -109,12 +149,57 @@
                 $('#shadow,#addModal').removeClass('hide');
                 return false
             })
+
+
+
+            
+            $(".btn_edit").click(function () {
+                $("#shadow, #editModal2").removeClass('hide')
+                // 1.获取当前标签 $(this)
+
+                var tds = $(this).parent().prevAll()
+                var student_id = $(tds[2]).text();  //文本信息
+                var student_name = $(tds[1]).text();
+                var classID = $(tds[0]).attr('clsid')
+
+                console.log(student_id,student_name,classID)
+                $("#editId").val(student_id);
+                $("#editName").val(student_name);
+                $("#editClassid").val(classID);
+
+
+
+            })
+
+            $("#btnback").click(function () {
+                  $("#shadow, #editModal2").addClass('hide')
+            })
+
+            $("btnEdit").click(function () {
+                $.ajax({
+                    url:"/user/update_add_student/",
+                    type: "POST",
+                    data:{'nid':$("#editid").val(),'name':$("#editName").val(),'class_id':$("editClassID").val()},
+                    dataType:"JSON",
+                    success:function(arg) {
+                        //JSON.pause
+                        if (arg.status){
+                            location.reload()
+                        }
+                        else{
+                            $("#editError").text(arg.message)
+                        }
+                    }
+                })
+            })
+            
+            
             $('#btnAdd').click(function () {
                 $.ajax({
                     url:"/user/modal_add_student/",
                     type:'POST',
                     data:{'name':$('#addName').val(),'class_id':$('#addClassid').val()},
-                    dataType:"json",
+                    dataType:"JSON",
                     success:function (arg) {
                         if (arg.status){
                             location.reload()
