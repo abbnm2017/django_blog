@@ -532,8 +532,9 @@ def classes(request):
 
     #eg: sql="insert into cdinfo values(%s,%s,%s,%s,%s)"
 
+    sql = "select * from user_messageboard"
 
-    sql = "select * from User_messageboard"
+    sql = "select * from user_allclass"
     result = sqlhelper.get_list(sql,())
 
 
@@ -736,12 +737,20 @@ def update_add_student(request):
     ret = {"status":True,"message":None}
     name = request.POST.get("name")
     class_id = request.POST.get("class_id")
-    print ("keke_更新添加学生:%s,%s"%(name,class_id))
+    n_id = request.POST.get("nid")
+
+    print ("keke_更新添加学生---:%s,%s,%s"%(name,class_id,n_id))
     #序列化
+
+    sql = "update user_student set name = %s, class_id = %s where id = %s"
+
+    args = [name,class_id,n_id]
+
+
 
     # sql = "insert into user_student(name , class_id ) values (%s,%s)"
     # args = [name,class_id]
-    # sqlhelper.modify(sql,args)
+    sqlhelper.modify(sql,args)
 
     string_ret = json.dumps(ret)
     return HttpResponse(string_ret)

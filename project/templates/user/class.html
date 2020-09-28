@@ -86,9 +86,9 @@
         {% for item in message_result %}
             <tr>
             <td>{{item.id}}</td>
-            <td>{{item.name}}</td>
-            <td>{{item.date}}</td>
-            <td>{{item.content}}</td>
+            <td>{{item.cls_title}}</td>
+            <!--<td>{{item.date}}</td>-->
+            <!--<td>{{item.content}}</td>-->
             <td>
                 <!--阻止默认事件的调用(url) onclick要加return返回值-->
                 <a href="www.baidu.com" onclick="return showEdit(this);">对话框编辑</a>

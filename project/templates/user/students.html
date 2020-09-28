@@ -119,7 +119,9 @@
         <h3>编辑学生信息</h3>
         <p>
             姓名: <input id="editName" type="text" name="name" placeholder="姓名"/>
-            <input id="editID" type="text" style="display: none"/>
+            <input id="editId" type="text" style="display: none"/>
+
+            <!--这里有个id名字报错，查了半天-->
         </p>
         <p>
             班级:
@@ -160,12 +162,13 @@
                 var tds = $(this).parent().prevAll()
                 var student_id = $(tds[2]).text();  //文本信息
                 var student_name = $(tds[1]).text();
-                var classID = $(tds[0]).attr('clsid')
+                var classzzID = $(tds[0]).attr('clsid')
 
-                console.log(student_id,student_name,classID)
-                $("#editId").val(student_id);
+                console.log(student_id,student_name,classzzID)
+                $('#editId').val(parseInt(student_id));
                 $("#editName").val(student_name);
-                $("#editClassid").val(classID);
+                $("#editClassid").val(parseInt(classzzID));
+                console.log($('#editId').val())
 
 
 
@@ -175,12 +178,13 @@
                   $("#shadow, #editModal2").addClass('hide')
             })
 
-            $("btnEdit").click(function () {
+            $("#btnEdit").click(function () {
                 $.ajax({
                     url:"/user/update_add_student/",
                     type: "POST",
-                    data:{'nid':$("#editid").val(),'name':$("#editName").val(),'class_id':$("editClassID").val()},
+                    data:{'nid':$("#editId").val(),'name':$("#editName").val(),'class_id':$("#editClassid").val()},
                     dataType:"JSON",
+
                     success:function(arg) {
                         //JSON.pause
                         if (arg.status){
