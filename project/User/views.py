@@ -755,5 +755,8 @@ def update_add_student(request):
     string_ret = json.dumps(ret)
     return HttpResponse(string_ret)
 
-
+def teachers(request):
+    teacher_list = sqlhelper.get_list("select id ,teacher_name from user_teacher",[])
+    print ("老师表:%s"%teacher_list)
+    return render(request,"user/teachers.html",{"teacher_list":teacher_list})
 

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gb2312">
+    <title>老师</title>
+</head>
+
+<!--{% if messages %}-->
+  <!--<script>-->
+    <!--{% for msg in messages %}-->
+        <!--alert('{{msg.message}}')-->
+    <!--{% endfor %}-->
+  <!--</script>-->
+<!--{% endif %}-->
+
+<body>
+    <h1>老师列表</h1>
+    <div>
+    </div>
+    <table>
+        <tr>
+            <td>ID</td>
+            <td>老师姓名</td>
+            <td>操作</td>
+        </tr>
+
+        {% for row in teacher_list %}
+            <tr>
+            <td>{{row.id}}</td>
+            <td>{{row.teacher_name}}</td>
+            <td>
+                <a>编辑</a>
+                |
+                <a>删除</a>
+            </td>
+
+            </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
