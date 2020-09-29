@@ -5,6 +5,7 @@ from . import views
 app_name = 'User'
 
 urlpatterns = [
+    url(r'add_teachers/', views.add_teachers, name='add_teachers'),
     url(r'modal_addstudent/',views.modal_addstudent, name = 'modal_addstudent'),
     url(r'^$', views.index, name="index"),
     url(r'chatlogin/', views.chatlogin, name = "chatlogin"),

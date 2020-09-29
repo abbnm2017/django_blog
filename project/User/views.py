@@ -787,6 +787,15 @@ def teachers(request):
 
     teacher_list = result_dict.values()
 
+    sql2 = "select * from user_allclass"
+    class_list = sqlhelper.get_list(sql2,[])
+
+
     print ("老师表:%s"%teacher_list)
-    return render(request,"user/teachers.html",{"teacher_list":teacher_list})
+    return render(request,"user/teachers.html",{"teacher_list":teacher_list,"class_list":class_list})
+
+def add_teachers(request):
+    print ("kekek1111222333")
+
+    return HttpResponse("ok")
 

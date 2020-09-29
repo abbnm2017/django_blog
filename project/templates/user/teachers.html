@@ -3,6 +3,36 @@
 <head>
     <meta charset="gb2312">
     <title>老师</title>
+
+
+     <style>
+         .hide{
+             display: none;
+         }
+        .shadow{
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background-color: black;
+            opacity: 0.4;
+            z-index: 999;
+        }
+        .addteaper{
+            position:fixed;
+            left: 50%;
+            top: 50%;
+            width: 400px;
+            height: 300px;
+            background-color:white;
+            z-index:1000;
+            margin-left: -200px;
+            margin-top: -150px;
+        }
+
+    </style>
+
 </head>
 
 <!--{% if messages %}-->
@@ -13,9 +43,17 @@
   <!--</script>-->
 <!--{% endif %}-->
 
+<!--#多选班级(select multiple)-->
+<!--获取多个可选班级  request.POST.getlist('多选下来框的name') 是一个list-->
+
+
+<!--老师表增加数据，老师id-->
+
+
 <body >
     <h1>老师列表</h1>
     <div>
+        <a id="addteacher">添加老师</a>
     </div>
     <table border="1">
         <tr>
@@ -44,6 +82,44 @@
             </tr>
         {% endfor %}
     </table>
+
+
+    <div id="shadow" class="shadow hide"></div>
+    <div id="addteaper" class="addteaper hide">
+        <input type="text" name="tea_name" /><br><br>
+        <select name="perferssion" id ="preferssion_id" multiple>
+            {% for row in class_list %}
+                <option value="{{row.id}}">{{row.cls_title}}</option>
+            {% endfor %}
+        </select>
+
+        <input id="btn_add" type="button" name="btn_name" value="添加"/>
+        <input id="btn_cancle" type="button" name="btn_name2" value="取消"/>
+
+    </div>
+
+
+    <script src="/static/js/jquery-1.11.0.min.js"></script>
+    <script>
+
+        $("#addteacher").click(function () {
+            $("#shadow, #addteaper").removeClass('hide')
+        })
+
+        $("#btn_add").click(function () {
+          $.ajax({
+              url:"/user/addteachers/",
+              type:"POST",
+              data:{},
+              dataType:JSON,
+              success:function (args) {
+                  console.log(args)
+              }
+          })
+        })
+
+
+    </script>
 
 </body>
 </html>
