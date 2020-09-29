@@ -13,21 +13,28 @@
   <!--</script>-->
 <!--{% endif %}-->
 
-<body>
+<body >
     <h1>老师列表</h1>
     <div>
     </div>
-    <table>
+    <table border="1">
         <tr>
             <td>ID</td>
             <td>老师姓名</td>
+            <td>任教班级</td>
             <td>操作</td>
         </tr>
 
         {% for row in teacher_list %}
             <tr>
-            <td>{{row.id}}</td>
+            <td>{{row.tid}}</td>
             <td>{{row.teacher_name}}</td>
+            <td>
+            {% for class in row.titles%}
+                <span style="display:inline-block; padding: 5px; border: 1px solid red" >{{class}}</span>
+            {% endfor %}
+            </td>
+            <!--<td>{{row.cls_title}}</td>-->
             <td>
                 <a>编辑</a>
                 |

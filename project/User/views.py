@@ -532,13 +532,18 @@ def classes(request):
 
     #eg: sql="insert into cdinfo values(%s,%s,%s,%s,%s)"
 
-    sql = "select * from user_messageboard"
+    # sql = "select * from user_messageboard"
 
     sql = "select * from user_allclass"
+
     result = sqlhelper.get_list(sql,())
 
 
+    print ("1111:",result)
+
     # print ("cur_state:%s"%result)
+
+    # sql = """select * from user_teacher left join user_tea2class on user_teacher.id = user_tea2class"""
 
 
     return render(request,"user/class.html",{"message_result":result})
@@ -560,7 +565,7 @@ def addstudent(request):
         name = request.POST.get("name1")
         content = request.POST.get("name2")
 
-        sql = "select * from User_messageboard"
+        sql = "select * from User_allclass"
         result = sqlhelper.get_list(sql, ())
 
 
@@ -572,11 +577,15 @@ def addstudent(request):
 
         cur_data_time = sqlhelper.get_now_time()
 
-        sql = "insert into User_messageboard(name,date,content) values (%s,%s,%s)"
-        # args = [name, "2020.9.17", content]
-        args = [name, cur_data_time, content]
-        sqlhelper.modify(sql, args)
+        # sql = "insert into User_messageboard(name,date,content) values (%s,%s,%s)"
+        # # args = [name, "2020.9.17", content]
+        # args = [name, cur_data_time, content]
+        # sqlhelper.modify(sql, args)
 
+        sql = "insert into user_allclass(cls_title) values (%s)"
+        args = [content]
+
+        sqlhelper.modify(sql, args)
 
         return redirect(reverse('User:classes'))
 
@@ -648,9 +657,11 @@ def modal_addstudent(request):
     # print("keke添加学生弹出框:%s" % (get_cur_title))
 
     if len(dy_sname) > 0 and len(dy_content) > 0:
-        cur_data_time = sqlhelper.get_now_time()
-        sql = "insert into User_messageboard (name, date,content) values(%s,%s,%s)"
-        args = (dy_sname,cur_data_time,dy_content)
+        # cur_data_time = sqlhelper.get_now_time()
+        # sql = "insert into User_messageboard (name, date,content) values(%s,%s,%s)"
+        # args = (dy_sname,cur_data_time,dy_content)
+        sql = "insert into user_allclass(cls_title) values(%s)"
+        args = [dy_content]
         sqlhelper.modify(sql,args)
         return HttpResponse("ok")
     else:
@@ -756,7 +767,26 @@ def update_add_student(request):
     return HttpResponse(string_ret)
 
 def teachers(request):
-    teacher_list = sqlhelper.get_list("select id ,teacher_name from user_teacher",[])
+    # teacher_list = sqlhelper.get_list("select id ,teacher_name from user_teacher",[])
+
+    sql = "select user_teacher.id as tid ,user_teacher.teacher_name, user_allclass.cls_title from user_teacher \
+        left join user_tea2class on user_teacher.id = user_tea2class.teacher_id  \
+        left join user_allclass on user_tea2class.class_id = user_allclass.id\
+        "
+    result = sqlhelper.get_list(sql,[])
+    # print ("dddbbb:%s"%result)
+    # 处理数据
+    result_dict = {}
+    for item in result:
+        if item["tid"] in result_dict:
+            result_dict[item["tid"]]["titles"].append(item["cls_title"])
+        else:
+            result_dict[item["tid"]] = {"tid":item["tid"],"teacher_name":item["teacher_name"],"titles":[item["cls_title"]]}
+
+    print ("111:",result_dict.values())
+
+    teacher_list = result_dict.values()
+
     print ("老师表:%s"%teacher_list)
     return render(request,"user/teachers.html",{"teacher_list":teacher_list})
 

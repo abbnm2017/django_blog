@@ -85,6 +85,7 @@
             <tr>
             <td>{{item.id}}</td>
             <td>{{item.cls_title}}</td>
+            <!--<td>{{item.teacher_name}}</td>-->
             <td>老师名字</td>
             <!--<td>{{item.date}}</td>-->
             <!--<td>{{item.content}}</td>-->
@@ -270,9 +271,10 @@
                 // data=服务端返回的值
                 success:function(data){
                     console.log(data)
-                    if (data == "ok"){
+                    if (data == "ok") {
                         // alert("添加成功")
-                        location.href = 'user/classes'
+                        // location.href = 'user/classes'
+                        location.reload()
                     }
                     else{
                         // alert("添加失败")
