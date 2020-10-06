@@ -795,7 +795,42 @@ def teachers(request):
     return render(request,"user/teachers.html",{"teacher_list":teacher_list,"class_list":class_list})
 
 def add_teachers(request):
-    print ("kekek1111222333")
+    # print ("request.POST:%s",request.POST)
+    # return HttpResponse("123466")
+    ret = {"status":True,"message":None}
+    name = request.POST.get("name")
+    class_id = request.POST.getlist("class_ids[]")
 
-    return HttpResponse("ok")
+    print ("科科添加老师:%s,%s"%(name,class_id))
+    #老师表增加数据
+    sql1 = "insert into user_teacher(teacher_name) value(%s)"
+    args1 = [name]
+    #老师和班级关系表中插入数据
+    #获取当前添加的老师id=2
+    #假设是2， 测试2,3
+    #2,4
+    #2,5
+    # 一次连接，一次提交
+
+    sqlobj = sqlhelper.SqlHelper()
+
+    last_id = sqlobj.create(sql1,args1)
+    print ("cur_obj:%s"%sqlobj)
+    arg_list = []
+    for cls_id in class_id:
+        arg_list.append([last_id,cls_id])
+
+
+    sql = "insert into user_tea2class(teacher_id,class_id) values(%s,%s)"
+    args = arg_list
+    sqlobj.multiple_modify(sql,args)
+    sqlobj.close()
+
+    return HttpResponse(json.dumps(ret))
+
+    # teache_id = sqlhelper.create(sql1,args1)
+    #
+    # for cls_id in class_id:
+    #     sqlhelper.modify("insert into user_tea2class(teacher_id,class_id) value(%s,%s)",[teache_id,cls_id])
+
 

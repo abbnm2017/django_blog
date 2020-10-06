@@ -86,8 +86,8 @@
 
     <div id="shadow" class="shadow hide"></div>
     <div id="addteaper" class="addteaper hide">
-        <input type="text" name="tea_name" /><br><br>
-        <select name="perferssion" id ="preferssion_id" multiple>
+        <input type="text" name="tea_name" id ="enter_name"/><br><br>
+        <select name="perferssion" id ="preferssion_id" multiple size="10">
             {% for row in class_list %}
                 <option value="{{row.id}}">{{row.cls_title}}</option>
             {% endfor %}
@@ -106,15 +106,32 @@
             $("#shadow, #addteaper").removeClass('hide')
         })
 
+        $("#btn_cancle").click(function () {
+            $("#shadow,#addteaper").addClass("hide")
+        })
+
+
         $("#btn_add").click(function () {
-          $.ajax({
-              url:"/user/addteachers/",
-              type:"POST",
-              data:{},
-              dataType:JSON,
-              success:function (args) {
-                  console.log(args)
-              }
+            console.log("1234")
+            var name_data = $("#enter_name").val()
+            console.log(name_data)
+            var class_data = $("#preferssion_id").val()
+            console.log(class_data)
+
+              $.ajax({
+                  url:"/user/add_teachers/",
+                  type:"POST",
+                  data:{"name":name_data, "class_ids":class_data},
+                  dataType:"JSON",
+                  success:function (arg) {
+                      console.log(arg)
+                        if (arg.status){
+                            location.reload()
+                        }
+                        else{
+                            console.log("error")
+                        }
+                }
           })
         })
 
