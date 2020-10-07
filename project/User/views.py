@@ -833,4 +833,53 @@ def add_teachers(request):
     # for cls_id in class_id:
     #     sqlhelper.modify("insert into user_tea2class(teacher_id,class_id) value(%s,%s)",[teache_id,cls_id])
 
+def edit_teacher(request):
+    if request.method == "GET":
+        nid = request.GET.get("nid")
+        obj = sqlhelper.SqlHelper()
+        teacher_info = obj.get_one("select id, teacher_name from user_teacher where id=%s",[nid])
+        class_id_list = obj.get_list("select class_id from user_tea2class where teacher_id = %s",[nid])
+        class_list = obj.get_list("select id,cls_title from user_allclass",[])
+        obj.close()
+        # print ("keke:%s"%teacher_info)
+        # print("keke00:%s" % class_id_list)
+
+        temp = []
+        for i in class_id_list:
+            temp.append(i['class_id'])
+
+        print ("keke7788:%s"%temp)
+
+        print("keke22:%s" % class_list)
+        # return HttpResponse("ok")
+        return render(request,'user/edit_teacher.html',{
+            'teacher_info':teacher_info,
+            'class_id_list':temp,
+            'class_list':class_list,
+        })
+    else:
+         #url 传参自动放入get里面了
+         nid = request.GET.get("nid")
+         name = request.POST.get("name")
+         class_ids = request.POST.getlist("class_ids")
+
+         print ("keke33:%s,%s,%s"%(nid,name,class_ids))
+         obj = sqlhelper.SqlHelper()
+         # 更新老师表
+         obj.modify("update user_teacher set teacher_name = %s where id=%s",[name,nid])
+         # 更新老师和班级关系表
+         #先把当前老师和班级关系 删除，然后在添加
+         obj.modify("delete from user_tea2class where teacher_id = %s",[nid,])
+         #
+         data_list = []
+         for cls_id in class_ids:
+             temp = (nid,cls_id)
+             data_list.append(temp)
+
+         obj.multiple_modify("insert into user_tea2class(teacher_id,class_id) values(%s,%s)",data_list)
+         obj.close()
+
+         return redirect('/user/teachers')
+
+
 

@@ -60,6 +60,7 @@ urlpatterns = [
     url(r'modal_add_student/',views.modal_add_student, name = 'modal_add_student'),
     url(r'update_add_student/',views.update_add_student, name = 'update_add_student'),
     url(r'^teachers/',views.teachers, name = 'teachers'),
+    url(r'^edit_teacher/',views.edit_teacher, name = 'edit_teacher'),
 
 
 

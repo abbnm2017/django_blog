@@ -100,8 +100,8 @@ class teacher(models.Model):
     teacher_name = models.CharField(max_length=100)
 
 class tea2class(models.Model):
-    teacher_id = models.CharField(max_length=100)
-    class_id = models.CharField(max_length=100)
+    teacher_id = models.IntegerField(max_length=100)
+    class_id = models.IntegerField(max_length=100)
 
 
 
