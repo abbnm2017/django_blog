@@ -62,6 +62,8 @@ urlpatterns = [
     url(r'^teachers/',views.teachers, name = 'teachers'),
     url(r'^edit_teacher/',views.edit_teacher, name = 'edit_teacher'),
 
+    url(r'^newadd_teacher/',views.newadd_teacher, name = 'newadd_teacher'),
+
 
 
 

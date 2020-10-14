@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dfd19246-1428-48f9-8ed8-a74d92d50f22" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/542c477a-56fb-4d4e-9476-e4310faae9ba.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/542c477a-56fb-4d4e-9476-e4310faae9ba.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/User/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/User/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/User/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/User/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/user/class.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/user/class.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/user/teachers.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/user/teachers.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,209 +50,32 @@
   <component name="FavoritesManager">
     <favorites_list name="djangoday4" />
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/project/templates/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="30" column="61" selection-start-line="30" selection-start-column="61" selection-end-line="30" selection-end-column="61" />
-              <folding>
-                <element signature="e#1246#1250#0" expanded="true" />
-                <element signature="e#1258#1262#0" expanded="true" />
-                <element signature="e#2007#2011#0" expanded="true" />
-                <element signature="e#2011#2015#0" expanded="true" />
-                <element signature="e#2606#2610#0" expanded="true" />
-                <element signature="e#2610#2614#0" expanded="true" />
-                <element signature="e#3232#3236#0" expanded="true" />
-                <element signature="e#3236#3240#0" expanded="true" />
-                <element signature="e#3861#3865#0" expanded="true" />
-                <element signature="e#3865#3869#0" expanded="true" />
-                <element signature="e#4485#4489#0" expanded="true" />
-                <element signature="e#4489#4493#0" expanded="true" />
-                <element signature="e#5100#5104#0" expanded="true" />
-                <element signature="e#5104#5108#0" expanded="true" />
-                <element signature="e#5734#5738#0" expanded="true" />
-                <element signature="e#5738#5742#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/project/templates/user/leavemessage.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1286">
-              <caret line="133" selection-start-line="133" selection-end-line="133" />
-              <folding>
-                <element signature="e#2354#2373#0" expanded="true" />
-                <element signature="e#2471#2490#0" expanded="true" />
-                <element signature="e#2527#2547#0" expanded="true" />
-                <element signature="e#2607#2634#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/project/User/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="474">
-              <caret line="711" lean-forward="true" selection-start-line="711" selection-end-line="711" />
-              <folding>
-                <element signature="e#24#63#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/project/templates/user/students.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="73" column="17" lean-forward="true" selection-start-line="73" selection-start-column="17" selection-end-line="73" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/project/User/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="84" column="46" lean-forward="true" selection-start-line="84" selection-start-column="46" selection-end-line="84" selection-end-column="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/project/User/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="55" column="46" selection-start-line="55" selection-start-column="46" selection-end-line="55" selection-end-column="46" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
         <option value="JavaScript File" />
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>json</find>
-      <find>simplejson</find>
-      <find>showEdit</find>
-      <find>msg</find>
-    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/project/templates/user/class.html" />
-        <option value="$PROJECT_DIR$/project/User/models.py" />
-        <option value="$PROJECT_DIR$/project/User/urls.py" />
-        <option value="$PROJECT_DIR$/project/User/views.py" />
-        <option value="$PROJECT_DIR$/project/templates/user/students.html" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-70" />
-    <option name="y" value="-20" />
-    <option name="width" value="1680" />
-    <option name="height" value="998" />
-  </component>
-  <component name="ProjectView">
-    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
-      <showMembers ProjectPane="false" />
-      <showExcludedFiles Scope="true" ProjectPane="true" />
-      <autoscrollToSource ProjectPane="false" />
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="django_blog" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-            </path>
-            <path>
-              <item name="django_blog" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="project" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="django_blog" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="project" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="project" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="django_blog" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="project" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="static" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="django_blog" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="project" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="static" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="js" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="django_blog" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="project" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="django_blog" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="project" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="user" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="django_blog" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="project" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="User" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="django_blog" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="project" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="utils" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="ProjectPane" />
-    </panes>
+  <component name="ProjectId" id="1hzc2aSx8Khc5qSHVjD2FkdNHXN" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/project/templates/user" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -269,23 +94,12 @@
       <recent name="F:\8990\django_blog\project\templates\user" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\git8800\django_blog\project\templates\user" />
       <recent name="F:\8990\django_blog\project\templates\user" />
       <recent name="F:\8990\django_blog\project\static\css" />
       <recent name="E:\MyDjango\djangoday4\project\static\css" />
       <recent name="E:\MyDjango\djangoday4\project\templates\user" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="settings" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -351,74 +165,18 @@
       <workItem from="1578986552837" duration="8056000" />
       <workItem from="1579490410751" duration="692000" />
       <workItem from="1599876325379" duration="72503000" />
+      <workItem from="1601017156847" duration="22321000" />
+      <workItem from="1601304623679" duration="691000" />
+      <workItem from="1601305940504" duration="227000" />
+      <workItem from="1601306200468" duration="898000" />
+      <workItem from="1601307147382" duration="274000" />
+      <workItem from="1601307448104" duration="36000" />
+      <workItem from="1601307512858" duration="93000" />
+      <workItem from="1601469340183" duration="50000" />
+      <workItem from="1601469427589" duration="42937000" />
+      <workItem from="1601947574561" duration="46395000" />
     </task>
     <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7563000" />
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info id="Structure" order="0" sideWeight="0.500684" side_tool="true" weight="0.20234114" />
-      <window_info id="Favorites" order="1" side_tool="true" weight="0.32943144" />
-      <window_info active="true" content_ui="combo" x="749" y="333" width="242" height="491" id="Project" order="2" sideWeight="0.499316" visible="true" weight="0.15770172" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.4098544" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32931727" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.6573348" />
-      <window_info anchor="bottom" id="Database Console" order="7" weight="0.32931727" />
-      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32922733" />
-      <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49938875" visible="true" weight="0.22284435" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50061125" side_tool="true" weight="0.3449048" />
-      <window_info anchor="bottom" id="Python Console" order="13" weight="0.16107382" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" />
-      <window_info anchor="right" id="Database" order="4" weight="0.018337408" />
-      <window_info anchor="right" x="0" y="0" width="264" height="663" id="Documentation" order="5" side_tool="true" weight="0.32943144" />
-    </layout>
-    <layout-to-restore>
-      <window_info id="Structure" order="0" sideWeight="0.500684" side_tool="true" weight="0.20234114" />
-      <window_info id="Favorites" order="1" side_tool="true" weight="0.32943144" />
-      <window_info content_ui="combo" x="749" y="333" width="242" height="491" id="Project" order="2" sideWeight="0.499316" visible="true" weight="0.19254279" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.41051453" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32931727" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.658377" />
-      <window_info anchor="bottom" id="Database Console" order="7" weight="0.32931727" />
-      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.21164614" />
-      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="13" weight="0.16107382" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" />
-      <window_info anchor="right" id="Database" order="4" visible="true" weight="0.018337408" />
-      <window_info anchor="right" x="0" y="0" width="264" height="663" id="Documentation" order="5" side_tool="true" weight="0.32943144" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -428,70 +186,17 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="519" y="85" key="RollbackChangesDialog/0.0.1366.728@0.0.1366.728" timestamp="1600698856817" />
-    <state x="184" y="0" key="SettingsEditor" timestamp="1600699528516">
+    <state x="184" y="0" key="SettingsEditor" timestamp="1601902404228">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1600699528516" />
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/project/templates/user/addstudent.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/templates/user/editstudent.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="23" lean-forward="true" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/templates/user/class.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="160" lean-forward="true" selection-start-line="160" selection-end-line="160" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/User/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="84" column="46" lean-forward="true" selection-start-line="84" selection-start-column="46" selection-end-line="84" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/User/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="55" column="46" selection-start-line="55" selection-start-column="46" selection-end-line="55" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/User/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="711" lean-forward="true" selection-start-line="711" selection-end-line="711" />
-          <folding>
-            <element signature="e#24#63#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/templates/user/students.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="73" column="17" lean-forward="true" selection-start-line="73" selection-start-column="17" selection-end-line="73" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
+    <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1601902404228" />
+    <state x="261" y="0" width="647" height="728" key="find.popup" timestamp="1601783398321">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="261" y="0" width="647" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1601783398321" />
+    <state x="228" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1602032508624">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="228" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1602032508624" />
   </component>
 </project>

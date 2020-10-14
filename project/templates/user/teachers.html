@@ -55,6 +55,9 @@
     <div>
         <a id="addteacher">添加老师</a>
     </div>
+    <div>
+        <a id="addotherteacher">另一种添加老师</a>
+    </div>
     <table border="1">
         <tr>
             <td>ID</td>
@@ -85,22 +88,60 @@
 
 
     <div id="shadow" class="shadow hide"></div>
+
+    <div id="loading" class="loading"></div>
+
     <div id="addteaper" class="addteaper hide">
         <input type="text" name="tea_name" id ="enter_name"/><br><br>
         <select name="perferssion" id ="preferssion_id" multiple size="10">
-            {% for row in class_list %}
-                <option value="{{row.id}}">{{row.cls_title}}</option>
-            {% endfor %}
+<!--            {% for row in class_list %}-->
+<!--                <option value="{{row.id}}">{{row.cls_title}}</option>-->
+<!--            {% endfor %}-->
+<!--            使用Ajax 去请求数据，然后往select里面添加option-->
         </select>
 
         <input id="btn_add" type="button" name="btn_name" value="添加"/>
         <input id="btn_cancle" type="button" name="btn_name2" value="取消"/>
-
     </div>
 
 
     <script src="/static/js/jquery-1.11.0.min.js"></script>
     <script>
+        $(function () {
+           bindAdd()
+
+        })
+
+        function bindAdd(){
+            $('#addotherteacher').click(function () {
+                $("#shadow, #addteaper").removeClass('hide')
+                $("preferssion_id").empty()
+                $.ajax( {
+                    url: "/user/newadd_teacher/",
+                    type:"GET",
+                    dataType: "JSON",
+                    success:function (arg) {
+                        console.log(arg)
+                        //将所有的数据添加到select,option,
+                        $.each(arg,function (i,row) {
+                            console.log(i)
+                            console.log(row)
+                            //将所有的数据添加到select,option
+
+                            var tag = document.createElement('option');
+                            tag.innerHTML = row.cls_title
+                            tag.setAttribute('value',row.id)
+                            $('#preferssion_id').append(tag)
+                        })
+
+                    }
+
+
+                })
+            })
+        }
+
+
 
         $("#addteacher").click(function () {
             $("#shadow, #addteaper").removeClass('hide')

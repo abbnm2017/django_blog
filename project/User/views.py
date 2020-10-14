@@ -882,4 +882,14 @@ def edit_teacher(request):
          return redirect('/user/teachers')
 
 
+def newadd_teacher(request):
+    obj = sqlhelper.SqlHelper()
+    class_list = obj.get_list("select id ,cls_title from user_allclass",[])
+    obj.close()
+    print ("dddd:%s"%class_list)
+    ret = json.dumps(class_list)
+    print("ddddccc:%s" % ret)
+    return HttpResponse(ret)
+
+
 
