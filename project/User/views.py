@@ -883,6 +883,8 @@ def edit_teacher(request):
 
 
 def newadd_teacher(request):
+    import time
+    time.sleep(1)
     obj = sqlhelper.SqlHelper()
     class_list = obj.get_list("select id ,cls_title from user_allclass",[])
     obj.close()

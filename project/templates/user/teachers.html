@@ -19,6 +19,16 @@
             opacity: 0.4;
             z-index: 999;
         }
+        .loading{
+            position: fixed;
+            width: 32px;
+            height: 32px;
+            left: 50%;
+            top: 50%;
+            margin-left: -16px;
+            margin-top:-16px;
+            background-image: url("/static/images/loding.gif");
+        }
         .addteaper{
             position:fixed;
             left: 50%;
@@ -89,7 +99,7 @@
 
     <div id="shadow" class="shadow hide"></div>
 
-    <div id="loading" class="loading"></div>
+    <div id="loading" class="loading hide"></div>
 
     <div id="addteaper" class="addteaper hide">
         <input type="text" name="tea_name" id ="enter_name"/><br><br>
@@ -114,8 +124,12 @@
 
         function bindAdd(){
             $('#addotherteacher').click(function () {
-                $("#shadow, #addteaper").removeClass('hide')
-                $("preferssion_id").empty()
+                // 一点先让loding出现
+                $("#shadow,#loading").removeClass('hide')
+
+                // $("#shadow, #addteaper").removeClass('hide')
+                $("#preferssion_id").empty()
+                //或者$("#preferssion_id").find('option').remove()
                 $.ajax( {
                     url: "/user/newadd_teacher/",
                     type:"GET",
@@ -132,6 +146,9 @@
                             tag.innerHTML = row.cls_title
                             tag.setAttribute('value',row.id)
                             $('#preferssion_id').append(tag)
+
+                            $('#loading').addClass('hide')
+                            $('#addteaper').removeClass('hide')
                         })
 
                     }
