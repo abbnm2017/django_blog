@@ -894,4 +894,9 @@ def newadd_teacher(request):
     return HttpResponse(ret)
 
 
+def layout(request):
+
+    return render(request,'layout.html')
+
+
 

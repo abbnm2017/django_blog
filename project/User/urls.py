@@ -63,6 +63,7 @@ urlpatterns = [
     url(r'^edit_teacher/',views.edit_teacher, name = 'edit_teacher'),
 
     url(r'^newadd_teacher/',views.newadd_teacher, name = 'newadd_teacher'),
+    url(r'^layout/',views.layout, name = 'layout'),
 
 
 
