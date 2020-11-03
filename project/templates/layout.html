@@ -18,6 +18,10 @@
             float:right;
         }
 
+        .hide{
+            display: none;
+        }
+
 
         .pg-header{
             height:48px;
@@ -46,6 +50,30 @@
 
         }
 
+        .pg-header .avatar{
+            padding: 0 20px;
+        }
+
+         .pg-header .avatar img{
+            border-radius: 50%;
+        }
+
+         .pg-header .avatar .user-info{
+            display:none;
+            background-color: white;
+             border: 1px solid #dddddd;
+            position: absolute; width:200px;top:48px;right: 2px;color:white;z-index: 100;
+        }
+
+         .pg-header .avatar:hover .user-info{
+            display:block;
+         }
+
+         .pg-header .avatar .user-info a{
+             display: block;
+             /*padding:5px;*/
+         }
+
         .menus{
             width:200px;
             /*float:left;*/
@@ -65,6 +93,11 @@
             /*background-color: palevioletred;*/
             min-width: 990px;
             overflow: scroll;
+            z-index:99;
+        }
+        .pg-body .menus a{
+            display: block;
+            padding: 10px 5px;
         }
     </style>
 
@@ -73,15 +106,26 @@
 <body>
     <div class="pg-header">
         <div class="logo left">科科后台管理</div>
+        <div class = "avatar right" style="position:relative">
+            <img  style="width:40px; height: 40px" src="/static/images/smile.jpg">
+            <div class="user-info">
+                <a>个人资料</a>
+                <a>注销</a>
+            </div>
+        </div>
         <div class="rmenus right">
             <a><i class="fa fa-commenting-o" aria-hidden="true"></i> 消息</a>
             <a><i class="fa fa-envelope-o" aria-hidden="true"></i> 邮件</a>
         </div>
-        <div></div>
+
 
     </div>
     <div class="pg-body">
-        <div class="menus">菜单</div>
+        <div class="menus">
+            <a>班级管理</a>
+            <a>学生管理</a>
+            <a>老师管理</a>
+        </div>
         <div class="content">
             <p>sdasdasd</p><p>sdasdasd</p><p>sdasdasd</p><p>sdasdasd</p>
             <p>sdasdasd</p><p>sdasdasd</p><p>sdasdasd</p><p>sdasdasd</p><p>sdasdasd</p>
