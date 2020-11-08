@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="gb2312">
-    <title></title>
-    <link rel="stylesheet" href="/static/plugins/bootstrap-3.3.7-dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="/static/plugins/font-awesome-4.7.0/css/font-awesome.css" />
-    <link rel="stylesheet" href="/static/css/commons.css">
+{% extends 'layout.html' %}
 
-     <style>
+{% block css %}
+    <style>
         .hide{
             display:none;
         }
@@ -35,7 +29,7 @@
 
         }
         .deletecon{
-            z-index: 1000;
+            z-index: 1050;
             position: fixed;
             left:50%;
             top: 50%;
@@ -47,7 +41,7 @@
 
         }
         .editcon{
-            z-index: 1000;
+            z-index: 1050;
             position: fixed;
             left:50%;
             top: 50%;
@@ -60,281 +54,251 @@
         }
 
     </style>
+{% endblock %}
 
-</head>
 
-<body>
-    <div class="pg-header">
-        <!--<div class="logo left">科科后台管理</div>-->
-        <div class = "avatar right" style="position:relative">
-            <img  style="width:40px; height: 40px" src="/static/images/smile.jpg">
-            <div class="user-info">
-                <a>个人资料</a>
-                <a>注销</a>
-            </div>
+
+
+{% block xx %}
+   <div>
+        <div style="margin: 10px 0">
+            <a class="btn btn-primary" href="{% url 'User:addstudent' %}">添加</a>
+            <a class="btn btn-info" onclick="showModal();">对话框添加</a>
         </div>
-        <div class="rmenus right">
-            <a><i class="fa fa-commenting-o" aria-hidden="true"></i> 消息</a>
-            <a><i class="fa fa-envelope-o" aria-hidden="true"></i> 邮件</a>
-        </div>
+        <table class="table table-striped table-bordered table-hover">
+            <tr>
+                <td>序号</td>
+                <td>班级名字</td>
+                <!--<td>老师名字</td>-->
+                <td>操作</td>
+            </tr>
 
+            {% for item in message_result %}
+                <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.cls_title}}</td>
+                <!--<td>{{item.teacher_name}}</td>-->
+
+                <!--<td>{{item.date}}</td>-->
+                <!--<td>{{item.content}}</td>-->
+                <td>
+                    <!--阻止默认事件的调用(url) onclick要加return返回值-->
+                    <a class="glyphicon glyphicon-pencil" href="www.baidu.com" onclick="return showEdit(this);"></a>
+                    |
+                    <a class="glyphicon glyphicon-trash" onclick="showDelete(this);"></a>
+                    |
+                    <a class="fa fa-battery-full" href="/user/edit_student/?nid={{item.id}}">编辑</a>
+                    |
+                    <a class="fa fa-battery-full" href="/user/del_student/?nid={{item.id}}">删除</a>
+                </td>
+
+                </tr>
+            {% endfor %}
+
+        </table>
+   </div>
+
+    <div id ="shadow" class="shadow hide"></div>
+    <!--遮罩层-->
+    <div id ="modal" class="modal1 hide">
+        <!--form会刷新，ajax不会刷新-->
+        <!--modal层-->
+        <!--用表单提交没法使用模态对话框-->
+        <!--<form method="POST" action="/user/modal_addstudent/">-->
+            <!--<p>-->
+                <!--<input type="text" name="title"/>-->
+            <!--</p>-->
+            <!--<p>-->
+                <!--<input type="text" name="title2"/>-->
+            <!--</p>-->
+            <!--<input type="submit" value="提交"/>-->
+        <!--</form>-->
+        <p>
+            <input id="title" type="text" name="title"/>
+        </p>
+        <p>
+            <input id="title2" type="text" name="title2"/>
+        </p>
+        <input type="button" value="提交" onclick="AjaxSend();"/> <span id="errormsg"></span>
+        <input type="button" value="取消" onclick="cancleModal();"/>
 
     </div>
-    <div class="pg-body">
-        <div class="menus">
-            <a><i class="fa fa-futbol-o" aria-hidden="true"></i>班级管理</a>
-            <a><i class="fa fa-futbol-o" aria-hidden="true"></i>学生管理</a>
-            <a><i class="fa fa-futbol-o" aria-hidden="true"></i>老师管理</a>
-        </div>
-        <div class="content">
-            <ol class="breadcrumb">
-              <li><a href="#">首页</a></li>
-              <li><a href="#">班级管理</a></li>
-              <li class="active">添加班级</li>
-            </ol>
-            <div>
-            <a href="{% url 'User:addstudent' %}">添加</a>
-            <a onclick="showModal();">对话框添加</a>
-            </div>
-            <table>
-                <tr>
-                    <td>序号</td>
-                    <td>班级名字</td>
-                    <!--<td>老师名字</td>-->
-                    <td>操作</td>
-                </tr>
 
-                {% for item in message_result %}
-                    <tr>
-                    <td>{{item.id}}</td>
-                    <td>{{item.cls_title}}</td>
-                    <!--<td>{{item.teacher_name}}</td>-->
+     <!--编辑对话框层级-->
+    <div id ="editcon" class="editcon hide">
+        <h3>编辑框</h3>
 
-                    <!--<td>{{item.date}}</td>-->
-                    <!--<td>{{item.content}}</td>-->
-                    <td>
-                        <!--阻止默认事件的调用(url) onclick要加return返回值-->
-                        <a href="www.baidu.com" onclick="return showEdit(this);">对话框编辑</a>
-                        |
-                        <a onclick="showDelete(this);">对话框删除</a>
-                        |
-                        <a href="/user/edit_student/?nid={{item.id}}">编辑</a>
-                        |
-                        <a href="/user/del_student/?nid={{item.id}}">删除</a>
-                    </td>
+        <input type="text" id = "temp_edit_id" name="temp_del"  style="display: none"/>
+        <input type="text" id = "temp_edit_name" name="temp_edit_name" />
+        <input type="text" id = "temp_edit_content" name="temp_edit_content" />
+        <input type="button" value="确定" onclick="AjaxEdit();"/>
+        <input type="button" value="取消" onclick="cancleEdit();"/>
 
-                    </tr>
-                {% endfor %}
+    </div>
 
-            </table>
+    <!--编辑对话框层级-->
 
-            <div id ="shadow" class="shadow hide"></div>
-            <!--遮罩层-->
-            <div id ="modal" class="modal1 hide">
-                <!--form会刷新，ajax不会刷新-->
-                <!--modal层-->
-                <!--用表单提交没法使用模态对话框-->
-                <!--<form method="POST" action="/user/modal_addstudent/">-->
-                    <!--<p>-->
-                        <!--<input type="text" name="title"/>-->
-                    <!--</p>-->
-                    <!--<p>-->
-                        <!--<input type="text" name="title2"/>-->
-                    <!--</p>-->
-                    <!--<input type="submit" value="提交"/>-->
-                <!--</form>-->
-                <p>
-                    <input id="title" type="text" name="title"/>
-                </p>
-                <p>
-                    <input id="title2" type="text" name="title2"/>
-                </p>
-                <input type="button" value="提交" onclick="AjaxSend();"/> <span id="errormsg"></span>
-                <input type="button" value="取消" onclick="cancleModal();"/>
+    <!--删除层级-->
+    <div id ="deletecon" class="deletecon hide">
+        <p>你是否要删除这条内容？</p>
+        <input type="text" id = "temp_del" name="temp_del" style="display: none"/>
+        <input type="button" value="删除" onclick="AjaxDelete();"/>
+        <input type="button" value="取消" onclick="cancleDelete();"/>
 
-            </div>
+    </div>
+
+    <!--删除层级-->
+
+    <nav aria-label="Page navigation">
+      <ul class="pagination">
+        <li>
+          <a href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li>
+          <a href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+{% endblock %}
 
 
-             <!--编辑对话框层级-->
-            <div id ="editcon" class="editcon hide">
-                <h3>编辑框</h3>
+{% block js %}
+  <script src="/static/js/jquery-1.11.0.min.js"></script>
+    <script>
 
-                <input type="text" id = "temp_edit_id" name="temp_del"  style="display: none"/>
-                <input type="text" id = "temp_edit_name" name="temp_edit_name" />
-                <input type="text" id = "temp_edit_content" name="temp_edit_content" />
-                <input type="button" value="确定" onclick="AjaxEdit();"/>
-                <input type="button" value="取消" onclick="cancleEdit();"/>
+        function showEdit(ths) {
+            document.getElementById("shadow").classList.remove("hide")
+            document.getElementById("editcon").classList.remove("hide")
+            var v = $(ths).parent().prevAll();
+            var cur_id = $(v[3]).text()
+            var cur_content = $(v[0]).text()
+            var cur_name = $(v[2]).text()
+            console.log(cur_id,cur_content)
 
-            </div>
+            $('#temp_edit_name').val(cur_name)
+            $('#temp_edit_content').val(cur_content)
+            $('#temp_edit_id').val(cur_id)
+            return false
+        }
 
-            <!--编辑对话框层级-->
-
-
-            <!--删除层级-->
-            <div id ="deletecon" class="deletecon hide">
-                <p>你是否要删除这条内容？</p>
-                <input type="text" id = "temp_del" name="temp_del" style="display: none"/>
-                <input type="button" value="删除" onclick="AjaxDelete();"/>
-                <input type="button" value="取消" onclick="cancleDelete();"/>
-
-            </div>
-
-            <!--删除层级-->
-
-            <nav aria-label="Page navigation">
-              <ul class="pagination">
-                <li>
-                  <a href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                  </a>
-                </li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li>
-                  <a href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
+        function cancleEdit() {
+             document.getElementById("shadow").classList.add("hide")
+             document.getElementById("editcon").classList.add("hide")
+        }
 
 
-            <script src="/static/js/jquery-1.11.0.min.js"></script>
+        function showModal() {
+            document.getElementById("shadow").classList.remove("hide")
+            document.getElementById("modal").classList.remove("hide")
+        }
 
-            <script>
+        // ajax偷偷的发
+        function cancleModal(){
+            document.getElementById("shadow").classList.add("hide")
+            document.getElementById("modal").classList.add("hide")
+        }
 
-                function showEdit(ths) {
-                    document.getElementById("shadow").classList.remove("hide")
-                    document.getElementById("editcon").classList.remove("hide")
-                    var v = $(ths).parent().prevAll();
-                    var cur_id = $(v[3]).text()
-                    var cur_content = $(v[0]).text()
-                    var cur_name = $(v[2]).text()
-                    console.log(cur_id,cur_content)
+       function showDelete(ths) {
+            document.getElementById("shadow").classList.remove("hide");
+            document.getElementById("deletecon").classList.remove("hide");
 
-                    $('#temp_edit_name').val(cur_name)
-                    $('#temp_edit_content').val(cur_content)
-                    $('#temp_edit_id').val(cur_id)
-                    return false
+           //  console.log(ths);
+           //
+           // console.log($(ths));
+           //
+           // console.log($(ths).parent());
+            v = $(ths).parent().prevAll();
+            console.log(v)
+
+            var cur_id = $(v[3]).text()
+            console.log(cur_id)
+            $('#temp_del').val(cur_id)
+
+
+       }
+
+       function cancleDelete() {
+            document.getElementById("shadow").classList.add("hide")
+            document.getElementById("deletecon").classList.add("hide")
+       }
+
+        function AjaxEdit() {
+            $.ajax({
+                url:"/user/modal_addstudent2/",
+                type:"POST",
+                data:{"name":$("#temp_edit_name").val(),"cur_id":$("#temp_edit_id").val(), "content":$("#temp_edit_content").val()},
+                success:function (data) {
+                    console.log(data)
+                    //JSON.parse(字符串) ==》对象
+                    //JSON.stringify(对象) ==》字符串
+
+                    transobj = JSON.parse(data)
+                    console.log(transobj)
+
+                    if (transobj.status){
+                        // alert("编辑成功");
+                        location.reload()
+                    }
+                    else{
+                        alert(arg.message)
+                    }
                 }
+            })
+        }
 
-                function cancleEdit() {
-                     document.getElementById("shadow").classList.add("hide")
-                     document.getElementById("editcon").classList.add("hide")
-                }
+       function AjaxDelete() {
+           $.ajax({
+               url:"/user/del_student2/",
+               type:"POST",
+               data:{'tgp':$('#temp_del').val()},
 
-
-                function showModal() {
-                    document.getElementById("shadow").classList.remove("hide")
-                    document.getElementById("modal").classList.remove("hide")
-                }
-
-                // ajax偷偷的发
-                function cancleModal(){
-                    document.getElementById("shadow").classList.add("hide")
-                    document.getElementById("modal").classList.add("hide")
-                }
-
-               function showDelete(ths) {
-                    document.getElementById("shadow").classList.remove("hide");
-                    document.getElementById("deletecon").classList.remove("hide");
-
-                   //  console.log(ths);
-                   //
-                   // console.log($(ths));
-                   //
-                   // console.log($(ths).parent());
-                    v = $(ths).parent().prevAll();
-                    console.log(v)
-
-                    var cur_id = $(v[3]).text()
-                    console.log(cur_id)
-                    $('#temp_del').val(cur_id)
-
-
+               success:function (data) {
+                   if (data == "ok"){
+                       location.reload()
+                   }
                }
 
-               function cancleDelete() {
-                    document.getElementById("shadow").classList.add("hide")
-                    document.getElementById("deletecon").classList.add("hide")
-               }
+           })
 
-                function AjaxEdit() {
-                    $.ajax({
-                        url:"/user/modal_addstudent2/",
-                        type:"POST",
-                        data:{"name":$("#temp_edit_name").val(),"cur_id":$("#temp_edit_id").val(), "content":$("#temp_edit_content").val()},
-                        success:function (data) {
-                            console.log(data)
-                            //JSON.parse(字符串) ==》对象
-                            //JSON.stringify(对象) ==》字符串
+       }
 
-                            transobj = JSON.parse(data)
-                            console.log(transobj)
 
-                            if (transobj.status){
-                                // alert("编辑成功");
-                                location.reload()
-                            }
-                            else{
-                                alert(arg.message)
-                            }
-                        }
-                    })
+        //js 实现页面跳转： location.href = "www.baidu.com"
+        function  AjaxSend() {
+            $.ajax({
+                url:'/user/modal_addstudent/',
+                type:"POST",
+                data:{'title':$('#title').val(),'title2':$('#title2').val()},
+
+                // 等到服务端处理完了， 返回数据，success自动调用
+                // data=服务端返回的值
+                success:function(data){
+                    console.log(data)
+                    if (data == "ok") {
+                        // alert("添加成功")
+                        // location.href = 'user/classes'
+                        location.reload()
+                    }
+                    else{
+                        // alert("添加失败")
+
+                        $('#errormsg').text(data);
+                    }
+
+
                 }
 
-               function AjaxDelete() {
-                   $.ajax({
-                       url:"/user/del_student2/",
-                       type:"POST",
-                       data:{'tgp':$('#temp_del').val()},
+            })
 
-                       success:function (data) {
-                           if (data == "ok"){
-                               location.reload()
-                           }
-                       }
-
-                   })
-
-               }
-
-
-                //js 实现页面跳转： location.href = "www.baidu.com"
-                function  AjaxSend() {
-                    $.ajax({
-                        url:'/user/modal_addstudent/',
-                        type:"POST",
-                        data:{'title':$('#title').val(),'title2':$('#title2').val()},
-
-                        // 等到服务端处理完了， 返回数据，success自动调用
-                        // data=服务端返回的值
-                        success:function(data){
-                            console.log(data)
-                            if (data == "ok") {
-                                // alert("添加成功")
-                                // location.href = 'user/classes'
-                                location.reload()
-                            }
-                            else{
-                                // alert("添加失败")
-
-                                $('#errormsg').text(data);
-                            }
-
-
-                        }
-
-                    })
-
-                }
-            </script>
-
-                </div>
-            </div>
-
-</body>
-</html>
+        }
+    </script>
+{% endblock %}

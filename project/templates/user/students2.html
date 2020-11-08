@@ -1,7 +1,10 @@
-{% extends 'layout.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gb2312">
+    <title>学生信息</title>
 
-{% block css %}
-   <style>
+    <style>
         .hide{
             display: none;
         }
@@ -38,16 +41,26 @@
             margin-left: -200px;
             margin-top: -200px;
         }
-    </style>
-{% endblock %}
 
-{% block xx %}
-    <h1>学生列表</h1>
+    </style>
+
+</head>
+
+<!--{% if messages %}-->
+  <!--<script>-->
+    <!--{% for msg in messages %}-->
+        <!--alert('{{msg.message}}')-->
+    <!--{% endfor %}-->
+  <!--</script>-->
+<!--{% endif %}-->
+
+<body>
+   <h1>学生列表</h1>
     <div>
         <a id="addModal2">对话框添加</a>
     </div>
 
-    <table class = "table table-striped table-bordered table-hover">
+    <table >
         <thead>
         <tr>
             <td>ID</td>
@@ -121,10 +134,13 @@
         <input id="btnEdit" type="button" value="更新"/>
         <input id="btnback" type="button" value="返回"/>
     </div>
-{% endblock %}
 
-{% block js %}
-     <script src="/static/js/jquery-1.11.0.min.js"></script>
+<!--_____________________________________________-->
+
+
+
+
+    <script src="/static/js/jquery-1.11.0.min.js"></script>
     <script>
         // JQyery 也可以阻止后面时间发生 加return
         $(function () {
@@ -138,7 +154,7 @@
 
 
 
-
+            
             $(".btn_edit").click(function () {
                 $("#shadow, #editModal2").removeClass('hide')
                 // 1.获取当前标签 $(this)
@@ -180,8 +196,8 @@
                     }
                 })
             })
-
-
+            
+            
             $('#btnAdd').click(function () {
                 $.ajax({
                     url:"/user/modal_add_student/",
@@ -201,5 +217,12 @@
             })
         })
 
+        
     </script>
-{% endblock %}
+
+
+
+
+
+</body>
+</html>

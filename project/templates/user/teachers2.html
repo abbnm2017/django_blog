@@ -1,7 +1,12 @@
-{% extends 'layout.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gb2312">
+    <title>老师</title>
+     <link rel="stylesheet" href="/static/plugins/bootstrap-3.3.7-dist/css/bootstrap.css" />
+     <link rel="stylesheet" href="/static/plugins/font-awesome-4.7.0/css/font-awesome.css" />
 
-{% block css %}
-    <style>
+     <style>
          .hide{
              display: none;
          }
@@ -38,9 +43,25 @@
         }
 
     </style>
-{% endblock %}
 
-{% block xx %}
+</head>
+
+<!--{% if messages %}-->
+  <!--<script>-->
+    <!--{% for msg in messages %}-->
+        <!--alert('{{msg.message}}')-->
+    <!--{% endfor %}-->
+  <!--</script>-->
+<!--{% endif %}-->
+
+<!--#多选班级(select multiple)-->
+<!--获取多个可选班级  request.POST.getlist('多选下来框的name') 是一个list-->
+
+
+<!--老师表增加数据，老师id-->
+
+
+<body >
     <h1>老师列表</h1>
     <div>
         <a id="addteacher">添加老师</a>
@@ -93,9 +114,8 @@
         <input id="btn_add" type="button" name="btn_name" value="添加"/>
         <input id="btn_cancle" type="button" name="btn_name2" value="取消"/>
     </div>
-{% endblock %}
 
-{% block js %}
+
     <script src="/static/js/jquery-1.11.0.min.js"></script>
     <script>
         $(function () {
@@ -139,6 +159,8 @@
             })
         }
 
+
+
         $("#addteacher").click(function () {
             $("#shadow, #addteaper").removeClass('hide')
         })
@@ -171,5 +193,9 @@
                 }
           })
         })
+
+
     </script>
-{% endblock %}
+
+</body>
+</html>
