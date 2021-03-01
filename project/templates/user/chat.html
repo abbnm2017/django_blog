@@ -176,7 +176,8 @@
     function logout() {
         var str=nickname+',Àë¿ªÁÄÌì'
         sendServerMsg(str)
-        window.location.href = '/logout/?nickname='+nickname;
+        console.log(nickname)
+        window.location.href = '/user/chatlogout/?nickname='+nickname;
     }
     function sendBtn() {
         var input=document.getElementsByClassName('msg')[0];

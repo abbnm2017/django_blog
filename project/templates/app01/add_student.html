@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gb2312">
+    <title></title>
+</head>
+<body>
+    <h1>添加学生</h1>
+    <form method="POST" action="/app01/add_student/">
+        {% csrf_token %}
+        <p>
+           {{ obj.name}} {{ obj.errors.name.0 }}
+        </p>
+        <p>
+           {{ obj.email }} {{ obj.errors.email.0 }}
+        </p>
+        <p>
+           {{ obj.age}} {{ obj.errors.age.0 }}
+        </p>
+        <p>
+           {{ obj.cls_id }} {{ obj.errors.cls_id.0 }}
+        </p>
+
+        <input type="submit" value="提交"/>
+    </form>
+
+</body>
+</html>

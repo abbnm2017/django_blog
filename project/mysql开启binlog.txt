@@ -1,0 +1,64 @@
+1. mysql -u root -p;
+2. show variables like 'log_%'
+3. 查找mysql配置文件所在的位置my.cnf
+	/etc/my.cnf
+4.在[mysqld]下面增加
+	log-bin=mysql-bin
+5. systemctl restart mysql  退出保存并重启mysql服务
+
+6. 日志已启用
+
+7.  恢复数据库(妈的真的好用)
+	mysql -u root -p blog(数据库的名字) < mysqlkk.sql
+	须先创建---数据库( create database blog)
+	
+	插一句 备份数据库（单库备份）
+	mysqldump -u root -p blog > /bakcup/mysqlkk.sql
+	
+8. create database mytest;
+
+9. use mytest;
+ 
+10.create table t1(id int ,name varchar(20));
+
+11.insert into t1 values (1,'xiaoming');
+
+12.insert into t1 values (2,'xiaohong');
+
+13. 备份数据库
+	-B：指定数据库
+
+	-F：刷新日志
+
+	-R：备份存储过程等
+
+	-x：锁表
+
+	--master-data：在备份语句里添加CHANGE MASTER语句以及binlog文件及位置点信息
+
+	mysqldump -uroot -p -B -F -R -x --master-data=2 mytest|gzip > /root/backup/bak_3.sql.gz
+	
+14. gzip -d bak_3.sql.gz
+
+15. mysql -uroot -p < bak_3.sql  (再导入到数据库中)
+
+16. 假如你现在删掉了一些数据，要恢复这些数据
+
+17. 可以再刷新下 (flush logs)
+
+18. show master status;
+
+19. show binlog events in 'mysql-bin.000005';
+
+20. 查找删除点
+
+21. 在mysqlbin目录下执行  哪个目录（/var/lib/mysql）
+	mysqlbinlog mysql-bin.000005 --start-position 203 --stop-position 572 | mysql -uroot -p mytest
+	
+	这里有个特别要注意的地方， start-position(203)  和stop-position（572）一定是mysql-bin.000005 出现的位置
+
+
+	
+	
+	
+	

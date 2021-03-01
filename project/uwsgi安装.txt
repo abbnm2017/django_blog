@@ -1,0 +1,223 @@
+1.安装 uwsgi
+	pip3 install uwsgi
+	
+	#软连接  配置环境变量
+	ln -s /usr/local/python3/bin/uwsgi /usr/bin/uwsgi
+	
+	ln -s /usr/local/bin/python3.7 /usr/bin/python 
+
+	以这个为准  ln -s /usr/local/python3/bin/uwsgi /usr/bin/uwsgi	
+	
+2.测试
+	uwsgi --http (127.0.0.1):9090 --wsgi-file test.py
+	
+	uwsgi --http :8001 --wsgi-file test.py
+	-
+3.关闭所有的相关进程
+	ps -aux | grep uwsgi | awk '{print $2}' | xargs kill -9
+	
+4.需要服务器开启8001端口
+	登录阿里云开启8001端口
+	
+5. 成功访问uwsgi
+
+6. uwsgi --chdir /root/python5/ --http :8001 --module project.wsgi
+   uwsgi --chdir /root/python5/ --http :8001 --module project.wsgi:application
+   
+7. 能访问了，uwsgi只提供动态链接服务，静态文件没有，需要nginx(提供web服务)
+	
+	静态文件用nginx去处理
+	动态数据用uwsgi去处理
+8. 安装nginx
+	这里可以先关掉 apache2ctl stop  (一般不用处理)
+	apt-get update
+	
+9. 进入 cd /usr/loacl/src
+	# wget http://nginx.org/download/nginx-1.18.0.tar.gz
+	tar zxvf nginx-1.18.0.tar.gz
+	cd nginx-1.18.0
+	./configure --prefix=/usr/local/nginx    (这个指令是他妈的移动到/usr/local/nginx 下)
+	./configure --prefix=/etc/
+	
+	make
+	make install
+	
+10. 安装ngix 完成
+
+11.Nginx在 Centos 没有sites-available 和 sites-enabled目录 （我吐了）
+	#####################
+	创建:/etc/nginx/sites-available
+	创建:/etc/nginx/sites-enabled
+	
+	然后在 /etc/nginx/nginx.conf
+	里面的http:增加
+	include /etc/nginx/sites-enabled/*;
+	##############
+	8.136.148.22
+	
+	################
+	/usr/local/nginx/conf/available
+	/usr/local/nginx/conf/enabled
+	include /usr/local/nginx/conf/sites-enabled/*;
+	################
+	
+	
+	
+	
+	
+	
+	
+12./usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
+
+13. ls -al 查看隐藏的文件
+
+14
+	#uwsgi --ini uwsgi.ini             # 启动
+	uwsgi --reload uwsgi.pid          # 重启
+	#uwsgi --stop uwsgi.pid            # 关闭
+	
+15. service nginx restart
+15. ps -ef | grep uwsgi
+
+16.uwsgi --reload master.pid
+
+17.sudo pkill -f uwsgi -9
+
+18. cat master.pid
+
+19.uwsgi --ini /root/python5_uwsgi/myblog.ini
+
+
+26. cd /usr/local/nginx/
+
+27. [root@keke_centos sbin]# ./nginx -t 
+
+
+28. ln -s /usr/local/nginx/conf/sites-available/myblog.conf /usr/local/nginx/conf/sites-enabled/myblog.conf
+
+29. nginx -t
+
+30. service nginx restart
+
+31. 上面指令缺少nginx 启动
+
+32. 创建 nginx 文件
+	注意，保存一定要保存成UNIX格式（notepad++：编辑--文档格式转换--转为UNIX格式），否则会如下报错的
+	
+33. 设置执行权限：chmod +x /etc/init.d/nginx 
+	-rw-r--r--    变成        -rwxr-xr-x
+
+34. 注册成服务：chkconfig --add nginx
+
+35. service nginx start 
+
+	service nginx stop 
+	
+	service nginx restart 
+	service nginx reload 
+	
+36. sbin下面要启用 ./nginx
+
+37. 可以用了
+
+38. ps -ef | grep nginx
+
+39. 遇到问题了，启动成功之后静态文件没有加载成功
+	只有根目录下的静态文件加载成功，app中的css样式都没有
+	加载出来
+	---
+	会不会是nginx配置静态目录没有设置到static_collectet
+	
+40. 思考了两天，百度了很多资料
+	解决办法:
+	STATIC_ROOT = os.path.join(BASE_DIR, 'collectstatic')
+	在项目的根路径下 增加 collectstatic文件夹(可以任意命名)
+	
+	MEDIA_URL = '/media/'
+	MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+	在项目的根路径下 增加 media文件夹(可以任意命名)
+	
+	开始执行python3 manage.py collectstatic
+	这个目的是 将你app（包含project）下的下的所有静态文件
+	
+	然后在/usr/local/nginx下
+	cd conf
+	cd sites-available
+	配置自己的static路径
+	vim myblog.conf
+	
+	server {
+        listen 80;
+        server_name myblog;
+        charset utf-8;
+        client_max_body_size 75M;
+        location /static  {
+                alias /root/python5/collectstatic;
+        }
+
+        location /media/ {
+                alias /root/python5/media/;
+        }
+
+        location / {
+                uwsgi_pass 127.0.0.1:8001;
+                include /usr/local/nginx/conf/uwsgi_params;
+        }
+	}
+41.配置完之后，发现还是不行。。。
+	继续查问题，已经出现403了
+	修改 nginx.conf
+	修改原来的user
+	user root;  这点很重要修改完 就可以了
+	
+	https://www.cnblogs.com/sanduzxcvbnm/p/13800959.html
+
+42. 问题：
+	django.db.migrations.exceptions.InconsistentMigrationHistory: Migration app01.0001_initial is 
+	applied before its dependency taggit.0003_taggeditem_add_unique_index on database 'default'.
+	国内答案：
+		建议把数据库删掉，__initial__文件删掉，重新执行偏移
+		挺无语的
+	国外答案：
+		use blog
+		检索您应用下的所有迁移
+		select * from django_migrations where app='app01';
+		您将在所有迁移旁边看到带有ID的输出。查看您要删除的迁移。说id是361
+		
+		delete from django_migrations where id=361;
+		
+		#这个才是解决问题的最佳答案
+		
+43.两个最常用的解决重启指令
+	cd /root/python5_uwsgi/
+	uwsgi --reload master.pid
+	service stop nginx
+	service start nginx
+	
+44. 先删除 
+	delete from django_migrations where app="app01";
+	然后就会提示 表存在
+	python manage.py migrate --fake app01
+	一顿骚操作 ,就可以了
+	这个迁移真的是问题居多啊
+	
+
+
+
+	
+	
+	
+	
+
+	
+	
+	
+ 
+
+
+	
+	
+
+	
+
+

@@ -1,0 +1,39 @@
+
+
+
+*{margin: 0;padding: 0;}
+li{list-style: none;}
+body{background: #000;}
+	
+	
+	#ul1{
+		
+		position: relative;
+		width:180px;
+		height: 100px;
+		margin: 200px auto 0;
+		transform-style:preserve-3d;
+	  
+	   transform:perspective(800px) rotateX(-10deg) rotateY(10deg);
+	
+	 
+	}
+	#ul1 li{
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: 0px;
+		top:0px;
+		transition:all 1s 3s;
+	}
+	#ul1 li img{
+		 width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0px;
+        top:0;
+        border-radius: 4px;
+        box-shadow: 0 0 10px rgba(255,255,255,1);
+        -webkit-box-reflect: below 8px -webkit-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0.7));  /*CSS3.0 新属性，倒影*/
+        -moz-box-reflect: below 8px -moz-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0.7));
+	}

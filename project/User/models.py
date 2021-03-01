@@ -89,24 +89,163 @@ class PcImgK(models.Model):
     img = models.ImageField(upload_to='keke')
     name = models.CharField(max_length=1000)
 
+
 class student(models.Model):
-    name = models.CharField(max_length=100)
-    class_id = models.CharField(max_length=100)
+    name = models.CharField(max_length=1000)
+    class_id = models.IntegerField()
 
 class allclass(models.Model):
-    cls_title = models.CharField(max_length=100)
+    cls_title = models.CharField(max_length=1000)
 
 class teacher(models.Model):
-    teacher_name = models.CharField(max_length=100)
+    teacher_name = models.CharField(max_length=1000)
 
 class tea2class(models.Model):
-    teacher_id = models.IntegerField(max_length=100)
-    class_id = models.IntegerField(max_length=100)
+    teacher_id = models.IntegerField()
+    class_id = models.IntegerField()
+
+class testdata(models.Model):
+    name = models.CharField(max_length=64)
+
+#多表操作
+class testinfo(models.Model):
+    nid = models.BigAutoField(primary_key=True)
+    user = models.CharField(max_length=32)
+    password = models.CharField(max_length=64)
+    age = models.IntegerField(default=1)
+    ug = models.ForeignKey("testdata",on_delete=models.CASCADE,null=True)
+
+#专门用来进行测试的表格
+class abbnm(models.Model):
+    md = models.IntegerField(default=1)
+
+#跨表
+# 正向:
+# 1.q = testinfo.objects.all().first()
+#   q.ug.title()
+# 2. testinfo.objects.values('nid','ug_id','ug__title')
+# 3. testinfo.objects.values_list('nid','ug_id','ug__title')
+# 反向:
+# 1.obj = testdata.objects.all().first()
+#     result = obj.testinfo_set.all()    #queryset([testinfo对象])
+#   2.
+#     v = testdata.objects.values('id','name')
+#     v = testdata.objects.values('id','name','testinfo_set__password')
+
+class Boy(models.Model):
+    name = models.CharField(max_length=32)
+    # m = models.ManyToManyField('Girl')   #帮我新建一个表
+    m = models.ManyToManyField('Girl',through='Love',through_fields=('b','g',))
 
 
+class Girl(models.Model):
+    nick = models.CharField(max_length=32)
 
 
+class Love(models.Model):
+    b = models.ForeignKey('Boy',on_delete=models.CASCADE)
+    g = models.ForeignKey("Girl",on_delete=models.CASCADE)
 
+    #联合唯一索引
+    class Meta:
+        unique_together = [
+            ('b','g')
+        ]
+
+# django 可以自动生成 class Love表
+
+
+class UserInfo(models.Model):
+    username = models.CharField(max_length=32)
+    email = models.EmailField()
+    # f = models.FileField()
+    c_time = models.DateTimeField(null=True)
+
+    color_list =  (
+        (1,"黑色"),
+        (2,"白色"),
+        (3,"蓝色"),
+    )
+    color = models.IntegerField(choices=color_list)
+    #直接通过
+    # models.UserInfo.objects.create()   ...是不受emailfield的影响
+        #--ModelForm 不能直接通过
+    # 会影响Django自带的管理工具admin
+
+    # 字符串
+    #     models.EmailField
+    #     models.IPAddressField()
+    #     models.URLField()
+    #     models.SlugField()
+    #
+    #     models.UUIDField()
+    #     models.FilePathField()
+    #     models.FileField()
+    #     models.ImageField()
+    #     models.CommaSeparatedIntegerField()
+    # 时间类
+    #     models.DateTimeField()
+
+#制作相亲数据
+class MarryBoy(models.Model):
+    nickname = models.CharField(max_length=32)
+    username = models.CharField(max_length=32)
+    password = models.CharField(max_length=64)
+
+class MarryGirl(models.Model):
+    nickname = models.CharField(max_length=32)
+    username = models.CharField(max_length=32)
+    password = models.CharField(max_length=64)
+
+class MarryB2G(models.Model):
+    b = models.ForeignKey(to='MarryBoy',to_field='id',on_delete=models.CASCADE)
+    g = models.ForeignKey(to='MarryGirl', to_field='id',on_delete=models.CASCADE)
+
+#能否把两张表结合成一张表
+
+class MarryBoth(models.Model):
+    nickname = models.CharField(max_length=32)
+    username = models.CharField(max_length=32)
+    password = models.CharField(max_length=64)
+
+    gender_choices = (
+        (1, "男"),
+        (2, "女"),
+    )
+    gender = models.IntegerField(choices=gender_choices)
+
+
+class U2U(models.Model):
+    g = models.ForeignKey("MarryBoth",on_delete =models.CASCADE, related_name='boys')
+    b = models.ForeignKey("MarryBoth", on_delete=models.CASCADE, related_name='girls')
+
+#评论表
+class Comment(models.Model):
+    news_id = models.IntegerField()    #新闻id
+    content = models.CharField(max_length=32)  #评论内容
+    user = models.CharField(max_length=32)          #评论者
+    reply = models.ForeignKey('Comment',null=True,blank=True,related_name='xxxx',on_delete=models.CASCADE)
+"""
+评论的自增id  新闻ID                                                                  reply_id(回复者id)
+   1            1 别比比  root     代表root这个人给这个1 号新闻id 评论了 别比比           null
+   2            1 就比比  root     代表root这个人评论两条                                null
+   3            1 瞎比比  shaowei   代表shaowei这个人评论                                null
+   4            2 写的正好 root     代表shaowei这个人评论 2号新闻id                       null
+   5            1  拉倒吧  有清兵                                                         2
+   6            1  拉倒吧1  xxxx                                                          2
+   7            1  拉倒吧2  xxxx                                                          5
+"""
+"""
+新闻1
+    别比比
+    就比比
+        -拉倒吧
+            -拉倒吧2
+        -拉倒吧1
+    瞎比比
+新闻2
+    写的正好
+"""
 
 
 

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gb2312">
+    <title></title>
+</head>
+<body>
+{#   <form method="POST" action="/user/marryindex.html">#}
+   <form method="POST" action="{% url 'User:account_login' %}">
+        {% csrf_token %}
+       <p>用户:<input type="text" name="username"/></p>
+       <p>密码:<input type="password" name="password"/></p>
+       <p>
+           性别:
+            男<input type="radio" name="gender" value="1"/>
+            女<input type="radio" name="gender" value="2"/>
+       </p>
+       <p>
+           <input type="checkbox" name="rmb" value="11"/>一个月免登录
+{#           rmb === remeber  me#}
+       </p>
+        <input type="submit" value="提交"/> {{ msg }}
+
+   </form>
+
+</body>
+</html>

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #作用就是向网易云信发送请求，帮助后台发送短信给客户
-import requests
+# import requests
 import hashlib
 import json
 

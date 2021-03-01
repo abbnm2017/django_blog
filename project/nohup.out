@@ -1,0 +1,15 @@
+Error: That port is already in use.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 20, 2020 - 19:56:45
+Django version 1.11.12, using settings 'project.settings'
+Starting development server at http://0.0.0.0:5008/
+Quit the server with CONTROL-C.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 20, 2020 - 20:06:07
+Django version 1.11.12, using settings 'project.settings'
+Starting development server at http://0.0.0.0:5008/
+Quit the server with CONTROL-C.

@@ -1,0 +1,55 @@
+{% extends 'user/three_base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <blockquote class="blockquote text-center">
+      <p class="mb-0" style="color: yellowgreen">TCP/IP SOCKET之间的关联</p>
+      <footer class="blockquote-footer">designer keke <cite title="Source Title">TCP or IP or socket</cite></footer>
+    </blockquote>
+    <div style="margin-left: 20px">
+
+
+        <h3>什么是TCP/IP、UDP？</h3>
+        <p>
+            TCP/IP是传输控制协议/网间协议
+        </p>
+
+          <ul class="list-unstyled">
+              <li>用户进程  ----  应用层</li>
+              <li>TCP/UDP -----  运输层</li>
+              <li>ICMP - IP - IGMP  --- 网络层</li>
+              <li>ARP-硬件接口-RARP ---- 链路层 </li>
+              <li> TCP/IP协议族包括：
+                <ul>
+                  <li>1.运输层</li>
+                  <li>2.网络层</li>
+                  <li>3.链路层</li>
+                </ul>
+              </li>
+          </ul>
+
+        <p>
+            Socket是什么呢？
+            Socket是应用层与TCP/IP协议族通信的中间软件抽象层，它是一组接口。在设计模式中，Socket其实就是一个门面模式，
+            它把复杂的TCP/IP协议族隐藏在Socket接口后面，对用户来说，一组简单的接口就是全部，让Socket去组织数据，以符合指定的协议。
+        </p>
+
+        <p>
+            socket怎么工作的?
+            先从服务器端说起
+            服务器端先初始化Socket,然后与端口绑定(bind)，对端口进行监听(listen),调用accept阻塞,等待
+            客户端连接。
+            在这个时候有一个客户端初始化一个Socket,然后连接服务器(connect),如果连接成功，这个时候客户端与服务器的连接就建立了。
+            客户端发送数据请求，服务器接收请求并处理请求，然后把回应数据发送给客户端，客户端读取数据，最后关闭连接，一次交互结束。
+
+            客户端（write） --->  服务端(read)
+            服务器（write） ---> 客户端（read）
+            客户端（close） ---> 服务器端(read) --> 服务器端(close)
+        </p>
+
+
+        </div>
+    </div>
+
+{% endblock content %}

@@ -4,36 +4,48 @@
     <div class="blog" data-scroll-reveal="enter top" >
       <figure>
         <ul>
-          <a href="{% url 'User:loading' %}"><img src="{% static 'images/t01.jpg' %}"><span>Django个人博客开发</span></a>
+          <a href="{% url 'User:loading' %}"><img src="{% static 'images/t01.jpg' %}"><span>CBV FBV</span></a>
         </ul>
-        <p><a href="/">最近头条，朋友圈被各大新闻淹没，我该关心哪个？</a></p>
-        <figcaption>最近，新闻头条先后被996、京东兄弟情破裂、视觉中国瞬间崩塌、马云豪宅发表看法增热度、宝马漏油事件等霸占。
-但是在这些新闻的背后，有两个大新闻我却格外感兴趣，一个是贾跃亭再次起死回生，周鸿祎彻底抽离奇安信。
-
-
-可能有人会嘲笑我，一个穷逼关心资本市场有卵用，不过我想说关心996看似和自己关系密切，但是又有卵用呢？
-一样没卵用，在自己一无是处之前，关心什么是由个人好恶决定，其实都没什么卵用，学习更多的知识才是关键</figcaption>
+        <p><a href="{% url 'User:loading' %}">CBV和FBV，区别是什么？</a></p>
+        <figcaption>当浏览器向服务端请求一个页面时，Django创建一个HttpRequest对象，该对象
+    包含关于请求的元数据，然后，Django加载相应的视图，将这个HttpRequest对象
+    作为第一个参数传递给视图函数。
+    一般用Request当做承接对象
+    每个视图负责返回一个HttpResponse对象。
+    当一个页面被请求时，Django就会创建一个包含本次请求原信息（请求报文中的请求行、首部信息、内容主体等）的HttpRequest对象。
+        Django会将这个对象自动传递给响应的视图函数,一般视图函数约定俗成地使用 request 参数承接这个对象。</figcaption>
       </figure>
       <figure>
         <ul>
-          <a href="{% url 'User:floatpic' %}"><img src="{% static 'images/t02.jpg' %}"><span>诗情画意</span></a>
+          <a href="{% url 'User:floatpic' %}"><img src="{% static 'images/t02.jpg' %}"><span>websocket</span></a>
         </ul>
-        <p><a href="/">生活笔录 | 你真的适合零基础跨专业转行吗</a></p>
-        <figcaption>学习 `Python` 到现在你要是让我给你解释什么是面向对象，什么是类，什么是内存，什么垃圾回收，什么是异常处理
-说实话我也给你讲不清，但是这并不妨碍我做项目。不要给我扯什么高段位程序员是什么样的我始终认为自己是一个
-不折不扣的 Copier，也不认为未来我会继续从事编程，但是此刻身在其中我必须拿出作品，需则学，不需则弃。</figcaption>
+        <p><a href="{% url 'User:floatpic' %}">轮询，长轮询，websocket之间的关系？</a></p>
+        <figcaption>实现Web端即时通讯的方法：实现即时通讯主要有四种方式，它们分别是轮询、长轮询(comet)、
+         长连接(SSE)、WebSocket。它们大体可以分为两类，一种是在HTTP基础上实现的，包括短轮询、comet和SSE；
+        另一种不是在HTTP基础上实现是，即WebSocket。</figcaption>
       </figure>
       <figure>
         <ul>
-          <a href="{% url 'User:loading' %}"><img src="{% static 'images/t03.jpg' %}"><span>破茧成蝶</span></a>
+          <a href="{% url 'User:tcp_socket' %}"><img src="{% static 'images/t03.jpg' %}"><span>TCP/IP-SOCKET</span></a>
         </ul>
-        <p><a href="/">生活笔录 | 我为什么选择Python</a></p>
-        <figcaption>程序员一般有一个鄙视链：C++鄙视——&gt;JAVA鄙视——&gt;Python
-
-其实最应该被鄙视的程序员应该是自己没设计过任何分布式存储方案，有的甚至连基本SQL优化知识都不懂，天天满嘴高并发的人；没有使用Python写过任何别人可以使用的工具，天天满嘴 Python运行效率低的人</figcaption>
+        <p><a href="{% url 'User:tcp_socket' %}">什么是Socket？</a></p>
+        <figcaption>
+              TCP/IP（Transmission Control Protocol/Internet Protocol）即传输控制协议/网间协议，是一个工业标准的协议集，它是为广域网（WANs）设计的。
+         UDP（User Data Protocol，用户数据报协议）是与TCP相对应的协议。它是属于TCP/IP协议族中的一种。
+        </figcaption>
       </figure>
     </div>
    <ul class="cbp_tmtimeline">
+                    <li>
+						<time class="cbp_tmtime"><span>11-10</span> <span>2020</span></time>
+						<div class="cbp_tmicon"></div>
+						<div class="cbp_tmlabel" data-scroll-reveal="enter right over 1s" >
+							<h2>如何配置uwsgi+nginx</h2>
+							 <p><span class="blogpic"><a href="/"><img src="{% static 'images/nginx.jpg' %}"></a></span>使用nginx部署Django静态文件配置 </p>
+{#                             <a href="{% url 'User:nginx2' %}" target="_blank" class="readmore">阅读全文&gt;&gt;</a>#}
+                             <a href="/user/nginx.html" target="_blank" class="readmore">阅读全文&gt;&gt;</a>
+						</div>
+					</li>
 					<li>
 						<time class="cbp_tmtime"><span>01-10</span> <span>2020</span></time>
 						<div class="cbp_tmicon"></div>

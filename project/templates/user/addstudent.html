@@ -6,9 +6,16 @@
 </head>
 <body>
     <!--<form method="post" action="{% url 'User:addstudent' %}">-->
+    <h1>添加班级</h1>
     <form method="post" action="/user/addstudent/">
-        <input type="text" name="name1"/>
-        <input type="text" name="name2"/>
+
+        <!--<input type="text" name="name1"/> ###接口已废弃() <br/>-->
+
+{#        {% csrf_token %}#}
+
+{#        {{ csrf_token }}#}
+
+        <input type="text" name="name2"/> <br/>
         <input type="submit"/>
     </form>
 

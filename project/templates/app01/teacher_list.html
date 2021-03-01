@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gb2312">
+    <title></title>
+</head>
+<body>
+    <h1>老师列表</h1>
+    <div>
+        <a href="/app01/add_teacher/">添加</a>
+    </div>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>老师姓名</th>
+                <th>任教班级</th>
+                <th>编辑</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for row in tea_list %}
+            <tr>
+                <td>{{ row.id }}</td>
+                <td>{{ row.tname }}</td>
+                <td>
+                    {% for row in row.c2t.all %}
+                        {{ row.title }}
+                    {% endfor %}
+{#                    {{ row.c2t.all }}#}
+                </td>
+                <td>
+                    <a href="/app01/edit_teacher/{{ row.id }}/">编辑</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

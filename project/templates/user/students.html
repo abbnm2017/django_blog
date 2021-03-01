@@ -38,6 +38,19 @@
             margin-left: -200px;
             margin-top: -200px;
         }
+
+        .del_mode{
+            position: fixed;
+            left:50%;
+            top:50%;
+            z-index : 1888;
+            background-color: white;
+            width:400px;
+            height:300px;
+            margin-left : -200px;
+            margin-top : -200px;
+        }
+
     </style>
 {% endblock %}
 
@@ -71,7 +84,7 @@
                 |
                 <a onclick="showDelete(this);">对话框删除</a>
                 |
-                <a href="/user/edit_student/?nid={{item.id}}">编辑</a>
+                <a href="/user/edit_student_list/?nid={{row.id}}">编辑</a>
                 |
             </td>
 
@@ -121,12 +134,43 @@
         <input id="btnEdit" type="button" value="更新"/>
         <input id="btnback" type="button" value="返回"/>
     </div>
+
+
+<!--___________________________________________________________-->
+    <div id="delModal3" class="del_mode hide">
+        <h3>删除当前的信息</h3>
+        <p>你是想删除当前的信息吗？</p>
+        <input id="test1" type="text" name="name" style="display: none"/>
+        <input id="test2" type="text" name="name" style="display: none"/>
+        <input id="btndel_now" type="button" value="删除"/>
+        <input id="btncancle_now" type="button" value="取消"/>
+    </div>
+
+
 {% endblock %}
 
 {% block js %}
      <script src="/static/js/jquery-1.11.0.min.js"></script>
     <script>
         // JQyery 也可以阻止后面时间发生 加return
+        function showDelete(ths) {
+            document.getElementById("shadow").classList.remove("hide");
+            document.getElementById("delModal3").classList.remove("hide");
+            // var tds = $(this).parent().prevAll()
+            // console.log("bbb",tds)
+
+             var tds = $(ths).parent().prevAll()
+             var student_id = $(tds[2]).text();  //文本信息
+             var student_name = $(tds[1]).text();
+             var classzzID = $(tds[0]).attr('clsid')
+
+             console.log(student_id,student_name,classzzID)
+
+             $('#test1').val(parseInt(student_id));
+             $('#test2').val(parseInt(classzzID));
+
+        }
+
         $(function () {
             $("#btncancle").click(function () {
                 $('#shadow,#addModal').addClass("hide");
@@ -136,7 +180,27 @@
                 return false
             })
 
+            $("#btncancle_now").click(function () {
+                $("#delModal3,#shadow").addClass("hide")
+            })
 
+            $("#btndel_now").click(function () {
+                // $("#delModal3,#shadow").addClass("hide")
+                $.ajax({
+                    url:"/user/del_student_nowlist/",
+                    type:"POST",
+                    data:{"del_pid":$("#test1").val(),'del_classid':$("#test2").val()},
+                    dataType:"JSON",
+                    success :function (arg) {
+                         if (arg.status){
+                            location.reload()
+                        }
+                        else{
+                            console.log("error")
+                        }
+                    }
+                })
+            })
 
 
             $(".btn_edit").click(function () {

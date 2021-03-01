@@ -1,6 +1,38 @@
 #!/usr/bin/env python
 import os
 import sys
+import signal
+
+
+def signal_func():
+    pass
+
+def _setDaemon():
+    global _bDaemon
+    _bDaemon = True
+   # directory = "/home/test/"
+  #  if not os.path.exists(directory):
+  #      os.mkdir(directory)
+
+ #   os.chdir(directory)
+    os.umask(0)
+    try:
+        pid = os.fork()
+        if pid > 0:
+            os._exit(0)
+    except OSError:
+        raise
+
+    os.setsid()
+    signal.signal(signal.SIGTERM, signal_func)
+    signal.signal(signal.SIGINT, signal_func)
+    signal.signal(signal.SIGQUIT, signal_func)
+    signal.signal(signal.SIGHUP, signal_func)
+    signal.signal(signal.SIGPIPE, signal_func)
+
+    os.close(sys.stdin.fileno())
+    os.close(sys.stdout.fileno())
+    os.close(sys.stderr.fileno())
 
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "project.settings")

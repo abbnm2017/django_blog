@@ -1,0 +1,90 @@
+p_list = [1,3,6,5,8,199,1,0,8]
+
+# 1.时间复杂度nlogn
+def quick_sort(p_list):
+	if len(p_list) < 2:
+		return p_list
+
+	special_num = p_list[0]
+
+	left_list = [ i  for i in p_list if i < special_num]
+	middle_list = [ i  for i in p_list if i == special_num]
+	right_list = [ i  for i in p_list if i > special_num]
+
+	return quick_sort(left_list) + middle_list + quick_sort(right_list)
+print quick_sort(p_list)
+
+# 2.时间复杂度 n2
+def maopao_sort(p_list):
+	for i in range(len(p_list)):
+		for j in range(i,len(p_list)):
+			if p_list[i] > p_list[j]:
+				p_list[i],p_list[j] = p_list[j],p_list[i]
+
+	return p_list
+
+print maopao_sort(p_list)
+
+#3.装饰器
+
+def decorate(func):
+	def wrapper(*args,**kwargs):
+		print ("拥有火眼晶晶的功能")
+		return func(*args,**kwargs)
+	return wrapper
+
+@decorate	
+def boo():
+	print ("偷桃子")
+	
+
+# 4.当不确定传多少个参数
+def print_everything(*args):
+	print (args)
+	for index , value in enumerate(args):
+			print ("index, value：%s,%s"%(index,value))
+
+print print_everything("abv","def","cmp") 
+	允许你使用没有事先定义的参数名
+def table_things(**kwargs):
+	for name, value in kwargs.items():
+		print '{0}-{1}'.format(name,value)
+
+print table_things(**{ "888999":11}) 
+# 5.单例模式
+class Singleton(object):
+	def __new__(cls,*args,**kwargs):
+		print ("999",cls,args,kwargs)
+		print ("1000",cls.__dict__,args,kwargs)
+		if not hasattr(cls,"_instance"):
+			orgi = super(Singleton,cls)
+			cls._instance = orgi.__new__(cls,*args,**kwargs)
+
+		return cls._instance
+
+	def __init__(self):
+		print ("1200",self)
+a = Singleton()
+
+print a
+
+def singleton(cls,*args,**kwargs):
+	print ("mmmm",cls)
+	instance = {}
+	def getinstace():
+		if cls not in instance:
+			instance[cls] = cls(*args,**kwargs)
+		print ("mmmm22",instance[cls])	
+		return instance[cls]
+
+	return getinstace
+
+
+
+@singleton
+class MyClass:
+	def __init__(self):
+		return
+
+b = MyClass()
+	

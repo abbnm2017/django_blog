@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,7 +76,7 @@
         <div class="article-meta">
             <span class="item item-1"><i class="fa fa-clock-o"></i> 2020年2月1日 下午5:43</span>
             <span class="item item-2"><i class="fa fa-user"></i> 作者：科科</span>
-            <span class="item item-3"><i class="fa fa-list-alt"></i> 分类：<a href="https://yusi123.com/design/material" rel="category tag">设计素材</a></span>
+            <span class="item item-3"><i class="fa fa-list-alt"></i> 分类：<a href="#" rel="category tag">设计素材</a></span>
             <span class="item item-4"><i class="fa fa-eye"></i> 12.4K℃</span>
             <span class="item item-5"></span>
         </div>
@@ -88,12 +88,12 @@
     <div class="content-wrap">
     	<div class="content">
 <article class="article-content">
-		<div class="asst asst-single-header"><div class="d_banner_inner"><a target="_blank" href="https://yusi123.com/go/aliyun">
-<img class="thumb"  src="https://yusi123.com/wp-content/uploads/2019/11/1000-386.jpg" style="display: inline;" data-baiduimageplus-ignore><h4 style="position: absolute;bottom: 0;left: 0;right: 0;padding: 0px 10px 0;height: 35px;overflow: hidden;background-color: #656565;background-color: rgba(0,0,0,.3);color: #fff;margin: 0;line-height: 35px;">阿里云的服务器，欲思一直在用，最近搞活动，限时优惠，大家抓紧上！</h4></a></div></div>
-    			<p>数据库是大多数网站的重要组成部分。从简单的博客到复杂的电子商务网站，这些网站都由数据库来驱动运行。</p>
+		<div class="asst asst-single-header"><div class="d_banner_inner"><a target="_blank" href="https://yusi123.com/go/aliyun"></a></div></div>
+{#<img class="thumb"  src="https://yusi123.com/wp-content/uploads/2019/11/1000-386.jpg" style="display: inline;" data-baiduimageplus-ignore><h4 style="position: absolute;bottom: 0;left: 0;right: 0;padding: 0px 10px 0;height: 35px;overflow: hidden;background-color: #656565;background-color: rgba(0,0,0,.3);color: #fff;margin: 0;line-height: 35px;">阿里云的服务器，欲思一直在用，最近搞活动，限时优惠，大家抓紧上！</h4></a></div></div>#}
+{#    			<p>数据库是大多数网站的重要组成部分。从简单的博客到复杂的电子商务网站，这些网站都由数据库来驱动运行。</p>#}
 
 
-    <p class="bloginfo"><i class="avatar"><img src="{% static 'images/chengxuyuan.jpg' %}"></i><span></span><span>2018-11-08</span><span>
+    <p class="bloginfo"><i class="avatar"><img src="{% static 'images/chengxuyuan.jpg' %}"></i><span></span><span></span><span>
     <p>程序员日常使用计算机是一个二进制的世界，在二进制中，1024是个整数（2的十次方），久而久之，有人将10月24日和程序员联系起来了，倡议作为程序员节。</p>
     <img src="{% static 'images/1024_1.jpg' %}">
     <h1>程序员节的由来</h1>
@@ -138,8 +138,8 @@ bug不再有，
     </div>
 
     <div class="like" onclick="likeChange(this,'999', 1)">
-    	<span class="liked-num">0</span>
-    	<span>喜欢</span>
+{#    	<span class="liked-num">0</span>#}
+{#    	<span>喜欢</span>#}
     </div>
 
 </article>

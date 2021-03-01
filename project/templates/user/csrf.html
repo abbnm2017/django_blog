@@ -1,0 +1,58 @@
+{% load xx %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gb2312">
+    <title>Title</title>
+</head>
+<body>
+    <form method="POST" action="/csrf.html">
+        {% csrf_token %}
+        <input type="text" name="user" id="user"/>
+        <input type="submit" value="提交"/>
+        <a onclick="submitForm()">Ajax提交</a>
+        <br>
+        <p>自定义tags</p>
+        {% my_simple_time 1 2 3 %}
+
+        {% my_input "user" "akf" %}
+
+        {{ "tt"|my_filter:"888" }}
+
+
+{#        filter 可写作if else #}
+
+        {% if name|mybool %}
+            <h3>真</h3>
+        {% else %}
+            <h3>假</h3>
+        {% endif %}
+
+    </form>
+
+
+    <script src="/static/js/jquery-1.11.0.min.js"></script>
+    <script src="/static/js/jquery.cookie.js"></script>
+
+
+    <script>
+        function submitForm() {
+            var csrf = $('input[name="csrfmiddlewaretoken"]').val()
+            var user = $('#user').val()
+            var token = $.cookie('csrftoken')
+            console.log(csrf)
+            $.ajax({
+                url:"/user/csrf.html",
+                type:"POST",
+                {#data:{"user":user,"csrfmiddlewaretoken":csrf}#}
+                {#data:{"csrfmiddlewaretoken":"{{csrf_token}}"},#}
+                headers:{"X-CSRFToken":token},
+                success:function (args) {
+                    console.log(args)
+                }
+            })
+        }
+    </script>
+
+</body>
+</html>

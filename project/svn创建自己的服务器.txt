@@ -1,0 +1,211 @@
+
+
+1. svn的库文件 cd /var/svn/svrepos
+	真实的库  cd django_s
+
+2. 进入另一个路径 (将svn剪出来)
+	cd /home/test/
+	复制语句: 	cp -r project/    /var/svn/svnrepos/django_s/
+	svn --help
+	开始剪   svn checkout svn://localhost/django_s
+	删除文件夹  rm -rf django_s/
+	
+	创建文件夹  mkdir temps
+	只有执行添加和提交，才能被svn clien拉去下来   2-1:svn add temps
+												  2-2：svn commit -m temps_root("temps_root" 是msg)
+												  
+												
+
+https://www.cnblogs.com/yhongji/p/9383857.html
+
+rm /usr/bin/python  (我操他妈的阿里云python2,python3不能共存)
+
+
+
+
+#记录重新配置服务器的心得
+阿里云配置比腾讯云难多了（https://www.cnblogs.com/yunlongaimeng/p/11066987.html）
+1.
+	rm /usr/bin/python  (我操他妈的阿里云python2,python3不能共存)
+	回复：rm: remove symbolic link ‘/usr/bin/python’? 
+	删掉软链接
+	重新定制软链接
+	ln -sf /usr/local/python3/bin/python3 /usr/bin/python
+	
+	#########################################
+	之前使用: ln -s /usr/local/bin/python3.7 /usr/bin/python3/bin/python3
+			  ln -s /usr/local/python3/bin/pip3 /usr/bin/pip3
+    #这样写真的傻逼了，我日(网上的教程真的是有毒)
+	
+	正确做法:
+		ln -s /usr/local/bin/python3.7 /usr/bin/python   
+		ln -s /usr/local/python3/bin/pip3 /usr/bin/pip
+		ln -sf(覆盖)
+		
+		8.136.148.22:(因为我他妈的在/usr/local/ 路径下新建python3 文件夹)
+			ln -sf /usr/local/python3/bin/python3 /usr/bin/python
+
+	还可修改 /usr/bin/
+			vi yum
+			
+
+2.重置python框架的用法 (如果发现一直导不出来)
+	1.重新注释models(包括url)
+	2.python manage.py makemigrations app01
+	3.python manage.py migrate --fake
+	4.python manage.py makemigrations app01
+	5.python manage.py migrate app01
+	
+3.  恢复数据库(妈的真的好用)
+	mysql -u root -p blog(数据库的名字) < mysqlkk.sql
+	须先创建---数据库( create database blog)
+	
+	插一句 备份数据库（单库备份）
+	mysqldump -u root -p blog > /bakcup/mysqlkk.sql
+	
+4.	数据库mysql安装
+		我安装了之后，一直发现要密码，主要是
+		cat /var/log/mysqld.log
+		grep "password" /var/log/mysqld.log (查询密码一直找不到)
+		百度发现，我日，这就是不要密码，直接Enter就可以了。。。
+		设置密码
+			set password for root@localhost = password('123456')
+			
+		"/usr/libexec/urlgrabber-ext-down", line 28   有个报错
+		2.修改 vi /usr/libexec/urlgrabber-ext-down   python环境变量
+		which yum
+		
+		0.wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+		
+		1.rpm -ivh mysql-community-release-el7-5.noarch.rpm
+		
+		2.rpm -qa|grep mariadb
+
+		3.yum -y install mysql-community-server  --就可以直接安装成功
+		
+		alter table userprofile change username username varchar(150) character set utf8;
+		
+5.数据库报错。。。。
+	1. show variables where Variable_name like '%char%';   #查看字符串编码的格式
+	2. show create table app01_classes;  #查看当前表的编码格式( 一般问题都出在这里)
+	3. alter table app01_classes character set utf8;    #改变表的当前格式 (使用这个可能没用)
+	4. 主要问题是 里面的字段编码还没有改变，我日，怎么这么难啊
+	5. 修改字段编码
+	6. alter table app01_classes change title title varchar(32) character set utf8;
+	7.该表可以正常使用
+	8.总结，不会每个表，我都要这样的改吧，我还没有找到合适的方法
+	
+	#date 2021/2/24 更新
+	#遇到数据库编码的问题，基本上都要这样解决。
+	
+	
+	
+6.我已经多次遇到这个问题了，妈的
+	正确解决方法:
+		问题场景:  当执行 python manage.py migrate 操作时, 报错 (1051, "Unknown table 'xxx'"),  这时数据库中是没有 'xxx' 这个表的
+解决: 
+	1. 先将 models.py 中你更新失败的表给注释掉
+	2. 注释掉后执行
+		python manage.py makemigrations
+		python manage.py migrate --fake
+	3. 上面执行成功后再将 models.py 中的表注释取消
+	4. 取消注释后执行
+		python manage.py makemigrations
+		python manage.py migrate
+
+
+
+
+	uwsgi + nginx 工作流程
+		
+		
+		
+		工作流程:
+              1.客户端发来http请求,Nginx作为直接对外的服务器接口，对http请求进行分析
+              2.如果是静态资源请求，则由Nginx自己处理(效率极高)
+              3.如果是动态资源请求,  则把它转发给uwsgi
+              4.uwsgi对请求进行预处理后，转发给Django，最终完成资源的返回。
+
+如果用餐馆来比喻，Nginx就是迎宾小姐，客人点了酒水，迎宾小姐自己就帮忙拿了，而uwsgi 是传菜员，
+Django是厨师，他两一起满足客人对现炒美食的需求。
+
+
+
+7.重启服务器之后(reboot)
+	svn 挂掉了
+	
+	启用svn版本库 svnserve -d -r /var/svn/2021/
+	这个是我的版本库路径
+	
+	如果发现端口号被占用
+	ps aux | grep svn
+	
+	关闭端口
+	kill -s 9 端口号
+	
+	再来一次
+	svnserve -d -r /var/svn/2021/
+	
+8. 修改我的数据编码
+	# For advice on how to change settings please see
+	# http://dev.mysql.com/doc/refman/5.6/en/server-configuration-defaults.html
+	[mysql]
+	default-character-set=utf8
+	
+	[mysqld]
+	#
+	# Remove leading # and set to the amount of RAM for the most important data
+	# cache in MySQL. Start at 70% of total RAM for dedicated server, else 10%.
+	# innodb_buffer_pool_size = 128M
+	#
+	# Remove leading # to turn on a very important data integrity option: logging
+	# changes to the binary log between backups.
+	log_bin=mysql-bin
+	#
+	# Remove leading # to set options mainly useful for reporting servers.
+	# The server defaults are faster for transactions and fast SELECTs.
+	# Adjust sizes as needed, experiment to find the optimal values.
+	# join_buffer_size = 128M
+	# sort_buffer_size = 2M
+	# read_rnd_buffer_size = 2M
+	datadir=/var/lib/mysql
+	socket=/var/lib/mysql/mysql.sock
+
+	# Disabling symbolic-links is recommended to prevent assorted security risks
+	symbolic-links=0
+
+	binlog_format=mixed
+	# Recommended in standard MySQL setup
+	sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
+	character-set-server=utf8
+
+	[mysqld_safe]
+	log-error=/var/log/mysqld.log
+	pid-file=/var/run/mysqld/mysqld.pid
+	
+	
+	重启服务器
+	systemctl restart mysql
+
+	剩下的参见 <<svn创建自己的服务器>> 第5点 数据库报错
+	
+9. websocket实现原理
+	--握手环节, 验证服务端是否支持websocket协议
+		浏览器生成一个随机字符串，将随机字符串发送给服务端。
+		服务端接收随机字符串之后，让他跟 magic string 拼接,然后再进行sha1/base64加密
+		将密文返回用户浏览器
+		用户浏览器自动化会进行校验
+	--收发数据，密文
+		数据解密是需要读取数据第2个字节的后7位，如果他是
+			127，
+			126，
+			125
+			有不同的结果
+
+
+
+
+
+
+	
+	

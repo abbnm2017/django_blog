@@ -113,8 +113,9 @@
             <!--</p>-->
             <!--<input type="submit" value="提交"/>-->
         <!--</form>-->
+        <h3>模态对话框添加班级</h3>
         <p>
-            <input id="title" type="text" name="title"/>
+            <input id="title" type="text" name="title" style="display: none"/>
         </p>
         <p>
             <input id="title2" type="text" name="title2"/>
@@ -129,8 +130,8 @@
         <h3>编辑框</h3>
 
         <input type="text" id = "temp_edit_id" name="temp_del"  style="display: none"/>
-        <input type="text" id = "temp_edit_name" name="temp_edit_name" />
-        <input type="text" id = "temp_edit_content" name="temp_edit_content" />
+        <input type="text" id = "temp_edit_name" name="temp_edit_name" style = "display:none"/>
+        <input type="text" id = "temp_edit_content" name="temp_edit_content" /><br/>
         <input type="button" value="确定" onclick="AjaxEdit();"/>
         <input type="button" value="取消" onclick="cancleEdit();"/>
 
@@ -179,7 +180,7 @@
             document.getElementById("shadow").classList.remove("hide")
             document.getElementById("editcon").classList.remove("hide")
             var v = $(ths).parent().prevAll();
-            var cur_id = $(v[3]).text()
+            var cur_id = $(v[1]).text()
             var cur_content = $(v[0]).text()
             var cur_name = $(v[2]).text()
             console.log(cur_id,cur_content)
@@ -219,7 +220,7 @@
             v = $(ths).parent().prevAll();
             console.log(v)
 
-            var cur_id = $(v[3]).text()
+            var cur_id = $(v[1]).text()
             console.log(cur_id)
             $('#temp_del').val(cur_id)
 

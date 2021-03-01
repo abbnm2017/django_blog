@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gb2312">
+    <title></title>
+</head>
+<body>
+    <h1>当前用户:{{ request.session.user_info.nickname }}</h1>
+    <a href="/user/logout.html">注销</a>
+    <h3>异性列表</h3>
+    <ul>
+        {% for row in user_list %}
+            <li>{{ row.nickname }}</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>

@@ -7,8 +7,8 @@
 <body>
     <!--<form method="post" action="{% url 'User:addstudent' %}">-->
     <form method="post" action="/user/edit_student/?pid={{result_list.id}}">
-        <input type="text" name="name1" value="{{result_list.name}}"/>
-        <input type="text" name="name2" value="{{result_list.content}}"/>
+        <input type="text" name="name1" value="{{result_list.id}}"/>
+        <input type="text" name="name2" value="{{result_list.cls_title}}"/>
         <input type="submit"/>
     </form>
 

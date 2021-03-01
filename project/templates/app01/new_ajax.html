@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gb2312">
+    <title></title>
+</head>
+<body>
+    <h1>首页</h1>
+    <input type="text" id="i1"/>
+    +
+    <input type="text" id="i2"/>
+    =
+    <input type="text" id="i3"/>
+
+    <input type="button" id="btn1" value="jQuery Ajax" onclick="add1();"/>
+    <input type="button" id="btn2" value="原生Ajax" onclick="add2();"/>
+
+    <script src="/static/js/jquery-1.11.0.min.js"></script>
+
+    <script>
+        function add1() {
+            $.ajax({
+                url:"/app01/add1/",
+                type:"POST",
+                data:{"i1":$("#i1").val(),"i2":$("#i2").val(),},
+                success:function (arg) {
+                    $("#i3").val(arg);
+                }
+
+            })
+        }
+        function add2() {
+            {#var xhr = new XMLHttpRequest()#}
+            {#xhr.open('GET','/app01/add2/?i1=12&i2=19')#}
+            {#xhr.onreadystatechange = function (){#}
+            {#    if (xhr.readyState == 4){#}
+            {#        alert("执行完成" + xhr.responseText)#}
+            {#    }#}
+            {#}#}
+                {#默认是异步的#}
+                {#xhr.send()#}
+                var xhr = new XMLHttpRequest()
+                xhr.open("POST", "/app01/add2/")
+
+                xhr.onreadystatechange = function(){
+                    if (xhr.readyState == 4){
+                         alert("popoppp")
+                    }
+                }
+                xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
+                xhr.send("i1=12&i2=19")
+
+        }
+    </script>
+
+</body>
+</html>

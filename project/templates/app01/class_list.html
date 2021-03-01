@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gb2312">
+    <title></title>
+</head>
+<body>
+    <h1>班级列表</h1>
+    <div>
+        <a href="/app01/add_class/">添加</a>
+    </div>
+    <ul>
+        {% for row in cls_list %}
+            <li>{{ row.title }} <a href="/app01/edit_class/{{ row.id }}">编辑</a></li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+
+1. 本来想直接往数据库里面插入数据，但是这样做是失败的
+insert into userprofile (password,username,is_superuser,mobile,first_name,last_name,email,is_staff,is_active,date_joined,icon) values('123456','dabai',1,'18
+948714921','','','',0,0,'','');
+
+python3 manage.py create_superuser('wang',password='123456',{'mobile':'15847511230'})
+
+
+2. 正确做法
+python3 manage.py shell
+
+因为我setting 里面是 AUTH_USER_MODEL = 'User.UserProfile'   不是自己的 AUTH_USER_MODEL = 'auth.User'
+User 是我的当前APP名字，我的UserProfile是类名
+	#主要是系统默认指向的模型类与我们项目自定义模型类指向产生了冲突
+	# 我们项目自定义模型 我里面加入了手机号限制，算是自己给自己埋了个累
+from User.models import UserProfile
+user = UserProfile.objects.create_superuser('admin','2568108209@qq.com','20141101066',**{'mobile':'15823651230'})
+
+这样才是正确创建超极管理员的方法
+
+
+3. modelForm 主要是处理models.py 和forms.py 有太多相同的地方。。
+	
+
+

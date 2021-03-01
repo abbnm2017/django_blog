@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gb2312">
+    <title></title>
+</head>
+<body>
+    <h1>Appmodele页面</h1>
+{#    <form method="POST" action="/app01/login1/">#}
+    <form id="f1" method="POST" action="{% url 'app01:login' %}">
+        <p>
+            用户:<input type="text" name="username"/> {{ obj.errors.username.0 }}
+
+        </p>
+        <p>
+            密码:<input type="password" name="password"/> {{obj.errors.password.0}}
+        </p>
+        <p>
+            测试:<input type="text" name="t2"/>{{ obj.errors.t2.0 }}
+        </p>
+{#        <input type="submit" value="提交"/> {{ msg }}#}
+        <a onclick="_onclicksubmit()">提交</a>
+    </form>
+
+    <script src="/static/js/jquery-1.11.0.min.js"></script>
+    <script>
+        function _onclicksubmit() {
+            $(".c1").remove()
+            console.log($("#f1").serialize())
+            $.ajax({
+                url:"/app01/commit/",
+                data:$("#f1").serialize(),
+                type:"POST",
+                dataType:"JSON",
+                success:function (args) {
+                    console.log(args)
+                    if (args.status){
+
+                    }
+                    else{
+                        $.each(args.msg,function (index,value) {
+                            console.log(index,value)
+                            var tag = document.createElement("span");
+                            tag.innerHTML = value[0];
+                            tag.className = "c1"
+                            {#$('#f1').find("input[name=index]").after(tag)#}
+                            $("#f1").find('input[name="' + index + '"]').after(tag)
+
+                        })
+                    }
+                }
+
+
+
+            })
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gb2312">
+    <title></title>
+</head>
+<body>
+    <input type="text"/>
+{#    用于检测页面是否刷新#}
+{#    伪ajax   iframe标签   伪造局部刷新（具有不刷新发送http请求）  #}
+    <form id="f1" method="POST" action="/app01/fake_ajax/" target="ifr">
+        <iframe id= "ifr" name="ifr" style="display: none" ></iframe>
+        <input type="text" name="user" />
+{#        <input type="submit" value="提交" />#}
+        <a onclick="submitForm();">提交</a>
+    </form>
+
+{#    增加回调函数#}
+
+    <script>
+        function submitForm(){
+            document.getElementById('ifr').onload = loadIframe;
+            document.getElementById('f1').submit();
+
+        }
+
+
+        function loadIframe(){
+            {#document.getElementById('ifr').innerText     取中间的内容  #}
+            {#document.getElementById('ifr').innerHTML     取中间的内容 #}
+
+
+            {#document.getElementById('ifr').value         取真实值#}
+
+
+            {#document.getElementById('ifr').contentWindow#}
+            {#进入一个新的对象#}
+            var content = document.getElementById('ifr').contentWindow.document.body.innerText
+            alert(content)
+
+        }
+    </script>
+</body>
+</html>

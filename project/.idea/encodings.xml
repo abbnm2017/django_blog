@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8" addBOMForNewFiles="with NO BOM">
+    <file url="file://$PROJECT_DIR$/templates/app01/article.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/templates/app01/back_to_top_func.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/templates/app01/create.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/templates/app01/detail.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/templates/app01/footer.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/templates/app01/header.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/templates/app01/update.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/templates/comment/reply.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/templates/index.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/templates/normal/login.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/templates/normal/register.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/templates/notice/list.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/templates/user/leavemessage.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/templates/user/lunxun.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/templates/user/pachong.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/templates/user/students.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/templates/user/tcp_socket.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/templates/user/teachers.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/templates/user/testfenye.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/templates/user/three_header.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/templates/user/uploadpic.html" charset="GBK" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

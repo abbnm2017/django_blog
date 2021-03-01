@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gb2312">
+    <title></title>
+</head>
+<body>
+{#    伪ajax   iframe标签   伪造局部刷新（具有不刷新发送http请求）  #}
+    <div>
+        <input type="text" id="txt1"/>
+        <input type="button" value="查看" onclick="changSrc();"/>
+    </div>
+
+    <iframe id="ifr" style="width:1000px;height: 2000px" src="http://www.autohome.com.cn"></iframe>
+
+    <script>
+        function changSrc(){
+            var inp = document.getElementById('txt1')
+            document.getElementById('ifr').src = inp.value;
+        }
+    </script>
+</body>
+</html>

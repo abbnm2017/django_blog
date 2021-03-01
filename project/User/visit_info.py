@@ -7,6 +7,7 @@ def change_info(request):              #修改网站访问量和访问ip等信�
     print ("keke_ip1:%s"%request)
     count_nums = VisitNumber.objects.filter(id=1)
 
+    print ("keke_ip_ssss:%s"%count_nums)
 
     if count_nums:
         count_nums = count_nums[0]
@@ -15,8 +16,10 @@ def change_info(request):              #修改网站访问量和访问ip等信�
         count_nums = VisitNumber()
         count_nums.count = 1
 
+    print ("keke_ip2:%s" % count_nums)
     count_nums.save()
 
+    print ("keke_ip3:%s" % request.META)
 
     # 记录访问ip和每个ip的次数
     if 'HTTP_X_FORWARDED_FOR' in request.META: #获取ip
@@ -30,6 +33,7 @@ def change_info(request):              #修改网站访问量和访问ip等信�
     print("keke_my_ip:%s"%client_ip)
 
     ip_exist = Userip.objects.filter(ip=str(client_ip))
+    print ("keke_ip4:%s" % ip_exist)
 
     if ip_exist:  #判断是否存在该ip
         uobj = ip_exist[0]
@@ -39,6 +43,8 @@ def change_info(request):              #修改网站访问量和访问ip等信�
         uobj.ip = client_ip
         uobj.count = 1
 
+    print ("keke_ip888:%s" % uobj)
+    print ("keke_ip999:%s" % uobj.count)
     uobj.save()
 
     #增加今日访问次数
@@ -47,7 +53,7 @@ def change_info(request):              #修改网站访问量和访问ip等信�
 
     print ("keke_ip5:%s" % date)
 
-    print ("keke_ip---今日访问次数:%s" % today)
+    print ("keke_ip6:%s" % today)
 
     if today:
         temp = today[0]

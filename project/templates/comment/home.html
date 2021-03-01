@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gb2312">
+    <title>Title</title>
+</head>
+<body>
+{#    <h1>Web聊天室({{ name }})</h1>#}
+
+<div>
+    <input id='txt' type="text" placeholder="请输入消息">
+    <input id="btn" type="button" value="发送" onclick="sendMessage();">
+</div>
+
+<div>
+    <h3>聊天记录</h3>
+    <div id="content">
+
+    </div>
+</div>
+
+<script src="{% static 'js/jquery-1.11.0.min.js' %}"></script>
+<script>
+    function sendMessage() {
+
+        $.ajax({
+            url: '/comment/send/message/',
+            type:"POST",
+            data:{'msg':$('#txt').val()},
+            success:function (arg) {
+                console.log(arg)
+            }
+        })
+    }
+
+    function getMessage() {
+        $.ajax({
+            url:"/comment/get/message/",
+            type:"get",
+            data:{name:"{{ name }}"},
+            success:function (arg) {
+                console.log("auto_load",arg)
+                if (arg.status){
+                    console.log(arg.data)
+                    {#创建一个新的div#}
+                    var tag = $('<div>')
+                    tag.text(arg.data)
+                    //将div添加到content中
+                    $("#content").append(tag)
+                }else{
+
+                }
+                getMessage();
+            }
+
+        })
+    }
+
+    {#当页面加载完成自动执行#}
+    $(function () {
+        getMessage();
+    })
+</script>
+
+</body>
+</html>

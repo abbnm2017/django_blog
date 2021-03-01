@@ -1,0 +1,93 @@
+{% load static %}
+<html lang="zh-cn">
+
+<head>
+    <!-- 网站采用的字符编码 -->
+    <meta charset="gbk">
+    <!-- 预留网站标题的位置 -->
+    <title>{% block title %}{% endblock %}</title>
+    <!-- 引入bootstrap的css文件 -->
+{#    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css' %}">#}
+{#    部署环境 可以用外部的cdn#}
+{#    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.css" rel="stylesheet">#}
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css" rel="stylesheet">
+{#    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>#}
+    <link rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    >
+    <style type="text/css">
+        body{
+            {#background-image: url("/static/images/three_bg.png");#}
+            background-image: url({% static 'images/three_bg.png' %});
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            {#z-index: -1000;#}
+            {#background: rgba(255,255,255,0.4);#}
+
+        }
+        #wrapper{
+            {#z-index: 10;#}
+
+            background: rgba(255,255,255,0.5);
+            {# background-image: url({% static 'images/three_bg.png' %});#}
+            {# background-attachment: fixed;#}
+            {# background-repeat: no-repeat;#}
+
+        }
+    </style>
+</head>
+
+
+<body>
+    <!-- 引入导航栏 -->
+    {% include 'user/three_header.html' %}
+    <!-- 预留具体页面的位置 -->
+{#    {% block content %}{% endblock content %}#}
+    <!-- 预留具体页面的位置 -->
+    <div id="wrapper" style="color: white">
+        {% block content %}{% endblock content %}
+        <div id="push"></div>
+    </div>
+    <!-- 引入注脚 -->
+    {% include 'app01/footer.html' %}
+    <!-- bootstrap.js 依赖 jquery.js 和popper.js，因此在这里引入 -->
+    <script src="{% static 'js/jquery-1.11.0.min.js' %}"></script>
+
+    <!--
+        popper.js 采用 cdn 远程引入，意思是你不需要把它下载到本地。
+        在实际的开发中推荐静态文件尽量都使用 cdn 的形式。
+        教程采用本地引入是为了让读者了解静态文件本地部署的流程。
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1-lts/dist/umd/popper.min.js"></script>
+
+    <!-- 引入bootstrap的js文件 -->
+{#    <script src="{% static 'plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>#}
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
+
+    <script src="{% static 'layer/layer.js' %}"></script>
+
+
+    <!-- 新增代码 -->
+    {% block script %}
+    {% endblock script %}
+
+    {% include 'app01/back_to_top_func.html' %}
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        #wrapper {
+            min-height: 100%;
+            margin-bottom: -40px;
+        }
+
+        #footer,
+        #push {
+            height: 60px;
+        }
+    </style>
+</body>

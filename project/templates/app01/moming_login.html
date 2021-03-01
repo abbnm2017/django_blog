@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gb2312">
+    <title></title>
+</head>
+<body>
+    <h1>Appmodele2页面</h1>
+{#    <form method="POST" action="/app01/login1/">#}
+    <form id="f1" method="POST" action="{% url 'app01:mm_login' %}" novalidate>
+        {% csrf_token %}
+        <p>  {{ obj.user }}  {{ obj.errors.user.0 }}</p>
+        <p>  {{ obj.email }} {{ obj.errors.email.0 }}  </p>
+        <p>  {{ obj.password }}  {{ obj.errors.password.0 }} </p>
+        <p>  {{ obj.phone }}   {{ obj.errors.phone.0 }} </p>
+
+{#        <a onclick="_onclicksubmit()">提交</a>#}
+        <input type="submit" value="提交3"/>
+    </form>
+
+</body>
+</html>

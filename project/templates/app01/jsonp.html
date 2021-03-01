@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gb2312">
+    <title></title>
+    <script src="/static/js/common.js"></script>
+</head>
+<body>
+    <a onclick="sendMsg();">发送</a>
+{#    <script src="/static/js/jquery-1.11.0.min.js"></script>#}
+
+{#    可以用别人的jquery#}
+{#    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>#}
+
+    <script>
+        function sendMsg() {
+            /**
+            $.ajax({
+                url:'http://www.baidu.com',
+                type:"GET",
+                data:{},
+                success:function(args){
+                    console.log(args)
+                }
+            })
+             **/
+            var tag = document.createElement('script');
+            tag.src = "http://www.baidu.com"
+
+            document.head.appendChild(tag)
+
+        }
+    </script>
+</body>
+</html>

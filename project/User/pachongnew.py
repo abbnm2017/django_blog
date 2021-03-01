@@ -7,6 +7,8 @@ import shutil
 from PIL import Image
 from .models import PcImgK
 import random
+import urllib.request
+
 
 url = ('https://image.baidu.com/search/acjson?'
        'tn=resultjson_com&ipn=rj&ct=201326592&is=&fp=result&'

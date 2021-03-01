@@ -36,11 +36,25 @@
             margin-left: -200px;
             margin-top: -150px;
         }
+        .delteaper{
+            position: fixed;
+            z-index: 1000;
+            background-color: white;
+            width: 400px;
+            height:300px;
+            left:50%;
+            top:50%;
+            margin-left: -200px;
+            margin-top:-150px;
+        }
 
     </style>
 {% endblock %}
 
 {% block xx %}
+
+
+
     <h1>老师列表</h1>
     <div>
         <a id="addteacher">添加老师</a>
@@ -69,7 +83,7 @@
             <td>
                 <a href="/user/edit_teacher/?nid={{row.tid}}">编辑</a>
                 |
-                <a>删除</a>
+                <a onclick="showDelModal(this)">删除</a>
             </td>
 
             </tr>
@@ -93,6 +107,16 @@
         <input id="btn_add" type="button" name="btn_name" value="添加"/>
         <input id="btn_cancle" type="button" name="btn_name2" value="取消"/>
     </div>
+
+    <div id="delteaper" class="delteaper hide">
+        <h3>你确定删除这个老师吗?</h3>
+        <input id="static1" type="text" name="static1" style="display: none">
+        <input id="del_confirm" type="button" name="btn_name3" value="删除"/>
+        <input id="del_cancle" type="button" name="btn_name3" value="取消"/>
+
+    </div>
+
+
 {% endblock %}
 
 {% block js %}
@@ -139,6 +163,29 @@
             })
         }
 
+        // $("#shanchu").click(function () {
+        //     $("#shadow,#delteaper").removeClass('hide')
+        // })
+
+
+        function showDelModal(ths){
+            $("#shadow,#delteaper").removeClass('hide')
+            var qian_info = $(ths).parent().prevAll()
+            // console.log("cc",qian_info)
+            var cur_id = $(qian_info[0]).text()
+            // console.log("cc2",cur_id)
+            cur_id2 = $(qian_info[2]).text()
+            tkp = parseInt(cur_id2)
+            $("#static1").val(tkp)
+
+        }
+
+        $("#del_cancle").click(function () {
+            $("#shadow,#delteaper").addClass('hide')
+        })
+
+
+
         $("#addteacher").click(function () {
             $("#shadow, #addteaper").removeClass('hide')
         })
@@ -171,5 +218,26 @@
                 }
           })
         })
+
+         $("#del_confirm").click(function () {
+            var teacher_id = $("#static1").val()
+             $.ajax({
+                 url:"/user/del_teacher_info/",
+                 type:"POST",
+                 data:{"teacher_id":teacher_id},
+                 dataType:"JSON",
+                 success:function (arg) {
+                     console.log(arg)
+                     if (arg.status){
+                         location.reload()
+                     }
+                     else{
+                         console.log("error")
+                     }
+                     
+                 }
+             })
+        })
+
     </script>
 {% endblock %}

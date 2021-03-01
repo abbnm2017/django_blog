@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gb2312">
+    <title>编辑学生</title>
+</head>
+<body>
+    <!--<form method="post" action="{% url 'User:addstudent' %}">-->
+
+    <form method="post" action="/user/edit_student_list/?pid={{sing_student_id}}">
+        玩家 ： <input type="text" name="name1" value="{{sing_student_id}}"/> <br/>
+        姓名 ： <input type="text" name="name2" value="{{sing_student_name}}"/> <br/>
+
+        班级 ：
+            <select id="addClassid" name="classId">
+                {% for row in class_list %}
+
+                    {% if row.id == sing_student_title %}:
+                        <option value="{{ row.id }}" selected>{{ row.cls_title }}</option>
+                    {% else %}
+                        <option value="{{ row.id }}" >{{ row.cls_title }}</option>
+                    {% endif %}
+
+                {% endfor %}
+            </select>
+
+        <br/>
+
+        <input type="submit"/>
+
+    </form>
+
+</body>
+</html>

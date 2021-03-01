@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gb2312">
+    <title></title>
+</head>
+<body>
+    <h1>学生列表</h1>
+    <div>
+        <a href="/app01/add_student/">添加</a>
+    </div>
+    <ul>
+        {% for row in stu_list %}
+            <li>{{ row.name }} --{{ row.email }} -- {{ row.age }} --  -- {{ row.cls.title }}   <a href ="/app01/edit_student/{{ row.id }}/">编辑</a>   </li>
+{#            {{ row.cls_id }}#}
+        {% endfor %}
+    </ul>
+
+</body>
+</html>

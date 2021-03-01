@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title>使用nginx部署Django静态文件配置</title>
+    <link rel='dns-prefetch' href='//apps.bdimg.com' />
+	<link rel='dns-prefetch' href='//s.w.org' />
+	<link rel='stylesheet' id='main-css'  href='https://yusi123.com/wp-content/themes/YusiPro/style.css?ver=1.6' type='text/css' media='all' />
+	<link rel='stylesheet' id='fancybox-css'  href='https://yusi123.com/wp-content/themes/YusiPro/css/jquery.fancybox.min.css?ver=1.6' type='text/css' media='all' />
+	<link rel='stylesheet' id='wppay-css'  href='https://yusi123.com/wp-content/themes/YusiPro/shop/static/css/pay.css?ver=4.0.0' type='text/css' media='all' />
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	
+	<script>
+		$(document).ready(function(){
+			// $("p").click(function(){
+			// 	$(this).hide();
+			// });
+			$("#test").click(function(){
+				alert("134556")
+				$.ajax({
+					url:"{% url 'User:test_ajax' %}",
+					type:"post",
+					dataType:"json",
+
+					data:{
+						user:123,
+						csrfmiddlewaretoken:'{{ csrf_token }}',
+					},
+
+					success:function(result){
+						$('#test1').html(result.News)
+					},
+
+				});
+				
+			});
+		});
+
+
+		function likeChange(obj, content_type, object_id){
+			console.log(obj, content_type, object_id)
+			var is_like = obj.getElementsByClassName('active').length == 0
+			// alert("1234")
+			$.ajax({
+				url : "{% url 'User:like_change' %}",
+				type : 'GET',
+				data:{
+					content_type:content_type,
+					object_id: object_id,
+					is_like : is_like,
+				},
+
+				cache:false,
+				success: function(data){
+					console.log(data)
+				},
+
+				error:function(xhr){
+					console.log(xhr)
+				}
+			});
+		}
+
+
+	</script>
+
+
+</head>
+<body>
+
+<section class="container">
+    <div class="content-wrap">
+    	<div class="content">
+<article class="article-content">
+{#		<div class="asst asst-single-header"><div class="d_banner_inner"><a target="_blank" href="https://yusi123.com/go/aliyun">#}
+{#        </a>#}
+{#        </div>#}
+{#        </div>#}
+        <div>
+
+            <h1>1.安装 uwsgi</h1>
+
+            <p>pip3 install uwsgi</p>
+
+	<p>#软连接  配置环境变量
+	ln -s /usr/local/python3/bin/uwsgi /usr/bin/uwsgi
+
+        ln -s /usr/local/bin/python3.7 /usr/bin/python </p>
+
+	<p>以这个为准  ln -s /usr/local/python3/bin/uwsgi /usr/bin/uwsgi
+    </p>
+
+            <h1>2.测试</h1>
+            <p>uwsgi --http (127.0.0.1):9090 --wsgi-file test.py</p>
+
+            <p>uwsgi --http :8001 --wsgi-file test.py</p>
+
+<h1>3.关闭所有的相关进程</h1>
+            <p>ps -aux | grep uwsgi | awk '{print $2}' | xargs kill -9</p>
+
+            <h1>4.需要服务器开启8001端口</h1>
+            <p>登录阿里云开启8001端口</p>
+
+            <h1>5. 成功访问uwsgi</h1>
+
+            <h1>6. 配置uwsgi的配置路径</h1>
+            <p>uwsgi --chdir /root/python5/ --http :8001 --module project.wsgi</p>
+            <p>uwsgi --chdir /root/python5/ --http :8001 --module project.wsgi:application</p>
+            <p>后期我们可以在根目录下配置python5_uwsgi文件夹，整个目录我都放在里/root下，当然你也可以放在其他目录下</p>
+            <p>vim myblog.ini    创建一个启动本项目的uwsgi的ini 配置文件</p>
+            <p>配置开始</p>
+            <p>[uwsgi]</p>
+                <p>chdir = /root/python5</p>
+                <p>wsgi-file = project/wsgi.py</p>
+
+                <p>master = True</p>
+                <p>process = 4</p>
+                <p>harakiri = 60</p>
+                <p>max-request = 5000</p>
+
+                <p>socket = 127.0.0.1:8001</p>
+
+
+                <p>pidfile = /root/python5_uwsgi/master.pid</p>
+                <p>daemonize = /root/python5_uwsgi/myblog.log</p>
+                <p>vacuum = True</p>
+
+            <p>配置结束</p>
+
+            <h1>7. 能访问了，uwsgi只提供动态链接服务，静态文件没有，需要nginx(提供web服务)</h1>
+
+            <p>静态文件用nginx去处理</p>
+            <p>动态数据用uwsgi去处理</p>
+            <h1>8. 安装nginx</h1>
+            <p>这里可以先关掉 apache2ctl stop  (一般不用处理)</p>
+            <p>apt-get update</p>
+
+            <h1>9. 进入 cd /usr/loacl/src</h1>
+            <p># wget http://nginx.org/download/nginx-1.18.0.tar.gz</p>
+            <p>tar zxvf nginx-1.18.0.tar.gz</p>
+
+            <p>cd nginx-1.18.0</p>
+	        <p>./configure --prefix=/usr/local/nginx    (这个指令是他妈的移动到/usr/local/nginx 下)</p>
+            <p>./configure --prefix=/etc/   用上面的，不要用这个，这个参考</p>
+
+            <p>make</p>
+	        <p>make install</p>
+
+            <h1>10. 安装ngix 完成</h1>
+            <h1>11.Nginx在 Centos 没有sites-available 和 sites-enabled目录 （我吐了）</h1>
+            <p>
+            这个有个问题,ubuntu下安装nginx是自动创建这两个目录，是当初设计的人加上去<br/>
+            但是我在centos下没有，要手动创建 注意了<br/>
+            #####################<br/>
+            创建:/etc/nginx/sites-available <br/>
+            创建:/etc/nginx/sites-enabled<br/>
+
+            然后在 /etc/nginx/nginx.conf<br/>
+            里面的http:增加<br/>
+            include /etc/nginx/sites-enabled/*;<br/>
+            ##############<br/>
+            8.136.148.22<br/>
+
+            ################<br/>
+            /usr/local/nginx/conf/available<br/>
+            /usr/local/nginx/conf/enabled<br/>
+            include /usr/local/nginx/conf/sites-enabled/*;<br/>
+            ################<br/>
+            </p>
+
+
+
+<h1>12./usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf</h1>
+
+<h1>13. ls -al 查看隐藏的文件</h1>
+
+<h1>14. uwsgi 执行相关指令</h1>
+    <p>#uwsgi --ini uwsgi.ini             # 启动</p>
+    <p>uwsgi --reload uwsgi.pid          # 重启</p>
+    <p>#uwsgi --stop uwsgi.pid            # 关闭</p>
+
+<h1>15. service nginx restart</h1>
+
+            <h1>16. ps -ef | grep uwsgi</h1>
+
+            <h1>17.uwsgi --reload master.pid</h1>
+
+<h1>17.sudo pkill -f uwsgi -9</h1>
+
+            <h1>18. cat master.pid</h1>
+
+            <h1>19.通过配置文件启动uwsgi</h1>
+            <p>uwsgi --ini /root/python5_uwsgi/myblog.ini</p>
+
+
+<h1>26. cd /usr/local/nginx/</h1>
+
+            <h1>27. 查看nginx的状态</h1>
+            <p>[root@keke_centos sbin]# ./nginx -t</p>
+
+<h1>myblog.conf的软链接</h1>
+<p>28. ln -s /usr/local/nginx/conf/sites-available/myblog.conf /usr/local/nginx/conf/sites-enabled/myblog.conf</p>
+
+<h1>29. nginx -t</h1>
+
+<h1>30. service nginx restart</h1>
+
+<h1>31. 上面指令缺少nginx 启动</h1>
+
+<h1>32. 创建 nginx 文件 (是在/ect/init.d/下新建)</h1>
+	<p>注意，保存一定要保存成UNIX格式（notepad++：编辑--文档格式转换--转为UNIX格式），否则会如下报错的</p>
+
+    <h1>33. 设置执行权限：chmod +x /etc/init.d/nginx</h1>
+    <p>-rw-r--r--    变成        -rwxr-xr-x</p>
+
+    <p>34. 注册成服务：chkconfig --add nginx</p>
+
+<h1>注册完上面的服务之后可以执行下面的指令了</h1>
+
+<p> 35. service nginx start
+
+	service nginx stop
+
+	service nginx restart
+	service nginx reload
+</p>
+
+<h1>36. sbin下面要启用 ./nginx</h1>
+
+<h1>37. 可以用了</h1>
+
+<h1>38. ps -ef | grep nginx</h1>
+
+            <h1>39. 遇到问题了</h1>
+        <p>启动成功之后静态文件没有加载成功,<br/>
+        只有根目录下的静态文件加载成功，app中的css样式都没有加载出来<br/>
+	    ---
+	    会不会是nginx配置静态目录没有设置到static_collectet<br/>
+            </p>
+
+<h1>40. 思考了两天，百度了很多资料</h1>
+    <p>
+	解决办法:<br/>
+	STATIC_ROOT = os.path.join(BASE_DIR, 'collectstatic')<br/>
+	在项目的根路径下 增加 collectstatic文件夹(可以任意命名)<br/>
+
+	MEDIA_URL = '/media/'<br/>
+	MEDIA_ROOT = os.path.join(BASE_DIR, 'media')<br/>
+	在项目的根路径下 增加 media文件夹(可以任意命名)<br/>
+
+	开始执行python3 manage.py collectstatic<br/>
+	这个目的是 将你app（包含project）下的下的所有静态文件<br/>
+
+	然后在/usr/local/nginx下<br/>
+	cd conf<br/>
+	cd sites-available<br/>
+	配置自己的static路径<br/>
+	vim myblog.conf<br/>
+
+	server {<br/>
+        listen 80;<br/>
+        server_name myblog;<br/>
+        charset utf-8;<br/>
+        client_max_body_size 75M;<br/>
+        location /static  {<br/>
+                alias /root/python5/collectstatic;<br/>
+        }<br/>
+
+        location /media/ {<br/>
+                alias /root/python5/media/;<br/>
+        }<br/>
+
+        location / {<br/>
+                uwsgi_pass 127.0.0.1:8001;<br/>
+                include /usr/local/nginx/conf/uwsgi_params;<br/>
+        }<br/>
+	}<br/>
+    </p>
+    <h1>41.配置完之后，发现还是不行。。。</h1>
+    <p>
+	继续查问题，已经出现403了<br/>
+	修改 nginx.conf<br/>
+	修改原来的user<br/>
+	user root;  这点很重要修改完 就可以了<br/>
+    </p>
+    </div>
+
+    <h1>
+        42.后面修改project文件
+    </h1>
+    <p>
+        cd /root/python5_uwsgi <br/>
+        uwsgi --reload master.pid <br/>
+        service nginx reload<br/>
+        每次重启uwsgi实现热更就可以了，我这个重启有点慢是因为生产环境？？<br/>
+    </p>
+    <h1>部署生产环境结束</h1>
+
+	<div class="article-actions clearfix">
+        <a href="javascript:;" class="action-like" data-pid="3941" etap="like"><i class="fa fa-heart-o"></i>喜欢(<span>9</span>)</a>
+        
+        <a href="javascript:;" class="action-rewards" etap="rewards"><i class="fa fa-yen" aria-hidden="true"></i>打赏</a>
+        
+    </div>
+
+{#    <div class="like" onclick="likeChange(this,'999', 1)">#}
+{#    	<span class="liked-num">0</span>#}
+{#    	<span>喜欢</span>#}
+{#    </div>#}
+
+</article>
+
+{#    {% csrf_token %}#}
+{#    <button type="submit" id="test" value="点赞"></button>#}
+{#    <p id="test1">这里的信息会变化</p>#}
+
+        </div>
+    </div>
+</section>
+
+</body>
+
+
+
+</html>

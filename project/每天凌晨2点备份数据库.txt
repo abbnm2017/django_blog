@@ -1,0 +1,39 @@
+#centos7-每天定时备份 mysql数据库
+1. vim database_mysql_shell.sh
+	#!/bin/bash
+	echo "每天2点自动开始数据库备份"
+	DATE=`date +%Y%m%d%H%M`                #every minute
+	DATABASE=blog              #database name
+	DB_USERNAME=xxx  (自己mysql账号)                     #database username
+	DB_PASSWORD="xxx"(自己mysql密码)                    #database password
+	BACKUP_PATH=/root/backup/mysqldata          #backup path
+
+	#backup command
+
+	/usr/bin/mysqldump -u$DB_USERNAME -p$DB_PASSWORD -h 127.0.0.1 -R --opt $DATABASE | gzip > $                                                 {BACKUP_PATH}\/${DATABASE}_${DATE}.sql.gz
+
+	#just backup the latest 5 days
+
+	find ${BACKUP_PATH} -mtime +5 -name "${DATABASE}_*.sql.gz" -exec rm -f {} \;
+	
+	每5天清空
+2.  给脚本授权
+	chmod +x database_backup_shell.sh
+	
+3.  第三步：编写定时备份任务
+	crontab -e    (进入定时页面编写)
+ 	
+	在页面中编写如下内容:
+	00 3 * * * /root/database_backup_shell.sh
+	
+	参数解析
+	*          *        *         *           *        program
+	(f1)       (f2)     (f3)       (f4)        (f5)
+	f1 是表示分钟 (0-59)
+	f2 是表示小时 (0-23)
+	f3 一个月份的第几天  (1-31)
+	f4 月份(1-12)
+	f5 星期中星期几 (0 - 6) (星期天 为0)
+	
+	
+4.  crontab -l 可以查询当前的定时任务

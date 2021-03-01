@@ -37,17 +37,33 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'notifications',
+    'notice',
+    'notifications',
+    'mptt',
     'User',
+    "app01",
+    'normal',
+    'password_reset',
+    'comment',
+    'taggit',
+    'ckeditor',
 ]
+
+from django.middleware.csrf import CsrfViewMiddleware
+from django.middleware.common import CommonMiddleware
+import m1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'm1.Middle1',
+    # 'm1.Middle2',
 ]
 
 ROOT_URLCONF = 'project.urls'
@@ -86,7 +102,12 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '3306',
 
-    }
+    },
+
+    # 'db2':{
+    #     'ENGINE':'django.db.backends.sqlite3',
+    #     'NAME':os.path.join(BASE_DIR,'db.sqlite3'),
+    # }
 }
 
 
@@ -128,9 +149,136 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'collectstatic')
 
 DEFAUTLT_CHARSET = 'utf-8'
 FILE_CHARSET = 'gb18030'
+#
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-MEDIA_URL = '/site_media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
+
+# SMTP服务器，改为你的邮箱的smtp!
+EMAIL_HOST = 'smtp.qq.com'
+# 改为你自己的邮箱名！
+EMAIL_HOST_USER = '437627679@qq.com'
+# 你的邮箱密码
+EMAIL_HOST_PASSWORD = 'wzy20141101066'
+# 发送邮件的端口
+EMAIL_PORT = 25
+# 是否使用 TLS
+EMAIL_USE_TLS = True
+# 默认的发件人
+DEFAULT_FROM_EMAIL = '科科的博客 <437627679@xxx.com>'
+
+
+CKEDITOR_CONFIGS = {
+    # django-ckeditor默认使用default配置
+    'default': {
+        # 编辑器宽度自适应
+        'width':'auto',
+        'height':'250px',
+        # tab键转换空格数
+        'tabSpaces': 4,
+        # 工具栏风格
+        'toolbar': 'Custom',
+        # 工具栏按钮
+        'toolbar_Custom': [
+            # 表情 代码块
+            ['Smiley', 'CodeSnippet'],
+            # 字体风格
+            ['Bold', 'Italic', 'Underline', 'RemoveFormat', 'Blockquote'],
+            # 字体颜色
+            ['TextColor', 'BGColor'],
+            # 链接
+            ['Link', 'Unlink'],
+            # 列表
+            ['NumberedList', 'BulletedList'],
+            # 最大化
+            ['Maximize']
+        ],
+        # 插件
+        'extraPlugins': ','.join(['codesnippet']),
+    }
+}
+
+LOGGING = {
+    'version': 1 ,
+    'disable_existing_loggers':False,
+
+    # verbose：详细的格式化器，依次输出：消息级别、发生时间、抛出模块、进程ID、线程ID、提示信息
+    # simple：简要的格式化器，仅输出消息级别和提示信息
+
+
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+
+    'filters': {
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+    },
+
+    'handlers':{
+
+        'console':{
+            'level':"INFO",
+            'filters':['require_debug_true'],
+            'class':'logging.StreamHandler',
+            'formatter':"simple",
+        },
+
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler',
+            'formatter': 'verbose',
+        },
+
+        'file':{
+            'level':"WARNING",
+            # 'class':"logging.FileHandler",
+            'filename':os.path.join(BASE_DIR,'logs/debug.log'),
+            'formatter': 'verbose',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'when': 'midnight',
+            'backupCount': 30,
+        },
+    },
+
+    'loggers':{
+        'django':{
+            'handlers':['console'],
+            'propagate':True,
+        },
+
+        'django.request':{
+            'handlers':['file','mail_admins'],
+            'level':"WARNING",
+            'propagate':False,
+        }
+    },
+}
+
+"""
+    version  --- 配置的版本
+    disable_existing_loggers  --- 指明是否禁止默认配置的记录器
+    
+    一条消息首先传递给loggers
+    Django中内置了几种记录器，比如这里用到的Django记录器，它会接收Django层次结构中的所有消息。
+    然后我们定义了需要处理DEBUG以上级别的消息，并把这些消息传递给名叫file的处理器。
+    'propagate': True意思是本记录器处理过的消息其他处理器也可以继续处理。
+    
+    现在消息来到名叫file的handlers中了。这个处理器定义了消息处理级别仍然为DEBUG，
+    在class中定义将消息输出到文件中去，文件地址为项目目录的logs/debug.log
+    
+    
+    
+"""

@@ -1,0 +1,207 @@
+{% extends 'user/three_base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <blockquote class="blockquote text-center">
+      <p class="mb-0" style="color: yellowgreen">CBV和FBV的区别</p>
+      <footer class="blockquote-footer">designer keke <cite title="Source Title">CBV or FBV</cite></footer>
+    </blockquote>
+    <div style="margin-left: 20px">
+
+
+        <h3>前言</h3>
+        <p>当浏览器向服务端请求一个页面时，Django创建一个HttpRequest对象，该对象
+        包含关于请求的元数据，然后，Django加载相应的视图，将这个HttpRequest对象
+        作为第一个参数传递给视图函数。
+        一般用Request当做承接对象
+        每个视图负责返回一个HttpResponse对象。
+        当一个页面被请求时，Django就会创建一个包含本次请求原信息（请求报文中的请求行、首部信息、内容主体等）的HttpRequest对象。
+            Django会将这个对象自动传递给响应的视图函数,一般视图函数约定俗成地使用 request 参数承接这个对象。
+
+        <h3>CBV 和 FBV </h3>
+        <div class="lead" style="margin-left: 10px ">
+
+            <ul class="list-unstyled">
+              <li>FBV（function base views） 就是在视图里使用函数处理请求。</li>
+              <li>CBV（class base views） 就是在视图里使用类处理请求。</li>
+              <li>Python是一个面向对象的编程语言，如果只用函数来开发，有很多面向对象的优点就错失了（继承、封装、多态）。</li>
+              <li>所以Django在后来加入了Class-Based-View。可以让我们用类写View。</li>
+              <li>这样做的优点主要下面两种:
+                <ul>
+                  <li> 1.提高了代码的复用性，可以使用面向对象的技术，比如Mixin（多继承）</li>
+                  <li>2.可以用不同的函数针对不同的HTTP方法处理，而不是通过很多if判断，提高代码可读性</li>
+                </ul>
+              </li>
+            </ul>
+
+            <p>如果我们要写一个处理GET方法的view，用函数写的话是下面这样。
+                <pre>
+                from django.http import HttpResponse
+
+                def my_view(request):
+                    if request.method == "GET":
+                        return HttpResopnse('ok')
+                </pre>
+            </p>
+
+            <p>如果用class-based view写的话，就是下面这样</p>
+
+            <p>
+                <pre>
+                    from django.http import HttpResponse
+                    from django.views import View
+
+                    class MyView(View):
+                        def get(self,request):
+                            return HttpRespnse('ok')
+                </pre>
+
+                Django的url是将一个请求分配给可调用的函数的，而不是一个class。针对这个问题，
+                class-based view提供了一个as_view()静态方法(也就是方法),调用这个方法,会创建一个类的实例，
+                然后通过实例dispatch()方法,dispatch()方法会根据request的method的不同调用相应的方法来处理
+                request(如get(),post()等)。到这里，这些方法和function-based view差不多了，要接受request，得到一个
+                response返回。如果方法没有定义,会抛出HttpResponseNotAllowed异常。
+                <h4>注意：使用CBV时，urls.py中也做对应的修改：</h4>
+                <pre>
+                    from django.conf.url import url
+                    from app01.views import MyView   #引入我们在views.py里面创建的类
+                    urlpattern = [
+                        url(r'^index/$',MyView.as_view()),
+                    ]
+                </pre>
+            </p>
+
+            <h4>添加类的属性可以通过两种方法设置，第一种是常见的Python的方法，可以被子类覆盖。</h4>
+
+            <p>
+                <pre>
+                from django.http import HttpResponse
+                from django.views import View
+
+                class GreetingView(View):
+                    name = "yuan"
+                    def get(self, request):
+                         return HttpResponse(self.name)
+
+                # You can override that in a subclass
+
+                class MorningGreetingView(GreetingView):
+                    name= "alex"
+                </pre>
+            </p>
+
+            <h4>第二种方法，你也可以在url中指定类的属性：在url中设置类的属性Python</h4>
+
+            <p>
+                <pre>
+                urlpatterns = [
+                    url(r'^index/$',GreetingView.as_view(name='egon'))  ##类里面必须有name属性，并且会被传进来的这个属性值给覆盖掉
+                ]
+                </pre>
+            </p>
+
+            <p>
+                cbv的实现原理通过看django的源码就很容易明白,
+                大体就是有url路由到这个cbv之后，通过cbv内部的dispatch方法进行分发,将get请求分发给cbv.get方法
+                将post请求分发给cbv.post方法处理，其他方法类似
+                怎么利用多态呢？cbv里引入了mixin的概念
+                Mixin就是写好了的一些基础类，然后通过不同的Mixin组合成为最终想要的类。
+                所以，理解cbv的基础是，理解Mixin。Django中使用Mixin来重用代码，一个View Class可以继承多个Mixin，
+                但是只能继承一个View（包括View的子类），推荐把View写在最右边，多个Mixin写在左边。
+            </p>
+
+        </div>
+
+
+        <div>
+            <h3>使用装饰器装饰FBV</h3>
+            <p>FBV本身就是一个函数，所以和给普通的函数加装饰器无差：</p>
+            <p>
+                <pre>
+                装饰器
+                def wrapper(func):
+                    def inner(*args,**kwargs):
+                        start_time = time.time()
+                        ret = func(*args,**kwargs)
+                        end_time = time.time()
+                        print ("used:",end_time - start_time)
+                        return ret
+                    return inner
+                # FBV版添加班级
+                @wrapper
+                def add_class(request):
+                    if request.method == "POST":
+                        class_name = request.POST.get("class_name")
+                        models.Classes.objects.create(name=class_name)
+                        return redirect("/class_list/")
+                    return render(request,"add_class.html")
+                </pre>
+            </p>
+
+            <p>
+                <h4>使用装饰器装饰CBV</h4>
+                <h5>类中的方法与独立函数不完全相同，因此不能直接将函数装饰器应用于类中的方法 ，我们需要先将其转换为方法装饰器。
+                    Django中提供了method_decorator装饰器用于将函数装饰器转换为方法装饰器。
+                </h5>
+
+                 <pre>
+
+                 from django.views import View
+                 from django.utils.decorators import method_decorator
+                 class AddClass(View):
+                        @method_decorator(wrapper)
+                        def get(self,request):
+                            return render(request,"add_class.html")
+
+                 </pre>
+
+            </p>
+
+            <h4> 使用CBV时要注意，请求过来后会先执行dispatch()这个方法，如果需要批量对具体的请求处理方法，如get，post等做一些操作的时候，
+                这里我们可以手动改写dispatch方法，这个dispatch方法就和在FBV上加装饰器的效果一样。</h4>
+
+            <p>
+                <pre style="color: white">
+                @method_decorator(wrapper,name='get')   get是给get方法加
+                class Login(View):
+
+                    @method_decorator(wrapper)
+                    def dispatch(self, request, *args, **kwargs):
+                        print('before')
+                        obj = super(Login,self).dispatch(request, *args, **kwargs)
+                        print('after')
+                        return obj
+
+                    def get(self,request):
+                        return render(request,'login.html')
+
+                    def post(self,request):
+                        print(request.POST.get('user'))
+                        return HttpResponse('Login.post')
+
+                    </pre>
+
+
+                <ul class="list-unstyled">
+                  <li>另外给cbv添加装饰器的时候</li>
+                    <ul>
+                       <li>1.直接添加在dispatch里面，这样每个函数都会执行</li>
+                        <li>2.添加在每一个函数中</li>
+                        <li>3.直接添加在类上，后面的name表示只给get添加装饰器</li>
+                        <li>@method_decorator(wrapper,name='get')   get是给get方法加</li>
+                        <li>4.添加装饰器前必须导入 from django.utils.decorators import method_decorator</li>
+                        <li>5.添加装饰器的格式必须为@method_decorator(),括号里面为装饰器的函数名</li>
+                        <li>6.给类添加是必须声明name</li>
+                        <li>7.注意csrf-token装饰器的特殊性，它只能加在dispatch上面</li>
+
+                    </ul>
+                  </li>
+                </ul>
+
+            </p>
+        </div>
+    </div>
+
+{% endblock content %}
+
