@@ -100,7 +100,6 @@ def user_register(request):
         else:
             print ("kekeggg",user_register_form.errors)
 
-
         txt = ""
         if  user_register_form.errors.get("username"):
             txt += user_register_form.errors["username"][0]

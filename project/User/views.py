@@ -463,10 +463,18 @@ def reptile(request):
             return redirect(reverse('User:reptile'))
         playername = lform.cleaned_data.get('playername')
         page_num = lform.cleaned_data.get('page_num')
+
+
         # imporongnew
-        Run(playername,page_num)
+        import User.pachongnew as pachongnew
 
+        pachongnew.Run(playername,page_num)
 
+        PcImgK.objects.all().delete()
+
+        #print ("keke----www",pachongnew.global_imglist)
+
+        pachongnew.Start()
 
         imgs = PcImgK.objects.all()
 
@@ -537,13 +545,15 @@ allconn = []
 
 @accept_websocket
 def conn(request):
-    print ("kekemememe33333")
     global allconn
     if request.is_websocket():
+        print("kekemememe33333",request.websocket)
         allconn.append(request.websocket)
         for message in request.websocket:
+            print("kekemememe333332", message.decode("utf-8"))
             for i in allconn:
                 if i!=request.websocket:
+                    print("kekemememe333332dddd", i)
                     i.send(message)
 
 

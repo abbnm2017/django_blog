@@ -38,7 +38,7 @@ def comment(request,article_id, parent_commet_id = None):
             new_comment.article = article
             new_comment.user = request.user
             """
-            parent_comment_id 
+            parent_comment_id
                 此参数代表父评论的id值，若为None则表示评论为一级评论，
                 若有具体值则为多级评论
                 如果视图处理的是多级评论，则用MPTT的get_root()方法将其父级重置
@@ -61,7 +61,7 @@ def comment(request,article_id, parent_commet_id = None):
                 verb：动词短语
                 target：链接到动作的对象（可选）
                 action_object：执行通知的对象（可选）
-                   
+
                 杜赛 (actor) 在 Django搭建个人博客 (target) 中
                 对 你 (recipient) 发表了 (verb) 评论 (action_object)
                 """

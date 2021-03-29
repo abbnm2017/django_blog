@@ -1,60 +1,51 @@
-WARNING 2021-02-22 15:18:10,011 log 59480 59684 Not Found: /static/images/1024_1.jpg
-WARNING 2021-02-22 15:18:10,013 log 59480 59432 Not Found: /static/images/1024_2.jpg
-WARNING 2021-02-22 15:18:10,025 log 59480 59592 Not Found: /static/images/1024_3.jpg
-WARNING 2021-02-22 15:18:10,027 log 59480 60236 Not Found: /static/images/1024_4.jpg
-WARNING 2021-02-22 15:18:18,874 log 59480 60236 Not Found: /user/need19/
-WARNING 2021-02-22 16:06:33,666 log 59464 61212 Not Found: /static/images/nginx.jpg
-WARNING 2021-02-22 16:06:40,791 log 59464 61212 Not Found: /static/images/nginx.jpg
-ERROR 2021-02-22 16:06:53,548 log 59464 61212 Internal Server Error: /app01/article/
+ERROR 2021-02-22 21:35:33,801 log 11648 13012 Internal Server Error: /app01/article/
 Traceback (most recent call last):
-  File "F:\Python37\lib\site-packages\django\template\defaulttags.py", line 1021, in find_library
+  File "C:\Python36\lib\site-packages\django\template\defaulttags.py", line 1021, in find_library
     return parser.libraries[name]
 KeyError: 'my_filters_and_tags'
 
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "F:\Python37\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
     response = get_response(request)
-  File "F:\Python37\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
     response = self.process_exception_by_middleware(e, request)
-  File "F:\Python37\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
   File "F:\a44\keke_tl\djangoday4\project\app01\views.py", line 512, in article
     return render(request,'app01/article.html',contenxt)
-  File "F:\Python37\lib\site-packages\django\shortcuts.py", line 19, in render
+  File "C:\Python36\lib\site-packages\django\shortcuts.py", line 19, in render
     content = loader.render_to_string(template_name, context, request, using=using)
-  File "F:\Python37\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+  File "C:\Python36\lib\site-packages\django\template\loader.py", line 61, in render_to_string
     template = get_template(template_name, using=using)
-  File "F:\Python37\lib\site-packages\django\template\loader.py", line 15, in get_template
+  File "C:\Python36\lib\site-packages\django\template\loader.py", line 15, in get_template
     return engine.get_template(template_name)
-  File "F:\Python37\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+  File "C:\Python36\lib\site-packages\django\template\backends\django.py", line 34, in get_template
     return Template(self.engine.get_template(template_name), self)
-  File "F:\Python37\lib\site-packages\django\template\engine.py", line 143, in get_template
+  File "C:\Python36\lib\site-packages\django\template\engine.py", line 143, in get_template
     template, origin = self.find_template(template_name)
-  File "F:\Python37\lib\site-packages\django\template\engine.py", line 125, in find_template
+  File "C:\Python36\lib\site-packages\django\template\engine.py", line 125, in find_template
     template = loader.get_template(name, skip=skip)
-  File "F:\Python37\lib\site-packages\django\template\loaders\cached.py", line 53, in get_template
-    template = super().get_template(template_name, skip)
-  File "F:\Python37\lib\site-packages\django\template\loaders\base.py", line 30, in get_template
+  File "C:\Python36\lib\site-packages\django\template\loaders\base.py", line 30, in get_template
     contents, origin, origin.template_name, self.engine,
-  File "F:\Python37\lib\site-packages\django\template\base.py", line 156, in __init__
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 156, in __init__
     self.nodelist = self.compile_nodelist()
-  File "F:\Python37\lib\site-packages\django\template\base.py", line 194, in compile_nodelist
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 194, in compile_nodelist
     return parser.parse()
-  File "F:\Python37\lib\site-packages\django\template\base.py", line 477, in parse
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 477, in parse
     raise self.error(token, e)
-  File "F:\Python37\lib\site-packages\django\template\base.py", line 475, in parse
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 475, in parse
     compiled_result = compile_func(self, token)
-  File "F:\Python37\lib\site-packages\django\template\loader_tags.py", line 266, in do_extends
+  File "C:\Python36\lib\site-packages\django\template\loader_tags.py", line 266, in do_extends
     nodelist = parser.parse()
-  File "F:\Python37\lib\site-packages\django\template\base.py", line 477, in parse
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 477, in parse
     raise self.error(token, e)
-  File "F:\Python37\lib\site-packages\django\template\base.py", line 475, in parse
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 475, in parse
     compiled_result = compile_func(self, token)
-  File "F:\Python37\lib\site-packages\django\template\defaulttags.py", line 1078, in load
+  File "C:\Python36\lib\site-packages\django\template\defaulttags.py", line 1078, in load
     lib = find_library(parser, name)
-  File "F:\Python37\lib\site-packages\django\template\defaulttags.py", line 1025, in find_library
+  File "C:\Python36\lib\site-packages\django\template\defaulttags.py", line 1025, in find_library
     name, "\n".join(sorted(parser.libraries)),
 django.template.exceptions.TemplateSyntaxError: 'my_filters_and_tags' is not a registered tag library. Must be one of:
 admin_list
@@ -70,56 +61,54 @@ notifications_tags
 static
 tz
 xx
-ERROR 2021-02-22 16:06:55,587 log 59464 61212 Internal Server Error: /app01/article/
+ERROR 2021-02-22 21:43:55,286 log 11648 5780 Internal Server Error: /app01/article/
 Traceback (most recent call last):
-  File "F:\Python37\lib\site-packages\django\template\defaulttags.py", line 1021, in find_library
+  File "C:\Python36\lib\site-packages\django\template\defaulttags.py", line 1021, in find_library
     return parser.libraries[name]
 KeyError: 'my_filters_and_tags'
 
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "F:\Python37\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
     response = get_response(request)
-  File "F:\Python37\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
     response = self.process_exception_by_middleware(e, request)
-  File "F:\Python37\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
   File "F:\a44\keke_tl\djangoday4\project\app01\views.py", line 512, in article
     return render(request,'app01/article.html',contenxt)
-  File "F:\Python37\lib\site-packages\django\shortcuts.py", line 19, in render
+  File "C:\Python36\lib\site-packages\django\shortcuts.py", line 19, in render
     content = loader.render_to_string(template_name, context, request, using=using)
-  File "F:\Python37\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+  File "C:\Python36\lib\site-packages\django\template\loader.py", line 61, in render_to_string
     template = get_template(template_name, using=using)
-  File "F:\Python37\lib\site-packages\django\template\loader.py", line 15, in get_template
+  File "C:\Python36\lib\site-packages\django\template\loader.py", line 15, in get_template
     return engine.get_template(template_name)
-  File "F:\Python37\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+  File "C:\Python36\lib\site-packages\django\template\backends\django.py", line 34, in get_template
     return Template(self.engine.get_template(template_name), self)
-  File "F:\Python37\lib\site-packages\django\template\engine.py", line 143, in get_template
+  File "C:\Python36\lib\site-packages\django\template\engine.py", line 143, in get_template
     template, origin = self.find_template(template_name)
-  File "F:\Python37\lib\site-packages\django\template\engine.py", line 125, in find_template
+  File "C:\Python36\lib\site-packages\django\template\engine.py", line 125, in find_template
     template = loader.get_template(name, skip=skip)
-  File "F:\Python37\lib\site-packages\django\template\loaders\cached.py", line 53, in get_template
-    template = super().get_template(template_name, skip)
-  File "F:\Python37\lib\site-packages\django\template\loaders\base.py", line 30, in get_template
+  File "C:\Python36\lib\site-packages\django\template\loaders\base.py", line 30, in get_template
     contents, origin, origin.template_name, self.engine,
-  File "F:\Python37\lib\site-packages\django\template\base.py", line 156, in __init__
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 156, in __init__
     self.nodelist = self.compile_nodelist()
-  File "F:\Python37\lib\site-packages\django\template\base.py", line 194, in compile_nodelist
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 194, in compile_nodelist
     return parser.parse()
-  File "F:\Python37\lib\site-packages\django\template\base.py", line 477, in parse
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 477, in parse
     raise self.error(token, e)
-  File "F:\Python37\lib\site-packages\django\template\base.py", line 475, in parse
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 475, in parse
     compiled_result = compile_func(self, token)
-  File "F:\Python37\lib\site-packages\django\template\loader_tags.py", line 266, in do_extends
+  File "C:\Python36\lib\site-packages\django\template\loader_tags.py", line 266, in do_extends
     nodelist = parser.parse()
-  File "F:\Python37\lib\site-packages\django\template\base.py", line 477, in parse
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 477, in parse
     raise self.error(token, e)
-  File "F:\Python37\lib\site-packages\django\template\base.py", line 475, in parse
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 475, in parse
     compiled_result = compile_func(self, token)
-  File "F:\Python37\lib\site-packages\django\template\defaulttags.py", line 1078, in load
+  File "C:\Python36\lib\site-packages\django\template\defaulttags.py", line 1078, in load
     lib = find_library(parser, name)
-  File "F:\Python37\lib\site-packages\django\template\defaulttags.py", line 1025, in find_library
+  File "C:\Python36\lib\site-packages\django\template\defaulttags.py", line 1025, in find_library
     name, "\n".join(sorted(parser.libraries)),
 django.template.exceptions.TemplateSyntaxError: 'my_filters_and_tags' is not a registered tag library. Must be one of:
 admin_list
@@ -135,192 +124,174 @@ notifications_tags
 static
 tz
 xx
-WARNING 2021-02-22 16:07:08,906 log 60140 59020 Not Found: /media/article/20210218/12345.jpg
-WARNING 2021-02-22 16:07:08,907 log 60140 60668 Not Found: /media/article/20210218/fd24a833ad42c96580077e9ca6209b5d_t.gif
-WARNING 2021-02-22 16:07:08,912 log 60140 59964 Not Found: /media/article/20210208/12345.jpg
-WARNING 2021-02-22 16:07:08,914 log 60140 59640 Not Found: /media/article/20210208/22.png
-WARNING 2021-02-22 16:07:08,916 log 60140 59408 Not Found: /media/article/20210208/85095AB7-8852-468D-9C9E-A19BA6EB2DBC.png
-WARNING 2021-02-22 16:14:48,139 log 60140 60424 Not Found: /static/images/nginx.jpg
-WARNING 2021-02-22 16:14:52,572 log 60140 60424 Not Found: /media/article/20210218/fd24a833ad42c96580077e9ca6209b5d_t.gif
-WARNING 2021-02-22 16:14:52,574 log 60140 58684 Not Found: /media/article/20210218/12345.jpg
-WARNING 2021-02-22 16:14:52,577 log 60140 39484 Not Found: /media/article/20210208/22.png
-WARNING 2021-02-22 16:14:52,584 log 60140 58092 Not Found: /media/article/20210208/12345.jpg
-WARNING 2021-02-22 16:14:52,588 log 60140 56104 Not Found: /media/article/20210208/85095AB7-8852-468D-9C9E-A19BA6EB2DBC.png
-WARNING 2021-02-22 16:14:55,086 log 60140 56104 Not Found: /static/ckeditor/ckeditor/plugins/prism/lib/prism/prism_patched.min.js
-WARNING 2021-02-22 16:14:55,089 log 60140 58092 Not Found: /static/prism/prism.css
-WARNING 2021-02-22 16:14:55,094 log 60140 39484 Not Found: /static/sticky_sidebar/jquery.sticky-sidebar.min.js
-WARNING 2021-02-22 16:15:09,382 log 60140 39484 Not Found: /media/article/20210218/fd24a833ad42c96580077e9ca6209b5d_t.gif
-WARNING 2021-02-22 16:15:09,383 log 60140 60424 Not Found: /media/article/20210208/85095AB7-8852-468D-9C9E-A19BA6EB2DBC.png
-WARNING 2021-02-22 16:15:09,383 log 60140 58092 Not Found: /media/article/20210218/12345.jpg
-WARNING 2021-02-22 16:15:09,384 log 60140 56104 Not Found: /media/article/20210208/22.png
-WARNING 2021-02-22 16:15:09,385 log 60140 58684 Not Found: /media/article/20210208/12345.jpg
-WARNING 2021-02-22 16:15:14,281 log 60140 60424 Not Found: /media/article/20210218/fd24a833ad42c96580077e9ca6209b5d_t.gif
-WARNING 2021-02-22 16:15:14,283 log 60140 39484 Not Found: /media/article/20210208/85095AB7-8852-468D-9C9E-A19BA6EB2DBC.png
-WARNING 2021-02-22 16:15:14,284 log 60140 58684 Not Found: /media/article/20210218/12345.jpg
-WARNING 2021-02-22 16:15:14,287 log 60140 56104 Not Found: /media/article/20210208/22.png
-WARNING 2021-02-22 16:15:14,289 log 60140 58092 Not Found: /media/article/20210208/12345.jpg
-WARNING 2021-02-22 16:15:20,244 log 60140 58092 Not Found: /static/ckeditor/ckeditor-init.js
-WARNING 2021-02-22 16:15:20,245 log 60140 56104 Not Found: /static/ckeditor/ckeditor/ckeditor.js
-WARNING 2021-02-22 16:15:20,248 log 60140 39484 Not Found: /static/prism/prism.css
-WARNING 2021-02-22 16:15:20,249 log 60140 58684 Not Found: /static/ckeditor/ckeditor/plugins/prism/lib/prism/prism_patched.min.js
-WARNING 2021-02-22 16:15:20,250 log 60140 60424 Not Found: /static/sticky_sidebar/jquery.sticky-sidebar.min.js
-WARNING 2021-02-22 16:15:20,260 log 60140 60424 Not Found: /static/prism/prism.css
-WARNING 2021-02-22 16:15:20,264 log 60140 60424 Not Found: /static/ckeditor/ckeditor-init.js
-WARNING 2021-02-22 16:15:20,269 log 60140 60424 Not Found: /static/ckeditor/ckeditor/ckeditor.js
-WARNING 2021-02-22 16:15:20,279 log 60140 60424 Not Found: /static/sticky_sidebar/jquery.sticky-sidebar.min.js
-WARNING 2021-02-22 16:18:49,026 log 60988 57816 Not Found: /static/images/nginx.jpg
-WARNING 2021-02-22 16:18:56,882 log 60988 57816 Not Found: /media/article/20210218/fd24a833ad42c96580077e9ca6209b5d_t.gif
-WARNING 2021-02-22 16:18:56,884 log 60988 22544 Not Found: /media/article/20210218/12345.jpg
-WARNING 2021-02-22 16:18:56,888 log 60988 54724 Not Found: /media/article/20210208/22.png
-WARNING 2021-02-22 16:18:56,890 log 60988 59492 Not Found: /media/article/20210208/12345.jpg
-WARNING 2021-02-22 16:18:56,895 log 60988 60804 Not Found: /media/article/20210208/85095AB7-8852-468D-9C9E-A19BA6EB2DBC.png
-WARNING 2021-02-22 16:18:58,677 log 60988 60804 Not Found: /static/ckeditor/ckeditor/plugins/prism/lib/prism/prism_patched.min.js
-WARNING 2021-02-22 16:18:58,681 log 60988 54724 Not Found: /static/ckeditor/ckeditor-init.js
-WARNING 2021-02-22 16:18:58,682 log 60988 59492 Not Found: /static/prism/prism.css
-WARNING 2021-02-22 16:18:58,683 log 60988 22544 Not Found: /static/ckeditor/ckeditor/ckeditor.js
-WARNING 2021-02-22 16:18:58,684 log 60988 57816 Not Found: /static/sticky_sidebar/jquery.sticky-sidebar.min.js
-WARNING 2021-02-22 16:29:01,305 log 60988 59772 Not Found: /media/article/20210218/fd24a833ad42c96580077e9ca6209b5d_t.gif
-WARNING 2021-02-22 16:29:01,307 log 60988 58408 Not Found: /media/article/20210218/12345.jpg
-WARNING 2021-02-22 16:29:01,311 log 60988 58460 Not Found: /media/article/20210208/22.png
-WARNING 2021-02-22 16:29:01,323 log 60988 60332 Not Found: /media/article/20210208/12345.jpg
-WARNING 2021-02-22 16:29:01,324 log 60988 59772 Not Found: /media/article/20210208/85095AB7-8852-468D-9C9E-A19BA6EB2DBC.png
-WARNING 2021-02-22 16:29:05,849 log 60988 59772 Not Found: /media/article/20210218/fd24a833ad42c96580077e9ca6209b5d_t.gif
-WARNING 2021-02-22 16:29:05,850 log 60988 60332 Not Found: /media/article/20210218/12345.jpg
-WARNING 2021-02-22 16:29:05,854 log 60988 58460 Not Found: /media/article/20210208/22.png
-WARNING 2021-02-22 16:29:05,856 log 60988 59772 Not Found: /media/article/20210208/12345.jpg
-WARNING 2021-02-22 16:29:05,858 log 60988 58408 Not Found: /media/article/20210208/85095AB7-8852-468D-9C9E-A19BA6EB2DBC.png
-WARNING 2021-02-22 16:29:22,613 log 60988 58408 Not Found: /media/article/20210218/fd24a833ad42c96580077e9ca6209b5d_t.gif
-WARNING 2021-02-22 16:29:22,614 log 60988 58460 Not Found: /media/article/20210208/22.png
-WARNING 2021-02-22 16:29:22,616 log 60988 60028 Not Found: /media/article/20210208/85095AB7-8852-468D-9C9E-A19BA6EB2DBC.png
-WARNING 2021-02-22 16:29:22,618 log 60988 59772 Not Found: /media/article/20210218/12345.jpg
-WARNING 2021-02-22 16:29:22,619 log 60988 60332 Not Found: /media/article/20210208/12345.jpg
-WARNING 2021-02-22 16:29:24,132 log 60988 60332 Not Found: /media/article/20210218/fd24a833ad42c96580077e9ca6209b5d_t.gif
-WARNING 2021-02-22 16:29:24,133 log 60988 59772 Not Found: /media/article/20210218/12345.jpg
-WARNING 2021-02-22 16:29:24,134 log 60988 60028 Not Found: /media/article/20210208/22.png
-WARNING 2021-02-22 16:29:24,134 log 60988 58460 Not Found: /media/article/20210208/12345.jpg
-WARNING 2021-02-22 16:29:24,135 log 60988 58408 Not Found: /media/article/20210208/85095AB7-8852-468D-9C9E-A19BA6EB2DBC.png
-WARNING 2021-02-22 16:29:24,900 log 60988 58408 Not Found: /media/article/20210218/fd24a833ad42c96580077e9ca6209b5d_t.gif
-WARNING 2021-02-22 16:29:24,901 log 60988 60028 Not Found: /media/article/20210208/22.png
-WARNING 2021-02-22 16:29:24,903 log 60988 58460 Not Found: /media/article/20210218/12345.jpg
-WARNING 2021-02-22 16:29:24,904 log 60988 59772 Not Found: /media/article/20210208/12345.jpg
-WARNING 2021-02-22 16:29:24,906 log 60988 60332 Not Found: /media/article/20210208/85095AB7-8852-468D-9C9E-A19BA6EB2DBC.png
-WARNING 2021-02-22 16:29:25,550 log 60988 60332 Not Found: /media/article/20210218/fd24a833ad42c96580077e9ca6209b5d_t.gif
-WARNING 2021-02-22 16:29:25,551 log 60988 59772 Not Found: /media/article/20210218/12345.jpg
-WARNING 2021-02-22 16:29:25,553 log 60988 58408 Not Found: /media/article/20210208/85095AB7-8852-468D-9C9E-A19BA6EB2DBC.png
-WARNING 2021-02-22 16:29:25,554 log 60988 60028 Not Found: /media/article/20210208/12345.jpg
-WARNING 2021-02-22 16:29:25,555 log 60988 58460 Not Found: /media/article/20210208/22.png
-WARNING 2021-02-22 16:29:26,696 log 60988 59772 Not Found: /media/article/20210218/fd24a833ad42c96580077e9ca6209b5d_t.gif
-WARNING 2021-02-22 16:29:26,698 log 60988 58460 Not Found: /media/article/20210218/12345.jpg
-WARNING 2021-02-22 16:29:26,702 log 60988 60028 Not Found: /media/article/20210208/22.png
-WARNING 2021-02-22 16:29:26,704 log 60988 58408 Not Found: /media/article/20210208/12345.jpg
-WARNING 2021-02-22 16:29:26,705 log 60988 60332 Not Found: /media/article/20210208/85095AB7-8852-468D-9C9E-A19BA6EB2DBC.png
-WARNING 2021-02-22 16:29:27,507 log 60988 60332 Not Found: /media/article/20210218/fd24a833ad42c96580077e9ca6209b5d_t.gif
-WARNING 2021-02-22 16:29:27,508 log 60988 58408 Not Found: /media/article/20210218/12345.jpg
-WARNING 2021-02-22 16:29:27,509 log 60988 60028 Not Found: /media/article/20210208/22.png
-WARNING 2021-02-22 16:29:27,511 log 60988 59772 Not Found: /media/article/20210208/85095AB7-8852-468D-9C9E-A19BA6EB2DBC.png
-WARNING 2021-02-22 16:29:27,512 log 60988 58460 Not Found: /media/article/20210208/12345.jpg
-WARNING 2021-02-22 16:29:41,899 log 60988 58460 Not Found: /static/images/nginx.jpg
-WARNING 2021-02-22 16:29:44,930 log 60988 58460 Not Found: /media/article/20210218/fd24a833ad42c96580077e9ca6209b5d_t.gif
-WARNING 2021-02-22 16:29:44,933 log 60988 59772 Not Found: /media/article/20210218/12345.jpg
-WARNING 2021-02-22 16:29:44,934 log 60988 60028 Not Found: /media/article/20210208/22.png
-WARNING 2021-02-22 16:29:44,938 log 60988 58408 Not Found: /media/article/20210208/12345.jpg
-WARNING 2021-02-22 16:29:44,942 log 60988 60332 Not Found: /media/article/20210208/85095AB7-8852-468D-9C9E-A19BA6EB2DBC.png
-WARNING 2021-02-22 16:30:04,728 log 60988 60332 Not Found: /media/article/20210218/fd24a833ad42c96580077e9ca6209b5d_t.gif
-WARNING 2021-02-22 16:30:04,730 log 60988 59772 Not Found: /media/article/20210208/12345.jpg
-WARNING 2021-02-22 16:30:04,732 log 60988 60028 Not Found: /media/article/20210208/22.png
-WARNING 2021-02-22 16:30:04,733 log 60988 58460 Not Found: /media/article/20210208/85095AB7-8852-468D-9C9E-A19BA6EB2DBC.png
-WARNING 2021-02-22 16:30:04,734 log 60988 58408 Not Found: /media/article/20210218/12345.jpg
-WARNING 2021-02-22 16:30:05,708 log 60988 58408 Not Found: /media/article/20210218/fd24a833ad42c96580077e9ca6209b5d_t.gif
-WARNING 2021-02-22 16:30:05,717 log 60988 58460 Not Found: /media/article/20210218/12345.jpg
-WARNING 2021-02-22 16:30:05,719 log 60988 60028 Not Found: /media/article/20210208/22.png
-WARNING 2021-02-22 16:30:05,720 log 60988 59772 Not Found: /media/article/20210208/12345.jpg
-WARNING 2021-02-22 16:30:05,722 log 60988 60332 Not Found: /media/article/20210208/85095AB7-8852-468D-9C9E-A19BA6EB2DBC.png
-WARNING 2021-02-22 16:30:22,652 log 61016 59456 Not Found: /media/article/20210218/fd24a833ad42c96580077e9ca6209b5d_t.gif
-WARNING 2021-02-22 16:30:22,657 log 61016 60356 Not Found: /media/article/20210218/12345.jpg
-WARNING 2021-02-22 16:30:22,661 log 61016 60252 Not Found: /media/article/20210208/22.png
-WARNING 2021-02-22 16:30:22,673 log 61016 58588 Not Found: /media/article/20210208/12345.jpg
-WARNING 2021-02-22 16:30:22,695 log 61016 59740 Not Found: /media/article/20210208/85095AB7-8852-468D-9C9E-A19BA6EB2DBC.png
-WARNING 2021-02-22 16:30:33,135 log 61016 59740 Not Found: /media/article/20210218/fd24a833ad42c96580077e9ca6209b5d_t.gif
-WARNING 2021-02-22 16:30:33,137 log 61016 58588 Not Found: /media/article/20210218/12345.jpg
-WARNING 2021-02-22 16:30:33,139 log 61016 60252 Not Found: /media/article/20210208/22.png
-WARNING 2021-02-22 16:30:33,140 log 61016 60356 Not Found: /media/article/20210208/12345.jpg
-WARNING 2021-02-22 16:30:33,142 log 61016 59456 Not Found: /media/article/20210208/85095AB7-8852-468D-9C9E-A19BA6EB2DBC.png
-WARNING 2021-02-22 16:30:36,152 log 61016 59456 Not Found: /media/article/20210218/fd24a833ad42c96580077e9ca6209b5d_t.gif
-WARNING 2021-02-22 16:30:36,158 log 61016 60252 Not Found: /media/article/20210208/22.png
-WARNING 2021-02-22 16:30:36,159 log 61016 58588 Not Found: /media/article/20210208/12345.jpg
-WARNING 2021-02-22 16:30:36,160 log 61016 59740 Not Found: /media/article/20210208/85095AB7-8852-468D-9C9E-A19BA6EB2DBC.png
-WARNING 2021-02-22 16:30:36,163 log 61016 60356 Not Found: /media/article/20210218/12345.jpg
-WARNING 2021-02-22 16:30:37,901 log 61016 59740 Not Found: /media/article/20210218/12345.jpg
-WARNING 2021-02-22 16:30:37,902 log 61016 58588 Not Found: /media/article/20210208/22.png
-WARNING 2021-02-22 16:30:37,903 log 61016 60252 Not Found: /media/article/20210208/12345.jpg
-WARNING 2021-02-22 16:30:37,904 log 61016 59456 Not Found: /media/article/20210208/85095AB7-8852-468D-9C9E-A19BA6EB2DBC.png
-WARNING 2021-02-22 16:30:37,905 log 61016 60356 Not Found: /media/article/20210218/fd24a833ad42c96580077e9ca6209b5d_t.gif
-WARNING 2021-02-22 16:30:38,750 log 61016 59456 Not Found: /media/article/20210218/fd24a833ad42c96580077e9ca6209b5d_t.gif
-WARNING 2021-02-22 16:30:38,756 log 61016 60252 Not Found: /media/article/20210208/22.png
-WARNING 2021-02-22 16:30:38,757 log 61016 60356 Not Found: /media/article/20210218/12345.jpg
-WARNING 2021-02-22 16:30:38,761 log 61016 58588 Not Found: /media/article/20210208/12345.jpg
-WARNING 2021-02-22 16:30:38,763 log 61016 59740 Not Found: /media/article/20210208/85095AB7-8852-468D-9C9E-A19BA6EB2DBC.png
-WARNING 2021-02-22 16:30:46,209 log 23056 59528 Not Found: /media/article/20210208/12345.jpg
-WARNING 2021-02-22 16:30:46,904 log 23056 61284 Not Found: /media/article/20210208/12345.jpg
-WARNING 2021-02-22 16:31:08,118 log 23056 56816 Not Found: /media/article/20210208/12345.jpg
-WARNING 2021-02-22 16:45:32,399 log 38412 60204 Not Found: /app01/increase_likes
-WARNING 2021-02-22 16:45:38,970 base 38412 60204 Method Not Allowed (GET): /app01/increase_likes/1
-WARNING 2021-02-22 16:45:38,970 log 38412 60204 Method Not Allowed: /app01/increase_likes/1
-WARNING 2021-02-22 16:47:13,355 log 58976 59908 Not Found: /app01/increase_likes/
-WARNING 2021-02-22 16:52:59,578 log 59508 60452 Not Found: /app01/increase_likes/z
-WARNING 2021-02-22 16:53:04,064 log 59508 60452 Not Found: /app01/increase_likes/
-WARNING 2021-02-22 16:53:09,621 log 59508 60452 Not Found: /app01/increase_likes/
-WARNING 2021-02-22 16:53:18,536 log 59508 60452 Not Found: /app01/increase_likes/
-WARNING 2021-02-22 16:54:41,125 log 60852 58772 Not Found: /app01/increase_likes/
-WARNING 2021-02-22 16:54:52,636 log 60852 58772 Not Found: /app01/increase_likes/5
-WARNING 2021-02-22 16:54:53,597 log 60852 58772 Not Found: /app01/increase_likes/5
-WARNING 2021-02-22 16:54:54,519 log 60852 58772 Not Found: /app01/increase_likes/5
-WARNING 2021-02-22 16:55:16,381 log 61828 61852 Not Found: /app01/increase_likes/5
-WARNING 2021-02-22 16:55:17,417 log 61828 61852 Not Found: /app01/increase_likes/5
-WARNING 2021-02-22 17:03:06,850 log 60884 60648 Not Found: /app01/
-WARNING 2021-02-22 17:03:09,028 log 60884 60648 Not Found: /media/article/20210208/12345.jpg
-ERROR 2021-02-22 17:03:12,271 log 60884 60648 Internal Server Error: /app01/article_detail/31/
+WARNING 2021-02-22 22:10:25,229 log 7748 2744 Not Found: /favicon.ico
+ERROR 2021-02-22 22:10:33,337 log 7748 2744 Internal Server Error: /app01/article/
 Traceback (most recent call last):
-  File "F:\Python37\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+  File "C:\Python36\lib\site-packages\django\db\backends\utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Python36\lib\site-packages\django\db\backends\mysql\base.py", line 74, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Python36\lib\site-packages\pymysql\cursors.py", line 163, in execute
+    result = self._query(query)
+  File "C:\Python36\lib\site-packages\pymysql\cursors.py", line 321, in _query
+    conn.query(q)
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 505, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 724, in _read_query_result
+    result.read()
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 1069, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 676, in _read_packet
+    packet.raise_for_error()
+  File "C:\Python36\lib\site-packages\pymysql\protocol.py", line 223, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Python36\lib\site-packages\pymysql\err.py", line 107, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'app01_articlepost.likes' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
     response = get_response(request)
-  File "F:\Python37\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
     response = self.process_exception_by_middleware(e, request)
-  File "F:\Python37\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "F:\a44\keke_tl\djangoday4\project\app01\views.py", line 582, in article_detail
-    return render(request,'app01/detail.html',context)
-  File "F:\Python37\lib\site-packages\django\shortcuts.py", line 19, in render
+  File "F:\a44\keke_tl\djangoday4\project\app01\views.py", line 512, in article
+    return render(request,'app01/article.html',contenxt)
+  File "C:\Python36\lib\site-packages\django\shortcuts.py", line 19, in render
     content = loader.render_to_string(template_name, context, request, using=using)
-  File "F:\Python37\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+  File "C:\Python36\lib\site-packages\django\template\loader.py", line 62, in render_to_string
     return template.render(context, request)
-  File "F:\Python37\lib\site-packages\django\template\backends\django.py", line 61, in render
+  File "C:\Python36\lib\site-packages\django\template\backends\django.py", line 61, in render
     return self.template.render(context)
-  File "F:\Python37\lib\site-packages\django\template\base.py", line 171, in render
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 171, in render
     return self._render(context)
-  File "F:\Python37\lib\site-packages\django\template\base.py", line 163, in _render
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 163, in _render
     return self.nodelist.render(context)
-  File "F:\Python37\lib\site-packages\django\template\base.py", line 936, in render
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 936, in render
     bit = node.render_annotated(context)
-  File "F:\Python37\lib\site-packages\django\template\base.py", line 903, in render_annotated
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 903, in render_annotated
     return self.render(context)
-  File "F:\Python37\lib\site-packages\django\template\loader_tags.py", line 150, in render
+  File "C:\Python36\lib\site-packages\django\template\loader_tags.py", line 150, in render
     return compiled_parent._render(context)
-  File "F:\Python37\lib\site-packages\django\template\base.py", line 163, in _render
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 163, in _render
     return self.nodelist.render(context)
-  File "F:\Python37\lib\site-packages\django\template\base.py", line 936, in render
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 936, in render
     bit = node.render_annotated(context)
-  File "F:\Python37\lib\site-packages\django\template\base.py", line 903, in render_annotated
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 903, in render_annotated
     return self.render(context)
-  File "F:\Python37\lib\site-packages\django\template\loader_tags.py", line 62, in render
+  File "C:\Python36\lib\site-packages\django\template\loader_tags.py", line 62, in render
     result = block.nodelist.render(context)
-  File "F:\Python37\lib\site-packages\django\template\base.py", line 936, in render
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 936, in render
     bit = node.render_annotated(context)
-  File "F:\Python37\lib\site-packages\django\template\base.py", line 903, in render_annotated
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 903, in render_annotated
     return self.render(context)
-  File "F:\Python37\lib\site-packages\django\template\defaulttags.py", line 443, in render
-    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
-  File "F:\Python37\lib\site-packages\django\urls\base.py", line 87, in reverse
-    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
-  File "F:\Python37\lib\site-packages\django\urls\resolvers.py", line 677, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for 'increase-likes' with arguments '('',)' not found. 1 pattern(s) tried: ['app01/increase_likes/(\\d+)/']
+  File "C:\Python36\lib\site-packages\django\template\defaulttags.py", line 166, in render
+    len_values = len(values)
+  File "C:\Python36\lib\site-packages\django\core\paginator.py", line 150, in __len__
+    return len(self.object_list)
+  File "C:\Python36\lib\site-packages\django\db\models\query.py", line 258, in __len__
+    self._fetch_all()
+  File "C:\Python36\lib\site-packages\django\db\models\query.py", line 1261, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Python36\lib\site-packages\django\db\models\query.py", line 57, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "C:\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1144, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Python36\lib\site-packages\django\db\backends\utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "C:\Python36\lib\site-packages\django\db\backends\utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Python36\lib\site-packages\django\db\backends\utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Python36\lib\site-packages\django\db\backends\utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Python36\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Python36\lib\site-packages\django\db\backends\utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Python36\lib\site-packages\django\db\backends\mysql\base.py", line 74, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Python36\lib\site-packages\pymysql\cursors.py", line 163, in execute
+    result = self._query(query)
+  File "C:\Python36\lib\site-packages\pymysql\cursors.py", line 321, in _query
+    conn.query(q)
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 505, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 724, in _read_query_result
+    result.read()
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 1069, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 676, in _read_packet
+    packet.raise_for_error()
+  File "C:\Python36\lib\site-packages\pymysql\protocol.py", line 223, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Python36\lib\site-packages\pymysql\err.py", line 107, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.OperationalError: (1054, "Unknown column 'app01_articlepost.likes' in 'field list'")
+WARNING 2021-03-01 15:35:49,454 log 7508 8040 Not Found: /favicon.ico
+ERROR 2021-03-01 15:36:36,000 log 7508 7708 Internal Server Error: /user/conn/
+Traceback (most recent call last):
+  File "F:\Python37\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "F:\Python37\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "F:\Python37\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Python37\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "F:\Python37\lib\site-packages\dwebsocket\decorators.py", line 16, in new_func
+    response = func(request, *args, **kwargs)
+  File "F:\a44\keke_tl\djangoday4\project\User\views.py", line 547, in conn
+    i.send(message)
+  File "F:\Python37\lib\site-packages\dwebsocket\backends\default\websocket.py", line 42, in send
+    self.protocol.write(message)
+  File "F:\Python37\lib\site-packages\dwebsocket\backends\default\protocols.py", line 239, in write
+    self._write_frame(True, opcode, message)
+  File "F:\Python37\lib\site-packages\dwebsocket\backends\default\protocols.py", line 211, in _write_frame
+    l = len(data)
+TypeError: object of type 'NoneType' has no len()
+ERROR 2021-03-01 15:36:59,242 log 7508 1584 Internal Server Error: /user/conn/
+Traceback (most recent call last):
+  File "F:\Python37\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "F:\Python37\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "F:\Python37\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Python37\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "F:\Python37\lib\site-packages\dwebsocket\decorators.py", line 16, in new_func
+    response = func(request, *args, **kwargs)
+  File "F:\a44\keke_tl\djangoday4\project\User\views.py", line 547, in conn
+    i.send(message)
+  File "F:\Python37\lib\site-packages\dwebsocket\backends\default\websocket.py", line 42, in send
+    self.protocol.write(message)
+  File "F:\Python37\lib\site-packages\dwebsocket\backends\default\protocols.py", line 239, in write
+    self._write_frame(True, opcode, message)
+  File "F:\Python37\lib\site-packages\dwebsocket\backends\default\protocols.py", line 211, in _write_frame
+    l = len(data)
+TypeError: object of type 'NoneType' has no len()
+ERROR 2021-03-01 16:01:13,686 log 7508 1200 Internal Server Error: /user/conn/
+Traceback (most recent call last):
+  File "F:\Python37\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "F:\Python37\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "F:\Python37\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Python37\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "F:\Python37\lib\site-packages\dwebsocket\decorators.py", line 16, in new_func
+    response = func(request, *args, **kwargs)
+  File "F:\a44\keke_tl\djangoday4\project\User\views.py", line 547, in conn
+    i.send(message)
+  File "F:\Python37\lib\site-packages\dwebsocket\backends\default\websocket.py", line 42, in send
+    self.protocol.write(message)
+  File "F:\Python37\lib\site-packages\dwebsocket\backends\default\protocols.py", line 239, in write
+    self._write_frame(True, opcode, message)
+  File "F:\Python37\lib\site-packages\dwebsocket\backends\default\protocols.py", line 211, in _write_frame
+    l = len(data)
+TypeError: object of type 'NoneType' has no len()

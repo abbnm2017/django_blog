@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 'notifications',
+    'dwebsocket',
     'notice',
     'notifications',
     'mptt',
@@ -156,6 +157,9 @@ FILE_CHARSET = 'gb18030'
 #
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
 
 
 # SMTP服务器，改为你的邮箱的smtp!
@@ -282,3 +286,7 @@ LOGGING = {
     
     
 """
+WEBSOCKET_FACTORY_CLASS="dwebsocket.backends.uwsgi.factory.uWsgiWebSocketFactory"
+
+WEBSOCKET_ACCEPT_ALL=True
+
